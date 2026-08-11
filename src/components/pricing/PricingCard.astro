@@ -1,0 +1,147 @@
+---
+// src/components/pricing/PricingCard.astro
+import { Zap, Rocket, TrendingUp, ShoppingCart, Building2, Briefcase, Check, ArrowRight } from 'lucide-astro';
+
+export interface Props {
+  id: string;
+  name: string;
+  isBestSeller?: boolean;
+  price?: string;
+  description: string;
+  buttonText: string;
+  
+  features: Record<string, string[]>;
+  revision: string;
+  delivery: string;
+  whatsapp: string;
+  
+  // Theme/Colors
+  cardClasses: string;
+  shadowClass: string;
+  ringClass: string;
+  iconWrapperClass: string;
+  iconClass: string;
+  nameClass?: string;
+  priceClass?: string;
+  buttonClass: string;
+  accentText?: string;
+}
+
+const { 
+  id, 
+  name, 
+  isBestSeller = false,
+  price = "Rp X.XXX.XXX", 
+  description, 
+  buttonText,
+  features,
+  whatsapp,
+  cardClasses,
+  shadowClass,
+  ringClass,
+  iconWrapperClass,
+  iconClass,
+  nameClass = "text-text-primary",
+  priceClass = "text-text-primary",
+  buttonClass,
+  accentText = "text-text-secondary"
+} = Astro.props;
+
+// Determine icon dynamically
+const icons = {
+  spark: Zap,
+  starter: Rocket,
+  growth: TrendingUp,
+  scale: ShoppingCart,
+  enterprise: Building2,
+  custom: Briefcase
+};
+
+const Icon = icons[id as keyof typeof icons] || Zap;
+
+// Calculate Summary Features
+const allFeatureGroups = Object.values(features);
+const firstGroupFeatures = allFeatureGroups[0] || [];
+const summaryLimit = 5;
+const displayedFeatures = firstGroupFeatures.slice(0, summaryLimit);
+const totalFeatures = allFeatureGroups.reduce((acc, group) => acc + group.length, 0);
+const remainingFeatures = totalFeatures - displayedFeatures.length;
+---
+
+<div class={`pricing-card group relative flex flex-col rounded-[2rem] p-6 lg:p-7 text-left transition-colors duration-500 bg-surface shadow-sm h-full ${cardClasses}`}>
+  
+  {/* Best Seller Special Glow */}
+  {isBestSeller && (
+    <>
+      <div class="absolute inset-0 rounded-[2.5rem] bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"></div>
+      <div class="absolute -inset-[2px] rounded-[2.5rem] bg-accent opacity-20 blur-md group-hover:opacity-40 transition-opacity duration-500 pointer-events-none z-0"></div>
+      <div class="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-accent px-5 py-1.5 text-xs font-bold text-accent-foreground uppercase tracking-widest shadow-lg shadow-accent/30 whitespace-nowrap z-20">
+        Best Seller
+      </div>
+    </>
+  )}
+
+  {/* Standard Hover Shadow */}
+  {!isBestSeller && (
+    <div class={`absolute inset-0 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0 ${shadowClass}`}></div>
+  )}
+  
+  {/* Active Ring */}
+  <div class={`absolute inset-0 rounded-[2.5rem] border-transparent transition-all duration-300 pointer-events-none active-ring z-10 ${isBestSeller ? 'border-2 opacity-100 ring-[3px]' : 'border-2 opacity-0 group-hover:opacity-100 group-hover:border-2'} ${ringClass}`}></div>
+  
+  <div class={`relative z-20 flex-grow flex flex-col ${isBestSeller ? 'mt-2' : ''}`}>
+    
+    {/* Header */}
+    <div class="space-y-3">
+      <div class={`w-10 h-10 rounded-xl flex items-center justify-center border ${iconWrapperClass}`}>
+        <Icon class={`w-5 h-5 ${iconClass}`} aria-hidden="true" />
+      </div>
+      <h3 class={`text-xl lg:text-2xl font-bold ${nameClass}`}>{name}</h3>
+      <div class={`text-2xl lg:text-3xl font-extrabold tracking-tight mt-2 ${priceClass}`}>{price}</div>
+      <p class="text-sm text-text-secondary leading-relaxed min-h-[40px]">{description}</p>
+    </div>
+
+    <hr class="border-glass-10 my-6" />
+
+    {/* Features Summary */}
+    <div class="space-y-3 flex-grow mb-6">
+      <ul class="space-y-2.5">
+        {displayedFeatures.map((feature) => (
+          <li class="flex items-start gap-2.5">
+            <Check class={`w-4 h-4 flex-shrink-0 ${accentText} mt-0.5`} />
+            <span class="text-text-secondary text-[13px] lg:text-sm leading-relaxed">{feature}</span>
+          </li>
+        ))}
+      </ul>
+      {remainingFeatures > 0 && (
+        <p class="text-[13px] font-medium text-text-muted pt-1.5 pl-7">
+          +{remainingFeatures} fitur lainnya
+        </p>
+      )}
+    </div>
+
+    {/* CTA Buttons */}
+    <div class="pt-4 border-t border-glass-10 mt-auto flex flex-col gap-3">
+      {/* Primary CTA */}
+      <a 
+        href={`https://wa.me/6281919564548?text=${encodeURIComponent(whatsapp)}`} 
+        target="_blank"
+        rel="noopener noreferrer"
+        class={`flex w-full items-center justify-center rounded-xl py-3 text-sm font-semibold transition-all hover:scale-[1.02] shadow-sm border-2 ${buttonClass}`}
+      >
+        {buttonText}
+      </a>
+      
+      {/* Secondary CTA (Open Modal) */}
+      <button 
+        type="button"
+        data-modal-target={`modal-${id}`}
+        class="open-modal-btn group/btn flex items-center justify-center gap-1.5 w-full py-1.5 text-xs font-medium text-text-muted transition-colors hover:text-text-primary focus:outline-none"
+      >
+        <span class="border-b border-transparent group-hover/btn:border-primary/40 transition-colors">Lihat Detail Paket</span>
+        <ArrowRight class="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+      </button>
+    </div>
+
+  </div>
+</div>

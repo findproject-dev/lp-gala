@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Poller+One&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.font-poller {
+  font-family: 'Poller One', cursive !important;
+}
+
+@layer base {
+  :root {
+    --color-background: #F8F6F2;
+    --color-surface: #F1EFE9;
+    --color-surface-elevated: #FCFBF9;
+    --color-primary: #6D5EF7;
+    --color-secondary: #8B5CF6;
+    --color-accent: #38BDF8;
+    --color-accent-pink: #EC4899;
+    --color-primary-foreground: #FFFFFF;
+    --color-secondary-foreground: #FFFFFF;
+    --color-accent-foreground: #082F49;
+    --color-foreground: #0F172A;
+    --color-foreground-secondary: #475569;
+    --color-foreground-muted: #64748B;
+    --color-border: #E5E7EB;
+    
+    /* Semantic Glass/Translucent tokens for Light Mode (uses black) */
+    --color-glass-5: rgba(0, 0, 0, 0.02);
+    --color-glass-10: rgba(0, 0, 0, 0.05);
+    --color-glass-20: rgba(0, 0, 0, 0.1);
+    --color-glass-30: rgba(0, 0, 0, 0.15);
+    --color-glass-40: rgba(0, 0, 0, 0.2);
+    --color-glass-50: rgba(0, 0, 0, 0.25);
+  }
+
+  .dark {
+    --color-background: #11141A;
+    --color-surface: #181C25;
+    --color-surface-elevated: #2B2F36;
+    --color-primary: #6D5EF7;
+    --color-secondary: #8B5CF6;
+    --color-accent: #38BDF8;
+    --color-accent-pink: #EC4899;
+    --color-primary-foreground: #FFFFFF;
+    --color-secondary-foreground: #FFFFFF;
+    --color-accent-foreground: #082F49;
+    --color-foreground: #F8FAFC;
+    --color-foreground-secondary: #CBD5E1;
+    --color-foreground-muted: #94A3B8;
+    --color-border: rgba(255, 255, 255, 0.05);
+    
+    /* Semantic Glass/Translucent tokens for Dark Mode (uses white) */
+    --color-glass-5: rgba(255, 255, 255, 0.03);
+    --color-glass-10: rgba(255, 255, 255, 0.1);
+    --color-glass-20: rgba(255, 255, 255, 0.2);
+    --color-glass-30: rgba(255, 255, 255, 0.3);
+    --color-glass-40: rgba(255, 255, 255, 0.4);
+    --color-glass-50: rgba(255, 255, 255, 0.5);
+  }
+
+  /* Transition for theme switching */
+  body {
+    @apply transition-colors duration-300;
+  }
+}
+
+/* Lenis Smooth Scroll Recommended CSS */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}

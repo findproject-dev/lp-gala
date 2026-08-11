@@ -1,0 +1,187 @@
+---
+// src/components/pricing/PricingModal.astro
+import { Zap, Rocket, TrendingUp, ShoppingCart, Building2, Briefcase, Check, Clock, RefreshCcw, X } from 'lucide-astro';
+
+export interface Props {
+  id: string;
+  name: string;
+  isBestSeller?: boolean;
+  price?: string;
+  description: string;
+  buttonText: string;
+  
+  features: Record<string, string[]>;
+  revision: string;
+  delivery: string;
+  whatsapp: string;
+  
+  iconWrapperClass: string;
+  iconClass: string;
+  nameClass?: string;
+  priceClass?: string;
+  buttonClass: string;
+  accentText?: string;
+}
+
+const { 
+  id, 
+  name, 
+  isBestSeller = false,
+  price = "Rp X.XXX.XXX", 
+  buttonText,
+  features,
+  revision,
+  delivery,
+  whatsapp,
+  iconWrapperClass,
+  iconClass,
+  nameClass = "text-text-primary",
+  priceClass = "text-text-primary",
+  buttonClass,
+  accentText = "text-text-secondary"
+} = Astro.props;
+
+// Determine icon dynamically
+const icons = {
+  spark: Zap,
+  starter: Rocket,
+  growth: TrendingUp,
+  scale: ShoppingCart,
+  enterprise: Building2,
+  custom: Briefcase
+};
+
+const Icon = icons[id as keyof typeof icons] || Zap;
+---
+
+<dialog id={`modal-${id}`} class="pricing-modal group fixed inset-0 z-50 bg-transparent m-0 h-[100dvh] max-h-[100dvh] w-screen max-w-[100vw] items-center justify-center p-4 sm:p-6 backdrop:bg-black/40 backdrop:backdrop-blur-sm hidden open:flex">
+  
+  <div class="modal-content relative flex w-full max-w-2xl flex-col overflow-hidden rounded-[2rem] bg-surface shadow-2xl transition-all max-h-[90dvh]">
+    
+    {/* Close Button */}
+    <button type="button" class="close-modal absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-glass-10 text-text-muted hover:bg-glass-20 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/20">
+      <X class="w-5 h-5" />
+      <span class="sr-only">Tutup</span>
+    </button>
+
+    <div class="flex-grow overflow-y-auto px-5 py-6 sm:px-8 sm:py-6 no-scrollbar">
+      {/* Header */}
+      <div class="flex items-start gap-4 sm:gap-5">
+        <div class={`w-12 h-12 sm:w-14 sm:h-14 rounded-2xl flex-shrink-0 flex items-center justify-center border ${iconWrapperClass}`}>
+          <Icon class={`w-6 h-6 sm:w-7 sm:h-7 ${iconClass}`} aria-hidden="true" />
+        </div>
+        <div>
+          <div class="flex items-center gap-3">
+            <h3 class={`text-xl sm:text-2xl font-bold ${nameClass}`}>{name}</h3>
+            {isBestSeller && (
+              <span class="rounded-full bg-primary/20 px-2.5 py-1 text-[10px] sm:text-xs font-bold text-accent uppercase tracking-wide">
+                Best Seller
+              </span>
+            )}
+          </div>
+          <div class={`text-2xl sm:text-3xl font-extrabold tracking-tight mt-2 ${priceClass}`}>{price}</div>
+        </div>
+      </div>
+
+      <hr class="border-glass-10 my-6" />
+
+      {/* Features */}
+      <div class="space-y-6">
+        {Object.entries(features).map(([groupName, groupFeatures]) => (
+          <div class="space-y-3">
+            <h5 class="text-[13px] font-bold text-text-secondary uppercase tracking-wider">{groupName}</h5>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-x-6 sm:gap-y-3">
+              {groupFeatures.map((feature) => (
+                <li class="flex items-start gap-2.5">
+                  <Check class={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 ${accentText} mt-0.5 sm:mt-0`} />
+                  <span class="text-text-secondary text-[13px] sm:text-sm leading-relaxed">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      <hr class="border-glass-10 my-6" />
+
+      {/* Logistics */}
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+        <div class="flex items-start gap-3 sm:gap-4">
+          <RefreshCcw class={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5 ${accentText}`} />
+          <div>
+            <p class="text-[11px] sm:text-xs text-text-muted font-medium uppercase tracking-wider">Revisi</p>
+            <p class="font-semibold text-text-primary text-[13px] sm:text-sm">{revision}</p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-3 sm:gap-4">
+          <Clock class={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5 ${accentText}`} />
+          <div>
+            <p class="text-[11px] sm:text-xs text-text-muted font-medium uppercase tracking-wider">Estimasi Pengerjaan</p>
+            <p class="font-semibold text-text-primary text-[13px] sm:text-sm">{delivery}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Sticky Footer CTA */}
+    <div class="border-t border-glass-10 bg-surface/90 p-5 sm:px-8 backdrop-blur-md">
+      <a 
+        href={`https://wa.me/6281919564548?text=${encodeURIComponent(whatsapp)}`} 
+        target="_blank"
+        rel="noopener noreferrer"
+        class={`flex w-full items-center justify-center rounded-2xl py-3.5 text-sm font-semibold transition-all hover:scale-[1.02] shadow-sm ${buttonClass}`}
+      >
+        {buttonText}
+      </a>
+    </div>
+
+  </div>
+</dialog>
+
+<style>
+  /* Hide scrollbar for the modal content */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  dialog[open] {
+    animation: fade-in 0.3s ease-out normal forwards;
+  }
+  
+  dialog[open] .modal-content {
+    animation: slide-up 0.4s cubic-bezier(0.16, 1, 0.3, 1) normal forwards;
+  }
+
+  dialog.closing {
+    animation: fade-out 0.2s ease-in normal forwards;
+  }
+  
+  dialog.closing .modal-content {
+    animation: slide-down 0.2s ease-in normal forwards;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  @keyframes fade-out {
+    from { opacity: 1; }
+    to { opacity: 0; }
+  }
+
+  @keyframes slide-down {
+    from { opacity: 1; transform: translateY(0) scale(1); }
+    to { opacity: 0; transform: translateY(10px) scale(0.98); }
+  }
+</style>

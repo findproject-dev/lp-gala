@@ -1,0 +1,287 @@
+---
+// src/components/pricing/PricingComparison.astro
+import { Check, Minus } from 'lucide-astro';
+
+const plans = [
+  { id: 'spark', name: 'Spark', highlight: false },
+  { id: 'starter', name: 'Starter', highlight: true },
+  { id: 'growth', name: 'Growth', highlight: false },
+  { id: 'scale', name: 'Scale', highlight: false },
+  { id: 'enterprise', name: 'Enterprise', highlight: false },
+  { id: 'custom', name: 'Custom', highlight: false }
+];
+
+const comparisonData = [
+  {
+    rowName: 'Harga',
+    values: {
+      spark: 'Rp699.000',
+      starter: 'Rp1.499.000',
+      growth: 'Rp2.699.000',
+      scale: 'Rp5.999.000',
+      enterprise: 'Konsultasi',
+      custom: 'Konsultasi'
+    }
+  },
+  {
+    rowName: 'Cocok Untuk',
+    values: {
+      spark: 'UMKM & Personal',
+      starter: 'Landing Page Bisnis',
+      growth: 'Company Profile',
+      scale: 'Website CMS',
+      enterprise: 'E-Commerce',
+      custom: 'Sistem Custom'
+    }
+  },
+  {
+    rowName: 'Halaman',
+    values: {
+      spark: '1 Halaman',
+      starter: '1 Halaman',
+      growth: 'Hingga 5 Halaman',
+      scale: 'Dashboard + Website',
+      enterprise: 'Dashboard + Website',
+      custom: 'Menyesuaikan'
+    }
+  },
+  {
+    rowName: 'Section',
+    values: {
+      spark: 'Hingga 5 Section',
+      starter: 'Hingga 12 Section',
+      growth: '-',
+      scale: '-',
+      enterprise: '-',
+      custom: '-'
+    }
+  },
+  {
+    rowName: 'Desain',
+    values: {
+      spark: 'Standard',
+      starter: 'Premium',
+      growth: 'Premium',
+      scale: 'Premium',
+      enterprise: 'Premium',
+      custom: 'Custom'
+    }
+  },
+  {
+    rowName: 'Fitur',
+    values: {
+      spark: 'WA, Maps, Form',
+      starter: 'Testimoni, FAQ, Galeri',
+      growth: 'Company Profile',
+      scale: 'CMS Produk',
+      enterprise: 'E-Commerce',
+      custom: 'Sesuai Kebutuhan'
+    }
+  },
+  {
+    rowName: 'SEO',
+    values: {
+      spark: 'Dasar',
+      starter: 'Dasar',
+      growth: 'Dasar',
+      scale: 'Dasar',
+      enterprise: 'Dasar',
+      custom: 'Menyesuaikan'
+    }
+  },
+  {
+    rowName: 'Revisi',
+    values: {
+      spark: 'Revisi 1x',
+      starter: 'Revisi 2x',
+      growth: 'Revisi 3x',
+      scale: 'Revisi 3x',
+      enterprise: 'Revisi 3x',
+      custom: 'Revisi 3x'
+    }
+  },
+  {
+    rowName: 'Estimasi',
+    values: {
+      spark: '3–5 Hari Kerja',
+      starter: '5–7 Hari Kerja',
+      growth: '7–10 Hari Kerja',
+      scale: '10–14 Hari Kerja',
+      enterprise: '14–30 Hari Kerja',
+      custom: 'Menyesuaikan'
+    }
+  }
+];
+---
+
+<section id="pricing-comparison" class="relative w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-12 md:pt-20">
+  <div class="text-center mb-16 max-w-3xl mx-auto">
+    <h2 class="text-3xl md:text-5xl font-bold text-text-primary tracking-tight">
+      Bandingkan Paket
+    </h2>
+    <p class="mt-6 text-text-secondary text-lg">
+      Rincian lengkap semua fitur di setiap paket untuk membantumu memilih yang paling tepat.
+    </p>
+  </div>
+
+  <!-- Desktop View (lg and up): Full Comparison Table -->
+  <div class="hidden lg:block relative border border-border bg-surface-elevated rounded-[2.5rem] shadow-sm comparison-desktop">
+    <div class="overflow-x-auto rounded-[2.5rem] custom-scrollbar">
+      <table class="w-full text-left border-collapse min-w-[1000px]">
+        <caption class="sr-only">Perbandingan detail fitur paket harga</caption>
+        <thead class="sticky top-0 z-30 bg-surface/95 backdrop-blur-md shadow-sm border-b border-glass-10">
+          <tr>
+            <th class="p-8 font-semibold text-text-primary w-1/5 text-lg">Ringkasan</th>
+            {plans.map(plan => (
+              <th class={`p-8 text-center relative ${plan.highlight ? 'bg-accent/[0.03] border-b-2 border-accent' : ''}`}>
+                {plan.highlight && (
+                  <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent px-4 py-1 text-[10px] font-bold text-accent-foreground uppercase tracking-widest shadow-md">
+                    Best Seller
+                  </div>
+                )}
+                <div class={`text-xl font-bold ${plan.highlight ? 'text-accent' : 'text-text-primary'}`}>
+                  {plan.name}
+                </div>
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {comparisonData.map((row, idx) => (
+            <tr class={`group transition-colors duration-300 hover:bg-primary/[0.04] ${idx !== comparisonData.length - 1 ? 'border-b border-glass-10' : ''}`}>
+              
+              <!-- Row Header -->
+              <td class="p-6 pl-8 font-medium text-text-secondary transition-colors sticky left-0 z-20 bg-surface-elevated group-hover:bg-primary/[0.02]">
+                {row.rowName}
+              </td>
+              
+              <!-- Values -->
+              {plans.map(plan => {
+                const val = row.values[plan.id];
+                const isUnlimited = val.toLowerCase().includes('tanpa batas') || val.toLowerCase().includes('kustom');
+                
+                return (
+                  <td class={`p-6 text-center text-sm transition-colors relative ${plan.highlight ? 'bg-accent/[0.02] group-hover:bg-accent/[0.04]' : ''}`}>
+                    <!-- Vertical highlight line for starter plan -->
+                    {plan.highlight && (
+                       <div class="absolute inset-y-0 left-0 w-px bg-primary/20"></div>
+                    )}
+                    {plan.highlight && (
+                       <div class="absolute inset-y-0 right-0 w-px bg-primary/20"></div>
+                    )}
+                    
+                    <div class={`inline-flex items-center gap-1.5 justify-center ${plan.highlight ? 'font-semibold text-text-primary' : 'text-text-primary/75'}`}>
+                      {val === '-' ? (
+                        <Minus class="w-4 h-4 text-text-muted" />
+                      ) : (
+                        <>
+                          {isUnlimited && <Check class="w-4 h-4 text-accent" />}
+                          <span>{val}</span>
+                        </>
+                      )}
+                    </div>
+                  </td>
+                );
+              })}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Mobile/Tablet View (< lg): Stacked Cards -->
+  <div class="block lg:hidden space-y-8 comparison-mobile">
+    {plans.map(plan => (
+      <div class={`comparison-card relative rounded-3xl border ${plan.highlight ? 'border-accent bg-surface shadow-xl' : 'border-glass-10 bg-surface/50'} p-6 sm:p-8 overflow-hidden`}>
+        {plan.highlight && (
+          <div class="absolute top-0 right-0 bg-accent text-accent-foreground px-4 py-1.5 rounded-bl-2xl text-xs font-bold uppercase tracking-wider shadow-sm">
+            Best Seller
+          </div>
+        )}
+        <div class="mb-8">
+          <h3 class={`text-2xl font-bold ${plan.highlight ? 'text-accent' : 'text-text-primary'}`}>{plan.name}</h3>
+        </div>
+        
+        <div class="space-y-4">
+          {comparisonData.map(row => {
+            const val = row.values[plan.id];
+            const isUnlimited = val.toLowerCase().includes('tanpa batas') || val.toLowerCase().includes('kustom');
+            
+            return (
+              <div class="flex justify-between items-center py-4 border-b border-glass-10 last:border-0 last:pb-0">
+                <span class="text-text-muted text-sm">{row.rowName}</span>
+                <div class="flex items-center gap-1.5 text-right max-w-[60%]">
+                  {val === '-' ? (
+                    <Minus class="w-4 h-4 text-text-muted flex-shrink-0" />
+                  ) : (
+                    <>
+                      {isUnlimited && <Check class="w-4 h-4 text-accent flex-shrink-0" />}
+                      <span class={`text-sm ${plan.highlight ? 'font-semibold text-text-primary' : 'font-medium text-text-secondary'}`}>
+                        {val}
+                      </span>
+                    </>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    ))}
+  </div>
+
+</section>
+
+<script>
+  import { animate, stagger, inView } from "motion";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const tableWrapper = document.querySelector(".comparison-desktop") as HTMLElement;
+    const mobileCards = document.querySelectorAll(".comparison-card");
+    const section = document.querySelector("#pricing-comparison") as HTMLElement;
+    
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion && section) {
+      if (tableWrapper) {
+         tableWrapper.style.opacity = '0';
+         tableWrapper.style.transform = 'translateY(30px)';
+      }
+      mobileCards.forEach(c => {
+         (c as HTMLElement).style.opacity = '0';
+         (c as HTMLElement).style.transform = 'translateY(20px)';
+      });
+
+      inView(section, () => {
+        if (tableWrapper) {
+           animate(tableWrapper, { opacity: [0, 1], y: [30, 0] }, { duration: 0.8, easing: "ease-out" });
+        }
+        if (mobileCards.length) {
+           animate(
+             mobileCards, 
+             { opacity: [0, 1], y: [20, 0] }, 
+             { delay: stagger(0.1), duration: 0.6, easing: "ease-out" }
+           );
+        }
+      }, { margin: "-10% 0px" });
+    }
+  });
+</script>
+
+<style>
+  /* Custom scrollbar for the table wrapper if it exceeds screen width slightly */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 8px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #C0C6CC;
+    border-radius: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #A0A6AC;
+  }
+</style>

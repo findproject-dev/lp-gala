@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import PortfolioHero from "../components/portfolio/PortfolioHero.astro";
+import PortfolioGrid from "../components/portfolio/PortfolioGrid.astro";
+import CTA from "../components/CTA.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout title="GALACODE | Portfolio Website Profesional">
+	<Header />
+	<main class="flex-grow pt-32 pb-24 space-y-24 md:space-y-32">
+		<PortfolioHero />
+		<PortfolioGrid />
+		<CTA />
+	</main>
+	<Footer />
+</Layout>

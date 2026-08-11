@@ -1,0 +1,208 @@
+---
+// src/components/portfolio/PortfolioGrid.astro
+
+const categories = ["Semua", "Landing Page", "Company Profile", "UMKM"];
+
+const projects = [
+  {
+    id: 1,
+    name: "Gala Cafe",
+    category: "Landing Page",
+    description: "Halaman konversi tinggi untuk klinik kecantikan dengan fitur pemesanan jadwal konsultasi langsung ke sistem klinik.",
+    tech: ["Astro", "Tailwind CSS"],
+    features: ["Booking System", "Responsive", "SEO Ready"],
+    perf: "99",
+    challenge: "Pasien kesulitan memesan jadwal secara online dan sering terjadi tumpang tindih waktu konsultasi.",
+    solution: "Membangun antarmuka landing page responsif dengan integrasi kalender interaktif untuk mencegah double-booking.",
+    demoUrl: "https://gala-cafe.vercel.app/",
+    image: "/images/cover-findfein.png",
+  },
+  {
+    id: 2,
+    name: "Findsnaps",
+    category: "UMKM",
+    description: "Katalog menu restoran interaktif dengan filter kategori dan pesanan antar (delivery) langsung via WhatsApp.",
+    tech: ["Laravel", "Tailwind CSS"],
+    features: ["Online Order", "WhatsApp API", "Mobile First"],
+    perf: "98",
+    challenge: "Proses pemesanan takeaway masih manual sehingga sering terjadi kesalahan pencatatan menu.",
+    solution: "Sistem katalog menu digital yang otomatis menghitung total harga dan format pesanan siap kirim ke WhatsApp kasir.",
+    demoUrl: "https://gala-photography-chi.vercel.app/",
+    image: "/images/cover-findsnaps.png",
+  },
+  {
+    id: 3,
+    name: "Findwell",
+    category: "Company Profile",
+    description: "Website profil perusahaan konstruksi baja dengan galeri portfolio proyek dan sistem tender online.",
+    tech: ["Next.js", "React"],
+    features: ["Project Gallery", "CMS", "B2B Form"],
+    perf: "100",
+    challenge: "Perusahaan kesulitan menampilkan skala proyek besar mereka kepada calon mitra B2B secara profesional.",
+    solution: "Pembuatan profil korporat dengan galeri resolusi tinggi yang dioptimalkan (lazy loading) tanpa mengorbankan kecepatan.",
+    demoUrl: "https://web-construction-eight.vercel.app/",
+    image: "/images/cover-findwell.png",
+  }
+];
+---
+
+<section id="portfolio-grid-section" class="relative w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+  
+  <!-- Category Filter -->
+  <div class="portfolio-filter-container hidden flex-wrap justify-center gap-2 md:gap-3 mb-12 md:mb-16">
+    {categories.map((cat, i) => (
+      <button 
+        class={`portfolio-filter-btn px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 border ${i === 0 ? 'bg-primary text-primary-foreground border-primary' : 'bg-surface border-border text-text-secondary hover:text-text-primary hover:border-border/80'}`}
+        data-filter={cat}
+      >
+        {cat}
+      </button>
+    ))}
+  </div>
+
+  <!-- Grid -->
+  <div class="portfolio-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+    {projects.map((project) => (
+      <div class="relative group h-full">
+        <!-- Hover Glow (Premium Effect) -->
+        <div class="absolute -inset-0.5 bg-gradient-to-br from-primary via-accent to-secondary rounded-3xl blur-xl opacity-0 md:group-hover:opacity-20 transition duration-700"></div>
+        
+        <!-- Main Card -->
+        <div 
+          class="portfolio-card relative bg-surface-elevated border border-border/60 rounded-[1.5rem] p-2.5 sm:p-3 flex flex-col transition-all duration-500 md:group-hover:-translate-y-2 h-full shadow-soft"
+          data-category={project.category}
+          data-perf={project.perf}
+          data-challenge={project.challenge}
+          data-solution={project.solution}
+        >
+          <!-- Screenshot Area -->
+          <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" class="relative w-full aspect-[16/10] bg-glass-10 rounded-[1rem] overflow-hidden block border border-border/20">
+            {project.image ? (
+              <img src={project.image} alt={project.name} class="absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] md:group-hover:scale-110 md:group-hover:blur-[4px] md:group-hover:brightness-90" loading="lazy" />
+            ) : (
+              <>
+                <div class="absolute inset-0 bg-primary/5"></div>
+                <div class="absolute inset-0 flex flex-col items-center justify-center text-text-muted transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] md:group-hover:scale-110 md:group-hover:blur-[4px] md:group-hover:brightness-90">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mb-3 opacity-40"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+                </div>
+              </>
+            )}
+            
+            <!-- Dark Gradient Overlay for Contrast -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            <!-- Glassmorphism Floating Badge -->
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+              <span class="translate-y-8 opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100 transition-all duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold tracking-widest text-[10px] sm:text-xs uppercase px-6 py-3 rounded-full shadow-2xl">
+                Kunjungi Web
+              </span>
+            </div>
+          </a>
+
+          <!-- Content Area -->
+          <div class="px-3 pt-5 pb-3 flex items-center justify-between gap-4 mt-auto">
+            <h3 class="text-xl md:text-2xl font-black text-text-primary tracking-tight md:group-hover:text-primary transition-colors duration-300 truncate">{project.name}</h3>
+            
+            <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" class="group/btn inline-flex items-center justify-center w-12 h-12 rounded-full bg-surface border border-border text-text-secondary transition-all duration-300 md:hover:bg-primary md:hover:text-primary-foreground md:hover:border-primary md:hover:shadow-lg hover:shadow-primary/30 shrink-0" aria-label="Live Demo">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 md:group-hover/btn:translate-x-0.5 md:group-hover/btn:-translate-y-0.5"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  import { animate, inView, stagger } from "motion";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // 1. Filter Logic
+    const filterBtns = document.querySelectorAll(".portfolio-filter-btn");
+    const cards = document.querySelectorAll(".portfolio-card");
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const filter = btn.getAttribute("data-filter");
+        
+        // Update active button state
+        filterBtns.forEach(b => {
+          b.classList.remove("bg-primary", "text-primary-foreground", "border-primary");
+          b.classList.add("bg-surface", "border-border", "text-text-secondary");
+        });
+        btn.classList.add("bg-primary", "text-primary-foreground", "border-primary");
+        btn.classList.remove("bg-surface", "border-border", "text-text-secondary");
+
+        // Filter cards
+        let visibleCards = [];
+        cards.forEach(card => {
+          const category = card.getAttribute("data-category");
+          if (filter === "Semua" || category === filter) {
+            (card as HTMLElement).style.display = "flex";
+            visibleCards.push(card);
+          } else {
+            (card as HTMLElement).style.display = "none";
+          }
+        });
+
+        // Re-animate visible cards
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (!prefersReducedMotion && visibleCards.length > 0) {
+          visibleCards.forEach(c => {
+            (c as HTMLElement).style.opacity = '0';
+            (c as HTMLElement).style.transform = 'translateY(20px)';
+          });
+          animate(
+            visibleCards,
+            { opacity: [0, 1], y: [20, 0] },
+            { delay: stagger(0.05), duration: 0.5, easing: "ease-out" }
+          );
+        }
+      });
+    });
+
+    // 2. Scroll Reveal Logic
+    const gridSection = document.querySelector("#portfolio-grid-section") as HTMLElement;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!prefersReducedMotion && gridSection) {
+      const filterContainer = document.querySelector(".portfolio-filter-container");
+      
+      if (filterContainer) {
+        (filterContainer as HTMLElement).style.opacity = '0';
+        (filterContainer as HTMLElement).style.transform = 'translateY(20px)';
+      }
+      
+      cards.forEach(c => {
+        (c as HTMLElement).style.opacity = '0';
+        (c as HTMLElement).style.transform = 'translateY(40px)';
+      });
+
+      let animated = false;
+      inView(gridSection, () => {
+        if (animated) return;
+        animated = true;
+
+        if (filterContainer) {
+          animate(filterContainer, { opacity: [0, 1], y: [20, 0] }, { duration: 0.6, easing: "ease-out" });
+        }
+        
+        animate(
+          cards,
+          { opacity: [0, 1], y: [40, 0] },
+          { delay: stagger(0.1, { startDelay: 0.2 }), duration: 0.7, easing: "ease-out" }
+        );
+      }, { margin: "-10% 0px" });
+    } else {
+      cards.forEach(c => {
+        (c as HTMLElement).style.opacity = '1';
+        (c as HTMLElement).style.transform = 'none';
+      });
+      const filterContainer = document.querySelector(".portfolio-filter-container");
+      if (filterContainer) {
+        (filterContainer as HTMLElement).style.opacity = '1';
+        (filterContainer as HTMLElement).style.transform = 'none';
+      }
+    }
+  });
+</script>

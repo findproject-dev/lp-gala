@@ -1,0 +1,408 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import { Search, ChevronDown, Package, Palette, Rocket, CreditCard, Globe, Wrench, MessageCircleQuestion } from "lucide-astro";
+
+const categories = [
+  { id: "paket", name: "Paket & Layanan", icon: Package },
+  { id: "desain", name: "Desain Website", icon: Palette },
+  { id: "proses", name: "Proses Pengerjaan", icon: Rocket },
+  { id: "pembayaran", name: "Pembayaran", icon: CreditCard },
+  { id: "domain", name: "Domain & Website", icon: Globe },
+  { id: "maintenance", name: "Maintenance & Support", icon: Wrench },
+];
+
+const faqs = [
+  // 📦 Paket & Layanan
+  { category: "paket", q: "Apa perbedaan setiap paket?", a: "Setiap paket dirancang untuk skala bisnis yang berbeda. Paket dasar cocok untuk landing page sederhana, sementara paket di atasnya menyertakan lebih banyak fitur seperti integrasi sistem, optimasi SEO, dan dukungan copywriting." },
+  { category: "paket", q: "Bagaimana memilih paket yang tepat?", a: "Pilih paket berdasarkan tujuan website Anda. Jika Anda hanya butuh profil perusahaan, paket dasar sudah cukup. Namun jika Anda membutuhkan interaksi pengguna yang kompleks, pertimbangkan paket custom atau profesional." },
+  { category: "paket", q: "Apakah saya bisa upgrade paket?", a: "Tentu! Anda bisa memulai dari paket dasar dan melakukan upgrade kapan pun bisnis Anda membutuhkan fitur tambahan. Kami akan membantu proses transisinya dengan mulus." },
+  { category: "paket", q: "Apakah bisa request fitur tambahan?", a: "Sangat bisa. Jika fitur yang Anda butuhkan tidak ada di paket standar, kami menyediakan layanan Custom Solution yang sepenuhnya dapat disesuaikan dengan alur bisnis Anda." },
+  
+  // 🎨 Desain Website
+  { category: "desain", q: "Apakah desain dibuat dari nol?", a: "Ya, kami tidak menggunakan template instan. Setiap website dirancang secara khusus untuk memastikan tampilannya unik, modern, dan selaras dengan identitas brand Anda." },
+  { category: "desain", q: "Bisa mengikuti branding saya?", a: "Pasti. Kami akan menggunakan logo, palet warna, tipografi, dan gaya visual dari brand Anda agar website benar-benar merepresentasikan bisnis Anda." },
+  { category: "desain", q: "Bisa request referensi website?", a: "Bisa. Anda bebas memberikan referensi website yang Anda sukai. Tim desainer kami akan menjadikannya sebagai inspirasi untuk merancang UI/UX yang lebih baik." },
+  { category: "desain", q: "Berapa kali revisi yang didapat?", a: "Tergantung paket yang dipilih, umumnya Anda mendapatkan 1 hingga 3 kali revisi pada tahap desain sebelum masuk ke tahap pengembangan." },
+
+  // 🚀 Proses Pengerjaan
+  { category: "proses", q: "Bagaimana alur pengerjaan website?", a: "Alurnya dimulai dari diskusi kebutuhan, pembuatan desain visual, proses pengembangan, pengujian internal, hingga serah terima dan peluncuran website." },
+  { category: "proses", q: "Berapa lama proses pengerjaan?", a: "Waktu pengerjaan bervariasi antara 3 hari hingga 5 minggu, tergantung tingkat kompleksitas fitur dan jumlah halaman website Anda." },
+  { category: "proses", q: "Apa yang perlu saya siapkan?", a: "Anda hanya perlu menyiapkan informasi dasar tentang bisnis Anda, logo, dan beberapa foto jika ada. Jika Anda belum memiliki materi konten, kami bisa membantu menuliskannya." },
+  { category: "proses", q: "Apakah saya mendapatkan update progress?", a: "Tentu saja. Kami akan memberikan laporan berkala mengenai sejauh mana website Anda telah dikerjakan agar Anda bisa memantau progresnya dengan tenang." },
+
+  // 💳 Pembayaran
+  { category: "pembayaran", q: "Bagaimana sistem pembayarannya?", a: "Sistem pembayaran kami biasanya dibagi menjadi termin, mulai dari uang muka (DP) saat proyek dimulai, dan pelunasan saat website siap diluncurkan." },
+  { category: "pembayaran", q: "Apakah bisa DP terlebih dahulu?", a: "Bisa. Pembayaran uang muka (DP) diperlukan sebagai tanda jadi sebelum tim kami mulai bekerja merancang website Anda." },
+  { category: "pembayaran", q: "Metode pembayaran apa saja yang tersedia?", a: "Kami menerima berbagai metode pembayaran termasuk transfer bank lokal, berbagai e-wallet, dan kartu kredit." },
+  { category: "pembayaran", q: "Apakah saya akan mendapatkan invoice?", a: "Ya, kami selalu menerbitkan invoice resmi untuk setiap tahapan pembayaran sebagai bukti transaksi yang sah untuk administrasi Anda." },
+
+  // 🌐 Domain & Website
+  { category: "domain", q: "Apakah domain sudah termasuk?", a: "Ya, untuk sebagian besar paket kami, pendaftaran nama domain (seperti .com atau .id) sudah termasuk secara gratis untuk tahun pertama." },
+  { category: "domain", q: "Apakah hosting sudah termasuk?", a: "Tentu. Kami sudah menyediakan infrastruktur premium yang cepat dan aman untuk tahun pertama. Anda sama sekali tidak perlu repot mengurus hal teknis." },
+  { category: "domain", q: "Apakah domain menjadi milik saya?", a: "Sepenuhnya. Nama domain didaftarkan langsung atas nama Anda atau perusahaan Anda, dan Anda memegang hak milik penuh atas domain tersebut." },
+  { category: "domain", q: "Apakah website bisa dibuka di HP?", a: "Pasti. Semua website yang kami buat dijamin 100% responsif. Artinya, tampilan akan menyesuaikan secara otomatis agar terlihat sempurna di HP, tablet, maupun desktop." },
+
+  // 🔧 Maintenance & Support
+  { category: "maintenance", q: "Apakah ada garansi setelah website selesai?", a: "Ya, kami memberikan garansi perbaikan secara gratis selama periode waktu tertentu setelah website diluncurkan, khusus untuk mengatasi kendala yang mungkin muncul." },
+  { category: "maintenance", q: "Bagaimana jika ditemukan bug?", a: "Jika Anda menemukan masalah teknis, tim dukungan kami siap membantu memperbaikinya sesegera mungkin tanpa biaya tambahan selama masa garansi." },
+  { category: "maintenance", q: "Apakah website bisa dikembangkan lagi?", a: "Sangat bisa. Website Anda dibangun dengan teknologi yang dirancang untuk skala jangka panjang, sehingga sangat memungkinkan untuk ditambah fiturnya di masa depan." },
+  { category: "maintenance", q: "Bagaimana jika saya ingin menambah fitur di kemudian hari?", a: "Anda cukup menghubungi kami kapan saja. Kami akan menganalisis kebutuhan fitur baru tersebut dan memberikan solusi serta penawaran terbaik untuk Anda." },
+];
+
+const waMessage = "Halo Galacode 👋\n\nSaya masih memiliki beberapa pertanyaan mengenai layanan Galacode.\n\nBoleh saya berkonsultasi terlebih dahulu?\n\nTerima kasih.";
+const waUrl = `https://wa.me/6281919564548?text=${encodeURIComponent(waMessage)}`;
+---
+
+<Layout title="FAQ - Galacode Help Center">
+  <Header />
+  <main class="min-h-screen pt-24 md:pt-32 pb-24 relative overflow-hidden">
+    <!-- Background Decor -->
+    <div class="absolute inset-0 pointer-events-none overflow-hidden -z-10">
+      <div class="absolute -top-[10%] -right-[5%] w-[60%] h-[60%] rounded-full bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-border/80 to-transparent blur-[32px] transform-gpu"></div>
+      <div class="absolute top-[30%] -left-[5%] w-[40%] h-[40%] rounded-full bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-primary/30 to-transparent blur-[32px] transform-gpu"></div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- 1. HERO SECTION -->
+      <section class="text-center mb-12 md:mb-20 flex flex-col items-center">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-border/50 border border-border text-text-primary font-medium text-sm mb-6 animate-fade-in-up">
+          <span>❓</span> FAQ
+        </div>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-text-primary tracking-tight mb-6 animate-fade-in-up" style="animation-delay: 100ms;">
+          Pertanyaan yang Sering Ditanyakan
+        </h1>
+        <p class="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed mb-10 animate-fade-in-up" style="animation-delay: 200ms;">
+          Cari jawaban atas pertanyaan yang paling sering ditanyakan mengenai layanan Galacode. Jika masih ada pertanyaan, jangan ragu untuk menghubungi kami.
+        </p>
+
+        <!-- Search Bar -->
+        <div class="w-full max-w-xl relative mx-auto animate-fade-in-up group" style="animation-delay: 300ms;">
+          <div class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none transition-transform group-focus-within:scale-110">
+            <Search class="h-5 w-5 text-text-muted group-focus-within:text-accent transition-colors" />
+          </div>
+          <input 
+            type="text" 
+            id="faq-search"
+            placeholder="Cari pertanyaan..." 
+            class="w-full bg-surface border-2 border-glass-10 text-text-primary rounded-2xl pl-14 pr-6 py-4 shadow-sm focus:outline-none focus:border-accent/40 focus:ring-4 focus:ring-accent/10 transition-all text-base md:text-lg"
+          />
+        </div>
+      </section>
+
+      <!-- 2. FAQ CATEGORIES -->
+      <section class="mb-10 animate-fade-in-up" style="animation-delay: 400ms;">
+        <div class="flex flex-wrap items-center justify-center gap-3" id="category-container">
+          {categories.map((cat, idx) => (
+            <button
+              type="button"
+              data-category={cat.id}
+              class={`cat-btn flex items-center gap-2.5 px-5 py-3 rounded-full text-sm font-semibold transition-all duration-300 border-2 ${idx === 0 ? 'bg-primary hover:bg-secondary text-primary-foreground shadow-lg shadow-primary/25 border border-border border-primary shadow-md hover:scale-105 active-cat' : 'bg-surface text-text-secondary border-glass-10 hover:border-glass-10 hover:bg-border hover:text-text-primary'}`}
+            >
+              <cat.icon class="w-4 h-4" />
+              {cat.name}
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <!-- 3. FAQ CONTENT -->
+      <section class="min-h-[400px]">
+        <div id="faq-list" class="space-y-4">
+          {faqs.map((faq) => (
+            <div 
+              data-category={faq.category}
+              class="faq-item group bg-surface rounded-2xl border border-border shadow-sm hover:shadow-md hover:border-glass-10 transition-all duration-300 ease-out overflow-hidden relative"
+              style={faq.category !== "paket" ? "display: none;" : ""}
+            >
+              <button 
+                type="button"
+                aria-expanded="false"
+                class="faq-trigger flex w-full items-start justify-between p-6 md:p-7 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/20 rounded-2xl z-10 relative"
+              >
+                <span class="faq-question text-lg md:text-xl font-semibold text-text-primary group-hover:text-accent transition-colors pr-8 leading-snug">{faq.q}</span>
+                <div class="w-8 h-8 rounded-full bg-border/50 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-primary/20 transition-colors">
+                  <ChevronDown class="faq-icon h-5 w-5 text-text-primary group-hover:text-accent transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]" aria-hidden="true" />
+                </div>
+              </button>
+              
+              <div class="faq-content h-0 overflow-hidden opacity-0 relative z-10">
+                <div class="px-6 md:px-7 pb-6 md:pb-7 pt-0 text-text-secondary leading-relaxed text-base">
+                   {faq.a}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden text-center py-20">
+          <div class="w-16 h-16 rounded-3xl bg-border/50 flex items-center justify-center mx-auto mb-5">
+            <Search class="w-8 h-8 text-text-muted" />
+          </div>
+          <h3 class="text-xl font-bold text-text-primary mb-2">Tidak Ditemukan</h3>
+          <p class="text-text-secondary">Maaf, kami tidak dapat menemukan jawaban untuk kata kunci tersebut.</p>
+        </div>
+      </section>
+
+      <!-- 4. CONTACT CTA -->
+      <section class="mt-20 md:mt-32 faq-cta opacity-0 translate-y-8">
+        <div class="w-full bg-surface rounded-[2rem] border border-border p-8 md:p-14 text-center shadow-lg relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-br from-accent/5 to-transparent pointer-events-none"></div>
+          
+          <div class="relative z-10 flex flex-col items-center">
+            <div class="w-16 h-16 rounded-2xl bg-surface-elevated/5 flex items-center justify-center mb-6">
+              <MessageCircleQuestion class="w-8 h-8 text-text-primary" />
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-text-primary mb-4 tracking-tight">Masih Belum Menemukan Jawaban?</h2>
+            <p class="text-text-secondary text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
+              Kalau masih ada pertanyaan atau ingin mendiskusikan kebutuhan website Anda, kami siap membantu.
+            </p>
+            
+            <a 
+              href={waUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-3 bg-primary hover:bg-secondary text-primary-foreground shadow-lg shadow-primary/25 border border-border px-8 py-4 md:px-9 md:py-5 rounded-2xl font-semibold text-lg hover:bg-surface-elevated/90 transition-all hover:scale-105 shadow-xl shadow-secondary/20 group mb-5"
+            >
+              <svg class="w-6 h-6 fill-current group-hover:animate-bounce-slight" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+              </svg>
+              Konsultasi Gratis via WhatsApp
+            </a>
+            <p class="text-sm font-medium text-text-muted">Biasanya kami membalas dalam jam kerja secepat mungkin.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <style>
+    @keyframes fade-in-up {
+      0% { opacity: 0; transform: translateY(25px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in-up {
+      opacity: 0;
+      animation: fade-in-up 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+    @keyframes bounce-slight {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+    .animate-bounce-slight {
+      animation: bounce-slight 2s infinite ease-in-out;
+    }
+  </style>
+
+  <script>
+    import { animate, inView, stagger } from "motion";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const catBtns = document.querySelectorAll(".cat-btn");
+      const faqItems = document.querySelectorAll(".faq-item");
+      const searchInput = document.getElementById("faq-search") as HTMLInputElement;
+      const emptyState = document.getElementById("empty-state");
+      const cta = document.querySelector(".faq-cta");
+      let activeCategory = "paket";
+      let activeFaq: HTMLElement | null = null;
+
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Scroll Reveal for CTA
+      if (!prefersReducedMotion && cta) {
+        inView(cta, () => {
+          animate(
+            cta,
+            { opacity: [0, 1], y: [32, 0] },
+            { duration: 0.7, easing: "ease-out" }
+          );
+        }, { margin: "-10% 0px" });
+      } else if (cta) {
+        (cta as HTMLElement).style.opacity = '1';
+        (cta as HTMLElement).style.transform = 'none';
+      }
+
+      const animateList = (items: HTMLElement[]) => {
+        if (prefersReducedMotion || items.length === 0) return;
+        
+        items.forEach(item => {
+          item.style.opacity = '0';
+          item.style.transform = 'translateY(15px)';
+        });
+        
+        animate(
+          items, 
+          { opacity: [0, 1], y: [15, 0] }, 
+          { duration: 0.5, delay: stagger(0.08), easing: "ease-out" }
+        );
+      };
+
+      const closeAccordion = (item: HTMLElement) => {
+        const trigger = item.querySelector(".faq-trigger");
+        const content = item.querySelector(".faq-content");
+        const icon = item.querySelector(".faq-icon");
+        
+        trigger?.setAttribute("aria-expanded", "false");
+        item.classList.remove("border-glass-10", "shadow-md");
+        item.classList.add("border-glass-10", "shadow-sm");
+        
+        if (icon && !prefersReducedMotion) icon.style.transform = "rotate(0deg)";
+        
+        if (content) {
+          const currentHeight = (content as HTMLElement).offsetHeight;
+          (content as HTMLElement).style.height = `${currentHeight}px`;
+          
+          if (!prefersReducedMotion) {
+            animate(
+              content, 
+              { height: [`${currentHeight}px`, "0px"], opacity: [1, 0] }, 
+              { duration: 0.3, easing: [0.22, 1, 0.36, 1] }
+            );
+          } else {
+            (content as HTMLElement).style.height = "0px";
+            (content as HTMLElement).style.opacity = "0";
+          }
+        }
+      };
+
+      const openAccordion = (item: HTMLElement) => {
+        const trigger = item.querySelector(".faq-trigger");
+        const content = item.querySelector(".faq-content");
+        const icon = item.querySelector(".faq-icon");
+        
+        trigger?.setAttribute("aria-expanded", "true");
+        item.classList.add("border-glass-10", "shadow-md");
+        item.classList.remove("border-glass-10", "shadow-sm");
+        
+        if (icon && !prefersReducedMotion) icon.style.transform = "rotate(180deg)";
+        
+        if (content) {
+          (content as HTMLElement).style.height = "auto";
+          const targetHeight = (content as HTMLElement).offsetHeight;
+          (content as HTMLElement).style.height = "0px";
+          
+          if (!prefersReducedMotion) {
+            animate(
+              content, 
+              { height: ["0px", `${targetHeight}px`], opacity: [0, 1] }, 
+              { duration: 0.4, easing: [0.22, 1, 0.36, 1] }
+            ).finished.then(() => { (content as HTMLElement).style.height = "auto"; });
+          } else {
+            (content as HTMLElement).style.height = "auto";
+            (content as HTMLElement).style.opacity = "1";
+          }
+        }
+      };
+
+      const filterByCategory = (category: string) => {
+        activeCategory = category;
+        let visibleItems: HTMLElement[] = [];
+        
+        if (activeFaq) {
+          closeAccordion(activeFaq);
+          activeFaq = null;
+        }
+
+        faqItems.forEach((item) => {
+          const el = item as HTMLElement;
+          if (el.dataset.category === category) {
+            el.style.display = 'block';
+            visibleItems.push(el);
+          } else {
+            el.style.display = 'none';
+          }
+        });
+
+        catBtns.forEach((btn) => {
+          const el = btn as HTMLElement;
+          if (el.dataset.category === category) {
+            el.classList.remove('bg-surface', 'text-text-secondary', 'border-glass-10', 'hover:border-glass-10', 'hover:bg-border', 'hover:text-text-primary');
+            el.classList.add('bg-surface-elevated', 'text-primary-foreground', 'border-primary', 'shadow-md', 'scale-105', 'active-cat');
+          } else {
+            el.classList.add('bg-surface', 'text-text-secondary', 'border-glass-10', 'hover:border-glass-10', 'hover:bg-border', 'hover:text-text-primary');
+            el.classList.remove('bg-surface-elevated', 'text-primary-foreground', 'border-primary', 'shadow-md', 'scale-105', 'active-cat');
+          }
+        });
+
+        if (emptyState) emptyState.style.display = visibleItems.length === 0 ? 'block' : 'none';
+        animateList(visibleItems);
+      };
+
+      const filterBySearch = (query: string) => {
+        const lowerQuery = query.toLowerCase();
+        let visibleItems: HTMLElement[] = [];
+        
+        if (activeFaq) {
+          closeAccordion(activeFaq);
+          activeFaq = null;
+        }
+
+        if (query.trim().length > 0) {
+          catBtns.forEach(btn => btn.classList.add('opacity-40', 'pointer-events-none'));
+        } else {
+          catBtns.forEach(btn => btn.classList.remove('opacity-40', 'pointer-events-none'));
+          filterByCategory(activeCategory);
+          return;
+        }
+
+        faqItems.forEach((item) => {
+          const el = item as HTMLElement;
+          const question = el.querySelector('.faq-question')?.textContent?.toLowerCase() || "";
+          const answer = el.querySelector('.faq-content')?.textContent?.toLowerCase() || "";
+          
+          if (question.includes(lowerQuery) || answer.includes(lowerQuery)) {
+            el.style.display = 'block';
+            visibleItems.push(el);
+          } else {
+            el.style.display = 'none';
+          }
+        });
+
+        if (emptyState) emptyState.style.display = visibleItems.length === 0 ? 'block' : 'none';
+      };
+
+      catBtns.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          const target = e.currentTarget as HTMLElement;
+          const category = target.dataset.category;
+          if (category && category !== activeCategory) {
+            searchInput.value = "";
+            filterByCategory(category);
+          }
+        });
+      });
+
+      searchInput?.addEventListener("input", (e) => {
+        const val = (e.target as HTMLInputElement).value;
+        filterBySearch(val);
+      });
+
+      faqItems.forEach(item => {
+        const trigger = item.querySelector(".faq-trigger");
+        
+        trigger?.addEventListener("click", () => {
+          const el = item as HTMLElement;
+          const isOpen = trigger.getAttribute("aria-expanded") === "true";
+          
+          if (!isOpen) {
+            if (activeFaq) {
+              closeAccordion(activeFaq);
+            }
+            openAccordion(el);
+            activeFaq = el;
+          } else {
+            closeAccordion(el);
+            activeFaq = null;
+          }
+        });
+      });
+
+      // Init first view
+      const initialItems = Array.from(faqItems).filter(item => (item as HTMLElement).dataset.category === activeCategory) as HTMLElement[];
+      animateList(initialItems);
+    });
+  </script>
+</Layout>

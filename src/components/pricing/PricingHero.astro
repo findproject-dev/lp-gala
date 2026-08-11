@@ -1,0 +1,48 @@
+---
+// src/components/pricing/PricingHero.astro
+---
+
+<section id="pricing-hero" class="relative w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-center text-center">
+  <div class="max-w-3xl space-y-6">
+    <!-- Badge -->
+    <div class="hero-child inline-flex items-center rounded-full border border-border/60 bg-surface/90 px-3 py-1 text-sm font-medium text-text-primary shadow-sm">
+      <span>Pilihan Paket</span>
+    </div>
+    
+    <!-- Heading -->
+    <h1 class="hero-child text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-text-primary text-balance">
+      Harga simpel dan transparan
+    </h1>
+    
+    <!-- Subtitle -->
+    <p class="hero-child text-lg md:text-xl text-text-secondary leading-relaxed text-balance max-w-2xl mx-auto">
+      Investasi untuk kehadiran digital premium yang siap berkonversi. Pilih paket yang paling cocok dengan kebutuhan bisnismu.
+    </p>
+  </div>
+
+  <script>
+    import { animate, stagger } from "motion";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const heroSection = document.querySelector("#pricing-hero") as HTMLElement;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!prefersReducedMotion && heroSection) {
+        const children = heroSection.querySelectorAll(".hero-child");
+        
+        // Initial state
+        children.forEach(child => {
+          (child as HTMLElement).style.opacity = '0';
+          (child as HTMLElement).style.transform = 'translateY(20px)';
+        });
+
+        // Simple entry on load, assuming hero is always top of page
+        animate(
+          children,
+          { opacity: [0, 1], y: [20, 0] },
+          { delay: stagger(0.15), duration: 0.7, easing: "ease-out" }
+        );
+      }
+    });
+  </script>
+</section>

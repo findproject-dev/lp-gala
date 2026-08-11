@@ -1,0 +1,253 @@
+---
+// src/components/pricing/PricingPackages.astro
+import { Zap, Rocket, TrendingUp, ShoppingCart, Building2, Briefcase, CheckCircle2, Clock, RefreshCcw, Star } from 'lucide-astro';
+import PricingCard from './PricingCard.astro';
+import PricingModal from './PricingModal.astro';
+
+const packageConfigs = [
+  {
+    id: "spark",
+    name: "Spark",
+    price: "Rp699.000",
+    description: "Website sederhana untuk UMKM dan personal.",
+    buttonText: "Ambil Paket Spark",
+    cardClasses: "border-border/60 bg-surface/95 shadow-sm hover:border-border focus-visible:ring-slate-300",
+    shadowClass: "shadow-lg shadow-black/50",
+    ringClass: "ring-slate-400/50",
+    iconWrapperClass: "bg-glass-10 border-border/50",
+    iconClass: "text-text-muted",
+    buttonClass: "bg-transparent border-border text-text-secondary hover:border-border hover:bg-glass-5",
+    accentText: "text-text-secondary",
+    features: {
+      "Fitur": ["1 Halaman Website", "Hingga 5 Section", "Profil Singkat Bisnis", "Tombol WhatsApp", "Google Maps", "Form Kontak Sederhana"],
+      "Infrastruktur": ["Production Deployment", "HTTPS / SSL", "Domain .com Gratis — Tahun Pertama"]
+    },
+    revision: "Revisi 1x",
+    delivery: "3–5 Hari Kerja",
+    whatsapp: "Halo Galacode 👋\n\nSaya tertarik dengan Paket Spark.\n\nBoleh diskusi dulu mengenai kebutuhan website saya?\n\nTerima kasih."
+  },
+  {
+    id: "starter",
+    name: "Starter",
+    price: "Rp1.499.000",
+    isBestSeller: true,
+    description: "Premium landing page untuk bisnis.",
+    buttonText: "Ambil Paket Starter",
+    cardClasses: "border-2 border-accent bg-surface shadow-xl lg:scale-[1.05] z-20 focus-visible:ring-accent/60",
+    shadowClass: "",
+    ringClass: "ring-accent/60",
+    iconWrapperClass: "bg-blue-50 border-blue-100 dark:bg-blue-900/20 dark:border-blue-800/30",
+    iconClass: "text-accent dark:text-blue-400",
+    buttonClass: "bg-accent border-accent text-accent-foreground hover:brightness-110 hover:border-blue-600 shadow-sm",
+    accentText: "text-blue-600 dark:text-blue-400",
+    features: {
+      "Fitur": ["1 Halaman Landing Page", "Hingga 12 Section", "Desain Premium", "Galeri Foto", "Section Keunggulan", "Section Testimoni", "Section FAQ", "Form Kontak", "Google Maps", "Copywriting Dibantu", "Animasi Interaktif", "Optimasi Performa Website"],
+      "Infrastruktur": ["Production Deployment", "HTTPS / SSL", "Domain .com Gratis — Tahun Pertama"]
+    },
+    revision: "Revisi 2x",
+    delivery: "5–7 Hari Kerja",
+    whatsapp: "Halo Galacode 👋\n\nSaya tertarik dengan Paket Starter.\n\nBoleh diskusi dulu mengenai kebutuhan website saya?\n\nTerima kasih."
+  },
+  {
+    id: "growth",
+    name: "Growth",
+    price: "Rp2.699.000",
+    description: "Company profile profesional untuk bisnis yang membutuhkan beberapa halaman.",
+    buttonText: "Ambil Paket Growth",
+    cardClasses: "border-purple-200/60 bg-surface/95 shadow-sm hover:border-purple-400 focus-visible:ring-purple-300",
+    shadowClass: "shadow-md",
+    ringClass: "ring-purple-400/50",
+    iconWrapperClass: "bg-purple-50 border-purple-100 dark:bg-purple-900/20 dark:border-purple-800/30",
+    iconClass: "text-purple-500 dark:text-purple-400",
+    buttonClass: "bg-transparent border-purple-200 text-purple-700 dark:border-purple-700 dark:text-purple-400 hover:border-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/30",
+    accentText: "text-purple-600 dark:text-purple-400",
+    features: {
+      "Fitur": ["Hingga 5 Halaman Website", "Struktur Halaman Disesuaikan Kebutuhan", "Desain Premium", "Form Kontak", "FAQ", "Google Maps", "Copywriting Dibantu", "Optimasi Performa Website", "SEO Dasar"],
+      "Infrastruktur": ["Production Deployment", "HTTPS / SSL", "Domain .com Gratis — Tahun Pertama"]
+    },
+    revision: "Revisi 3x",
+    delivery: "7–10 Hari Kerja",
+    whatsapp: "Halo Galacode 👋\n\nSaya tertarik dengan Paket Growth.\n\nBoleh diskusi dulu mengenai kebutuhan website saya?\n\nTerima kasih."
+  },
+  {
+    id: "scale",
+    name: "Scale",
+    price: "Rp5.999.000",
+    description: "Website dengan fitur e-commerce dan dashboard admin.",
+    buttonText: "Ambil Paket Scale",
+    cardClasses: "border-emerald-200/60 bg-surface/95 shadow-sm hover:border-emerald-400 focus-visible:ring-emerald-300",
+    shadowClass: "shadow-md",
+    ringClass: "ring-emerald-400/50",
+    iconWrapperClass: "bg-emerald-50 border-emerald-100 dark:bg-emerald-900/20 dark:border-emerald-800/30",
+    iconClass: "text-emerald-500 dark:text-emerald-400",
+    buttonClass: "bg-transparent border-emerald-200 text-emerald-700 dark:border-emerald-700 dark:text-emerald-400 hover:border-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/30",
+    accentText: "text-emerald-600 dark:text-emerald-400",
+    features: {
+      "Fitur": ["Dashboard Admin", "Kelola Produk", "Import Hingga 50 Produk Awal", "Kategori Produk", "Detail Produk", "Pencarian Produk", "Upload Gambar", "WhatsApp Order", "Dashboard Ringkasan"],
+      "Infrastruktur": ["Shared Hosting / VPS Sesuai Kebutuhan", "HTTPS / SSL", "Domain .com Gratis — Tahun Pertama"]
+    },
+    revision: "Revisi 3x",
+    delivery: "10–14 Hari Kerja",
+    whatsapp: "Halo Galacode 👋\n\nSaya tertarik dengan Paket Scale.\n\nBoleh diskusi dulu mengenai kebutuhan website saya?\n\nTerima kasih."
+  },
+  {
+    id: "enterprise",
+    name: "Enterprise",
+    price: "Konsultasi",
+    description: "Sistem bisnis dengan kebutuhan operasional yang lebih kompleks.",
+    buttonText: "Ambil Paket Enterprise",
+    cardClasses: "border-border/60 bg-surface/95 shadow-sm hover:border-border focus-visible:ring-border",
+    shadowClass: "shadow-md",
+    ringClass: "ring-slate-600/50",
+    iconWrapperClass: "bg-glass-10 border-border",
+    iconClass: "text-text-primary",
+    buttonClass: "bg-transparent border-border text-text-primary hover:border-border hover:bg-glass-5",
+    accentText: "text-text-primary",
+    features: {
+      "Fitur": ["Dashboard Admin Lengkap", "Manajemen Produk", "Kategori Produk", "Keranjang Belanja", "Checkout", "Invoice PDF", "Payment Gateway", "Manajemen Pesanan", "Manajemen Pelanggan", "Voucher Diskon", "Dashboard & Reporting", "Role & Permission bila diperlukan", "Workflow Custom bila diperlukan"],
+      "Infrastruktur": ["Shared Hosting / VPS Sesuai Kebutuhan", "HTTPS / SSL", "Domain .com Gratis — Tahun Pertama"]
+    },
+    revision: "Revisi 3x",
+    delivery: "14–30 Hari Kerja atau menyesuaikan kompleksitas",
+    whatsapp: "Halo Galacode 👋\n\nSaya tertarik dengan Paket Enterprise.\n\nBoleh diskusi dulu mengenai kebutuhan website saya?\n\nTerima kasih."
+  },
+  {
+    id: "custom",
+    name: "Custom Solution",
+    price: "Konsultasi",
+    description: "Sistem custom yang tidak cocok dimasukkan ke paket standar.",
+    buttonText: "Ambil Paket Custom",
+    cardClasses: "border-orange-200/60 bg-surface/95 shadow-sm hover:border-orange-400 focus-visible:ring-orange-300",
+    shadowClass: "shadow-md",
+    ringClass: "ring-orange-400/50",
+    iconWrapperClass: "bg-gradient-to-br from-orange-50 to-rose-50 border-orange-100 dark:from-orange-900/20 dark:to-rose-900/20 dark:border-orange-800/30",
+    iconClass: "text-orange-500 dark:text-orange-400",
+    nameClass: "text-orange-500 dark:text-orange-400",
+    priceClass: "text-orange-500 dark:text-orange-400",
+    buttonClass: "bg-transparent border-orange-200 text-orange-700 dark:border-orange-700 dark:text-orange-400 hover:border-orange-400 hover:bg-orange-50 dark:hover:bg-orange-900/30",
+    accentText: "text-orange-600 dark:text-orange-400",
+    features: {
+      "Contoh Proyek": ["ERP", "CRM", "WMS", "LMS", "Sistem Reservasi", "Sistem Booking", "Marketplace", "Dashboard Internal", "Sistem Operasional Custom", "Integrasi API", "Sistem workflow custom"],
+      "Yang Didapatkan": ["Analisis Kebutuhan", "Perancangan Solusi", "Desain UI/UX Custom", "Pengembangan Custom", "Dashboard Admin jika dibutuhkan", "Dokumentasi Dasar"],
+      "Infrastruktur": ["VPS / Cloud Sesuai Kebutuhan", "HTTPS / SSL", "Domain & Server Sesuai Kebutuhan"]
+    },
+    revision: "Revisi 3x",
+    delivery: "Menyesuaikan Kompleksitas",
+    whatsapp: "Halo Galacode 👋\n\nSaya tertarik dengan Paket Custom Solution.\n\nBoleh diskusi dulu mengenai kebutuhan website saya?\n\nTerima kasih."
+  }
+];
+---
+
+<section class="relative w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-center">
+  <div id="pricing-packages-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch pricing-grid relative z-10 w-full">
+    {packageConfigs.map(config => (
+      <PricingCard {...config} />
+    ))}
+  </div>
+
+  <div class="mt-12 text-center text-[13px] text-text-muted max-w-2xl mx-auto space-y-2">
+    <p>* Integrasi payment gateway, domain, email service, dan layanan pihak ketiga lainnya tersedia. Biaya layanan pihak ketiga ditanggung oleh client.</p>
+    <p>** Domain .com gratis untuk tahun pertama. Perpanjangan domain pada tahun berikutnya mengikuti biaya renewal.</p>
+  </div>
+
+  {packageConfigs.map(config => (
+    <PricingModal {...config} />
+  ))}
+
+  <script>
+    import { animate, stagger, hover, inView } from "motion";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const cards = document.querySelectorAll(".pricing-card");
+      const section = document.querySelector("#pricing-packages-grid") as HTMLElement;
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Entry Animation
+      if (!prefersReducedMotion) {
+        cards.forEach(c => {
+          (c as HTMLElement).style.opacity = '0';
+          (c as HTMLElement).style.transform = 'translateY(40px)';
+        });
+        
+        inView(section, () => {
+          animate(
+            cards,
+            { opacity: [0, 1], y: [40, 0] },
+            { delay: stagger(0.1), duration: 0.6, easing: "ease-out" }
+          );
+        }, { margin: "-10% 0px" });
+      } else {
+        cards.forEach(c => { (c as HTMLElement).style.opacity = '1'; (c as HTMLElement).style.transform = 'none'; });
+      }
+
+      // Hover Interaction
+      cards.forEach((card, index) => {
+        if (!prefersReducedMotion) {
+          hover(card, (element) => {
+            const rotateAmt = index % 2 === 0 ? 0.5 : -0.5;
+            animate(element, { y: -8, rotate: rotateAmt }, { duration: 0.3, easing: [0.22, 1, 0.36, 1] });
+            return () => {
+              animate(element, { y: 0, rotate: 0 }, { duration: 0.5, easing: [0.22, 1, 0.36, 1] });
+            };
+          });
+        }
+      });
+
+      // Modal Logic
+      const openModalBtns = document.querySelectorAll('.open-modal-btn');
+      const closeBtns = document.querySelectorAll('.close-modal');
+      const modals = document.querySelectorAll('dialog.pricing-modal');
+
+      openModalBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const targetId = btn.getAttribute('data-modal-target');
+          if (!targetId) return;
+          const modal = document.getElementById(targetId) as HTMLDialogElement;
+          if (modal) {
+            modal.showModal();
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+          }
+        });
+      });
+
+      const closeModal = (modal: HTMLDialogElement) => {
+        modal.classList.add('closing');
+        setTimeout(() => {
+          modal.close();
+          modal.classList.remove('closing');
+          document.body.style.overflow = '';
+        }, 200); // Wait for animation
+      };
+
+      closeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const modal = btn.closest('dialog');
+          if (modal) closeModal(modal);
+        });
+      });
+
+      // Click outside to close
+      modals.forEach(modal => {
+        const dialog = modal as HTMLDialogElement;
+        dialog.addEventListener('click', (e) => {
+          const dialogDimensions = dialog.getBoundingClientRect();
+          if (
+            e.clientX < dialogDimensions.left ||
+            e.clientX > dialogDimensions.right ||
+            e.clientY < dialogDimensions.top ||
+            e.clientY > dialogDimensions.bottom
+          ) {
+            closeModal(dialog);
+          }
+        });
+        
+        // Handle ESC key animation properly (native close bypasses animation, so we intercept)
+        dialog.addEventListener('cancel', (e) => {
+          e.preventDefault();
+          closeModal(dialog);
+        });
+      });
+    });
+  </script>
+</section>
