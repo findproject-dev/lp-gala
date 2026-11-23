@@ -1,0 +1,1297 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+// Data real proyek dari Portfolio
+const previewProjects = [
+  {
+    name: "Gala Cafe",
+    category: "Landing Page & Booking",
+    desc: "Halaman promosi dan sistem pemesanan online dengan tampilan interaktif yang optimal di HP.",
+    image: "/images/cover-findfein.png",
+    demoUrl: "https://gala-cafe.vercel.app/",
+    highlight: "Booking System",
+  },
+  {
+    name: "Findsnaps",
+    category: "Katalog & UMKM",
+    desc: "Katalog menu interaktif dengan filter kategori produk dan pemesanan cepat via WhatsApp.",
+    image: "/images/cover-findsnaps.png",
+    demoUrl: "https://gala-photography-chi.vercel.app/",
+    highlight: "Order WhatsApp",
+  },
+  {
+    name: "Findwell",
+    category: "Company Profile",
+    desc: "Website profil perusahaan konstruksi modern dengan galeri portfolio proyek berkualitas tinggi.",
+    image: "/images/cover-findwell.png",
+    demoUrl: "https://web-construction-eight.vercel.app/",
+    highlight: "High Performance",
+  },
+];
+---
+
+<Layout
+  title="Tentang Galacode | Digital Development Studio"
+  description="Galacode adalah digital development studio yang membantu bisnis membangun website dan sistem digital untuk memperkenalkan usaha, menjangkau pelanggan, serta mempermudah operasional bisnis."
+>
+  <Header />
+
+  <main class="overflow-x-hidden pt-24 md:pt-28">
+
+    <!-- ============================================================ -->
+    <!-- SECTION 1: HERO (Two-Column Visual Studio Layout)            -->
+    <!-- ============================================================ -->
+    <section id="hero" class="relative min-h-[90vh] flex items-center justify-center px-4 sm:px-6 lg:px-8 py-16 md:py-24 overflow-hidden bg-background">
+      <!-- Ambient Glows -->
+      <div class="absolute top-[10%] left-[5%] w-[380px] sm:w-[550px] h-[380px] sm:h-[550px] bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-primary/20 via-secondary/10 to-transparent rounded-full blur-[80px] -z-10 pointer-events-none transform-gpu animate-pulse-slow"></div>
+      <div class="absolute bottom-[5%] right-[5%] w-[320px] sm:w-[480px] h-[320px] sm:h-[480px] bg-[radial-gradient(circle,_var(--tw-gradient-stops))] from-accent/15 via-primary/5 to-transparent rounded-full blur-[70px] -z-10 pointer-events-none transform-gpu"></div>
+      <div class="absolute inset-0 -z-10 opacity-[0.03] bg-[radial-gradient(circle,_#6D5EF7_1px,_transparent_1px)] bg-[size:32px_32px]"></div>
+
+      <div class="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center relative z-10">
+        
+        <!-- Left Column: Studio Copy & Action (5 cols) -->
+        <div class="lg:col-span-5 flex flex-col text-center lg:text-left space-y-6">
+          <!-- Studio Eyebrow Tag -->
+          <div>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/25 bg-primary/10 shadow-sm animate-fade-in-up">
+              <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+              <span class="text-[11px] sm:text-xs font-bold uppercase tracking-[0.15em] text-primary">
+                GALACODE • DIGITAL DEVELOPMENT STUDIO
+              </span>
+            </div>
+          </div>
+
+          <!-- Main Headline -->
+          <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-black text-text-primary leading-[1.12] tracking-tight text-balance animate-fade-in-up" style="animation-delay: 100ms;">
+            Building Digital Solutions <br class="hidden sm:inline" />
+            <span class="text-primary bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">for a Better Business.</span>
+          </h1>
+
+          <!-- Concise Subtitle -->
+          <p class="text-base sm:text-lg text-text-secondary leading-relaxed max-w-xl mx-auto lg:mx-0 animate-fade-in-up" style="animation-delay: 200ms;">
+            Galacode membantu bisnis membangun website dan sistem digital untuk memperkenalkan usaha, menjangkau pelanggan baru, serta menyederhanakan aktivitas bisnis Anda.
+          </p>
+
+          <!-- Dual CTAs -->
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2 animate-fade-in-up" style="animation-delay: 300ms;">
+            <a 
+              href="/contact" 
+              class="group relative w-full sm:w-auto inline-flex justify-center items-center gap-2.5 bg-primary hover:bg-secondary text-primary-foreground font-bold text-sm sm:text-base min-h-[52px] py-3.5 px-7 rounded-xl shadow-lg shadow-primary/25 transition-all duration-300 md:hover:scale-[1.03] active:scale-95 overflow-hidden"
+            >
+              <span class="relative z-10">Konsultasi Gratis</span>
+              <svg class="relative z-10 w-4 h-4 md:group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </a>
+            <a 
+              href="/portfolio" 
+              class="w-full sm:w-auto inline-flex justify-center items-center gap-2 border border-border/70 text-text-primary font-bold text-sm sm:text-base min-h-[52px] py-3.5 px-7 rounded-xl bg-surface hover:bg-surface-elevated hover:border-border transition-all duration-300 md:hover:scale-[1.02] active:scale-95 shadow-sm"
+            >
+              Lihat Portfolio
+            </a>
+          </div>
+
+          <!-- Micro Feature Badges -->
+          <div class="pt-4 border-t border-border/50 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs font-semibold text-text-muted animate-fade-in-up" style="animation-delay: 400ms;">
+            <div class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span>Nyaman di HP & PC</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span>Kecepatan Tinggi</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              <span>Struktur Rapi & Bersih</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Multi-Device Digital Showcase (7 cols) -->
+        <div class="lg:col-span-7 relative flex items-center justify-center pt-4 lg:pt-0">
+          
+          <!-- Desktop Mockup Frame -->
+          <div class="w-full max-w-[580px] bg-surface-elevated border border-border/70 rounded-2xl sm:rounded-3xl shadow-soft-lg overflow-hidden transition-all duration-500 group relative z-10 md:animate-float">
+            <!-- Window Topbar -->
+            <div class="px-4 py-3 border-b border-border/50 bg-surface/90 flex items-center justify-between gap-2">
+              <div class="flex items-center gap-1.5">
+                <span class="w-3 h-3 rounded-full bg-red-400/80"></span>
+                <span class="w-3 h-3 rounded-full bg-yellow-400/80"></span>
+                <span class="w-3 h-3 rounded-full bg-green-400/80"></span>
+              </div>
+              <!-- URL Bar -->
+              <div class="flex-1 max-w-xs mx-auto bg-background/80 border border-border/60 rounded-lg px-3 py-1 flex items-center gap-2 text-[11px] text-text-muted">
+                <svg class="w-3 h-3 text-green-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                <span class="truncate font-mono">https://galacode.id/demo/live</span>
+              </div>
+              <div class="w-8"></div>
+            </div>
+
+            <!-- Realistic Web UI Inside Window -->
+            <div class="p-5 sm:p-7 space-y-5 bg-gradient-to-b from-surface-elevated to-surface">
+              <!-- Mini Header / Nav inside browser -->
+              <div class="flex items-center justify-between pb-4 border-b border-border/40">
+                <div class="flex items-center gap-2">
+                  <div class="w-6 h-6 rounded-lg bg-primary flex items-center justify-center text-primary-foreground text-[10px] font-black">G</div>
+                  <span class="text-xs font-bold tracking-wider text-text-primary">STUDIO PREVIEW</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-green-500/10 text-green-500 border border-green-500/20">● Online</span>
+                  <div class="w-16 sm:w-20 h-4 bg-primary/20 rounded-md"></div>
+                </div>
+              </div>
+
+              <!-- Hero banner simulation inside mockup -->
+              <div class="p-4 sm:p-5 rounded-xl bg-background border border-border/60 space-y-3 relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-primary/10 rounded-full blur-2xl"></div>
+                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-primary/10 text-[10px] font-bold text-primary">
+                  Website Usaha
+                </div>
+                <h4 class="text-sm sm:text-base font-extrabold text-text-primary leading-tight">
+                  Tingkatkan Kredibilitas Usaha dengan Website Rapi
+                </h4>
+                <p class="text-xs text-text-muted line-clamp-2">
+                  Membantu calon pelanggan menemukan produk, membaca profil resmi, dan menghubungi Anda dalam 1 klik.
+                </p>
+                <div class="flex items-center gap-2 pt-1">
+                  <div class="px-3 py-1.5 bg-primary text-primary-foreground text-[11px] font-bold rounded-lg shadow-sm">Pesan Sekarang</div>
+                  <div class="px-3 py-1.5 bg-surface border border-border text-[11px] font-bold text-text-primary rounded-lg">Pelajari Produk</div>
+                </div>
+              </div>
+
+              <!-- 3 Service Cards Simulation -->
+              <div class="grid grid-cols-3 gap-2.5 sm:gap-3">
+                <div class="p-2.5 sm:p-3 rounded-xl bg-background border border-border/50 text-center space-y-1.5">
+                  <div class="w-7 h-7 mx-auto rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+                  </div>
+                  <div class="text-[11px] font-bold text-text-primary truncate">Web Profil</div>
+                  <div class="text-[9px] text-text-muted">Resmi & Jelas</div>
+                </div>
+
+                <div class="p-2.5 sm:p-3 rounded-xl bg-background border border-border/50 text-center space-y-1.5">
+                  <div class="w-7 h-7 mx-auto rounded-lg bg-accent/10 text-accent flex items-center justify-center">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                  </div>
+                  <div class="text-[11px] font-bold text-text-primary truncate">Katalog Menu</div>
+                  <div class="text-[9px] text-text-muted">Order Cepat</div>
+                </div>
+
+                <div class="p-2.5 sm:p-3 rounded-xl bg-background border border-border/50 text-center space-y-1.5">
+                  <div class="w-7 h-7 mx-auto rounded-lg bg-secondary/10 text-secondary flex items-center justify-center">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+                  </div>
+                  <div class="text-[11px] font-bold text-text-primary truncate">Sistem Booking</div>
+                  <div class="text-[9px] text-text-muted">Otomatisasi</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Overlapping Floating Smartphone Mockup -->
+          <div class="hidden sm:block absolute -bottom-6 -right-3 md:-right-6 w-36 sm:w-44 bg-surface-elevated border-2 border-border/80 rounded-[2rem] shadow-2xl p-2.5 z-20 animate-float-delayed">
+            <!-- Dynamic Island / Speaker notch -->
+            <div class="w-12 h-3 bg-black/60 rounded-full mx-auto mb-2"></div>
+            <!-- Mobile Screen Simulator -->
+            <div class="bg-background rounded-[1.25rem] p-3 space-y-2 border border-border/40 text-[10px]">
+              <div class="flex items-center justify-between">
+                <span class="font-extrabold text-primary text-[9px]">GALACODE</span>
+                <span class="w-2 h-2 rounded-full bg-green-500"></span>
+              </div>
+              <div class="h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center font-bold text-text-primary text-[9px] text-center p-1">
+                Katalog Produk Siap Pesan
+              </div>
+              <div class="space-y-1">
+                <div class="h-2 w-3/4 bg-border/80 rounded"></div>
+                <div class="h-2 w-1/2 bg-border/50 rounded"></div>
+              </div>
+              <div class="py-1.5 bg-green-500/10 border border-green-500/20 text-green-500 rounded-lg text-center font-bold text-[9px]">
+                💬 Order WhatsApp
+              </div>
+            </div>
+          </div>
+
+          <!-- Performance Score Floating Pill -->
+          <div class="absolute -top-3 -left-3 sm:-left-6 bg-surface-elevated/95 backdrop-blur-md border border-border/80 px-4 py-2.5 rounded-2xl shadow-lg flex items-center gap-3 z-20 animate-float-fast">
+            <div class="w-9 h-9 rounded-xl bg-green-500/10 border border-green-500/20 flex items-center justify-center font-black text-green-500 text-sm">
+              99
+            </div>
+            <div>
+              <div class="text-[10px] font-extrabold uppercase tracking-wider text-green-500">Google Lighthouse</div>
+              <div class="text-xs font-bold text-text-primary">Kecepatan Optimal</div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 2: WHO WE ARE (Editorial + Studio Workbench Visual) -->
+    <!-- ============================================================ -->
+    <section id="who-we-are" class="py-20 md:py-28 bg-surface border-t border-border/50 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          <!-- Left: Editorial Content (5 cols) -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-border bg-background shadow-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+              <span class="text-[11px] font-bold uppercase tracking-wider text-text-primary">Siapa Kami?</span>
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-text-primary leading-[1.15] tracking-tight">
+              Partner Digital untuk Membantu <span class="text-primary">Bisnis Berkembang.</span>
+            </h2>
+
+            <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+              Galacode adalah studio pengembangan website dan sistem digital. Kami tidak memakai pendekatan template generik satu-desain-untuk-semua. 
+            </p>
+
+            <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+              Setiap website atau sistem kami rancang khusus berdasarkan kebutuhan riil bisnis Anda: mulai dari bisnis yang baru memulai kehadiran online, memperbarui website lama yang usang, hingga membangun sistem otomatisasi operasional.
+            </p>
+
+            <!-- 3 Situational Focus Pills -->
+            <div class="space-y-3 pt-2">
+              <div class="flex items-start gap-3 p-3 rounded-xl bg-background border border-border/60">
+                <div class="w-6 h-6 rounded-lg bg-primary/10 text-primary flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-text-primary">Belum Punya Website</h4>
+                  <p class="text-xs text-text-muted">Membangun tempat resmi bisnis di internet agar langsung terpercaya di mata calon pelanggan.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 p-3 rounded-xl bg-background border border-border/60">
+                <div class="w-6 h-6 rounded-lg bg-accent/10 text-accent flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-text-primary">Website Lama Perlu Pembaruan</h4>
+                  <p class="text-xs text-text-muted">Redesign tampilan usang agar modern, cepat dibuka, dan nyaman saat diakses dari HP.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 p-3 rounded-xl bg-background border border-border/60">
+                <div class="w-6 h-6 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center shrink-0 mt-0.5">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-text-primary">Butuh Sistem Operasional</h4>
+                  <p class="text-xs text-text-muted">Mengembangkan sistem booking, manajemen data, dan form pesanan otomatis via web.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Studio Workbench / Architecture Visual (7 cols) -->
+          <div class="lg:col-span-7">
+            <div class="relative bg-background border border-border/80 rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-soft-lg space-y-6">
+              
+              <!-- Top Header of Workbench -->
+              <div class="flex items-center justify-between border-b border-border/60 pb-4">
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-red-400/80"></span>
+                  <span class="w-3 h-3 rounded-full bg-yellow-400/80"></span>
+                  <span class="w-3 h-3 rounded-full bg-green-400/80"></span>
+                  <span class="ml-2 text-xs font-mono text-text-muted">galacode-architecture.ts</span>
+                </div>
+                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-mono bg-primary/10 text-primary border border-primary/20">Production Ready</span>
+              </div>
+
+              <!-- Interactive-looking Code & Visual Blueprint Split -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
+                <!-- Clean Code Block -->
+                <div class="bg-surface rounded-xl p-4 font-mono text-xs text-text-secondary space-y-2 border border-border/60 overflow-x-auto">
+                  <div class="text-text-muted">// Galacode Design Approach</div>
+                  <div><span class="text-primary font-bold">const</span> solution = &#123;</div>
+                  <div class="pl-4">clientGoal: <span class="text-green-500">"Kredibilitas Nyata"</span>,</div>
+                  <div class="pl-4">responsive: <span class="text-accent font-bold">true</span>,</div>
+                  <div class="pl-4">loadingSpeed: <span class="text-secondary font-bold">"&lt; 1 detik"</span>,</div>
+                  <div class="pl-4">simplicity: <span class="text-green-500">"Mudah Digunakan"</span>,</div>
+                  <div class="pl-4">architecture: <span class="text-primary">"Astro + Tailwind"</span></div>
+                  <div>&#125;;</div>
+                  <div class="pt-2 text-green-500">// Result: Bisnis Rapi & Efisien</div>
+                </div>
+
+                <!-- Visual Metrics & Quality Cards -->
+                <div class="space-y-3 flex flex-col justify-between">
+                  <div class="p-3.5 rounded-xl bg-surface border border-border/60 flex items-center justify-between">
+                    <div>
+                      <div class="text-[10px] font-bold text-text-muted uppercase">Desain Eksklusif</div>
+                      <div class="text-sm font-extrabold text-text-primary">Bukan Template Generik</div>
+                    </div>
+                    <span class="w-7 h-7 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-bold text-xs">✓</span>
+                  </div>
+
+                  <div class="p-3.5 rounded-xl bg-surface border border-border/60 flex items-center justify-between">
+                    <div>
+                      <div class="text-[10px] font-bold text-text-muted uppercase">Pengalaman Pengguna</div>
+                      <div class="text-sm font-extrabold text-text-primary">Sangat Nyaman di Layar HP</div>
+                    </div>
+                    <span class="w-7 h-7 rounded-lg bg-accent/10 text-accent flex items-center justify-center font-bold text-xs">✓</span>
+                  </div>
+
+                  <div class="p-3.5 rounded-xl bg-surface border border-border/60 flex items-center justify-between">
+                    <div>
+                      <div class="text-[10px] font-bold text-text-muted uppercase">Dukungan Teknis</div>
+                      <div class="text-sm font-extrabold text-text-primary">Transparan & Bertanggung Jawab</div>
+                    </div>
+                    <span class="w-7 h-7 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center font-bold text-xs">✓</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Tagline Pill -->
+              <div class="p-3 bg-surface rounded-xl border border-border/50 flex items-center justify-between text-xs">
+                <span class="text-text-muted">Fokus: <strong class="text-text-primary">Solusi Bisnis Nyata</strong></span>
+                <span class="text-primary font-semibold">Bukan Jargon Rumit →</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 3: MENGAPA BISNIS MEMBUTUHKAN WEBSITE? (Visual Cards)-->
+    <!-- ============================================================ -->
+    <section id="why-website" class="py-20 md:py-28 bg-background border-t border-border/40 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="max-w-3xl mx-auto text-center mb-14 md:mb-18 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/25 bg-primary/10 shadow-sm">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-primary">Kebutuhan Bisnis</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-text-primary tracking-tight">
+            Mengapa Bisnis Anda <span class="text-primary">Membutuhkan Website?</span>
+          </h2>
+          <p class="text-base sm:text-lg text-text-secondary leading-relaxed text-balance">
+            Di era digital, calon pelanggan mencari informasi di internet sebelum memutuskan membeli. Website resmi memastikan bisnis Anda tampil meyakinkan saat mereka mencarinya.
+          </p>
+        </div>
+
+        <!-- 4 Visual Benefit Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Card 1: Bisnis Terlihat Profesional -->
+          <div class="group bg-surface-elevated border border-border/70 rounded-2xl p-6 transition-all duration-300 md:hover:-translate-y-1.5 md:hover:border-primary/40 md:hover:shadow-soft-lg flex flex-col justify-between">
+            <div class="space-y-4">
+              <!-- Visual Mockup: Official Verification Card -->
+              <div class="h-28 rounded-xl bg-background border border-border/50 p-3.5 flex flex-col justify-between relative overflow-hidden group-hover:border-primary/30 transition-colors">
+                <div class="flex items-center justify-between">
+                  <div class="w-8 h-8 rounded-lg bg-primary/15 text-primary flex items-center justify-center font-black text-xs">GC</div>
+                  <span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-green-500/15 text-green-500 border border-green-500/20">Verified</span>
+                </div>
+                <div>
+                  <div class="text-[11px] font-bold text-text-primary">PT / Nama Usaha Anda</div>
+                  <div class="text-[9px] text-text-muted">Website Resmi Terverifikasi</div>
+                </div>
+              </div>
+
+              <h3 class="text-lg font-bold text-text-primary">1. Terlihat Lebih Profesional</h3>
+              <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+                Website memberikan identitas online resmi yang membuat bisnis terlihat kredibel dan meyakinkan di mata calon klien.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-border/40 text-[11px] font-semibold text-primary">
+              Membangun Kepercayaan →
+            </div>
+          </div>
+
+          <!-- Card 2: Informasi Mudah Ditemukan -->
+          <div class="group bg-surface-elevated border border-border/70 rounded-2xl p-6 transition-all duration-300 md:hover:-translate-y-1.5 md:hover:border-accent/40 md:hover:shadow-soft-lg flex flex-col justify-between">
+            <div class="space-y-4">
+              <!-- Visual Mockup: Google Search Snippet Simulation -->
+              <div class="h-28 rounded-xl bg-background border border-border/50 p-3.5 flex flex-col justify-between relative overflow-hidden group-hover:border-accent/30 transition-colors">
+                <div class="flex items-center gap-2 bg-surface px-2 py-1 rounded-md text-[9px] text-text-muted">
+                  <svg class="w-2.5 h-2.5 text-text-muted shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                  <span class="truncate">Jasa / Produk Usaha Anda...</span>
+                </div>
+                <div>
+                  <div class="text-[10px] font-bold text-primary truncate">usaha-anda.com › layanan</div>
+                  <div class="text-[9px] text-text-muted line-clamp-1">Katalog Resmi & Kontak Lengkap</div>
+                </div>
+              </div>
+
+              <h3 class="text-lg font-bold text-text-primary">2. Lebih Mudah Ditemukan</h3>
+              <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+                Calon pelanggan dapat menemukan nama dan layanan bisnis Anda melalui Google saat mereka sedang mencari kebutuhan terkait.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-border/40 text-[11px] font-semibold text-accent">
+              Mudah Ditelusuri →
+            </div>
+          </div>
+
+          <!-- Card 3: Informasi Tersedia Kapan Saja -->
+          <div class="group bg-surface-elevated border border-border/70 rounded-2xl p-6 transition-all duration-300 md:hover:-translate-y-1.5 md:hover:border-secondary/40 md:hover:shadow-soft-lg flex flex-col justify-between">
+            <div class="space-y-4">
+              <!-- Visual Mockup: 24/7 Live Widget -->
+              <div class="h-28 rounded-xl bg-background border border-border/50 p-3.5 flex flex-col justify-between relative overflow-hidden group-hover:border-secondary/30 transition-colors">
+                <div class="flex items-center justify-between">
+                  <span class="text-[10px] font-mono text-text-muted">00:00 - 24:00 WIB</span>
+                  <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                </div>
+                <div class="space-y-1">
+                  <div class="inline-block px-2 py-0.5 rounded bg-secondary/15 text-secondary text-[10px] font-bold">
+                    Selalu Aktif 24/7
+                  </div>
+                  <div class="text-[9px] text-text-muted">Katalog & Info Siap Diakses Kapan Saja</div>
+                </div>
+              </div>
+
+              <h3 class="text-lg font-bold text-text-primary">3. Informasi 24 Jam</h3>
+              <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+                Pelanggan dapat melihat produk, harga, dan lokasi kapan saja tanpa harus menunggu jam buka kantor atau balasan chat.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-border/40 text-[11px] font-semibold text-secondary">
+              Akses Tanpa Henti →
+            </div>
+          </div>
+
+          <!-- Card 4: Mempermudah Pelanggan Menghubungi -->
+          <div class="group bg-surface-elevated border border-border/70 rounded-2xl p-6 transition-all duration-300 md:hover:-translate-y-1.5 md:hover:border-primary/40 md:hover:shadow-soft-lg flex flex-col justify-between">
+            <div class="space-y-4">
+              <!-- Visual Mockup: 1-Click WhatsApp / Direct Form -->
+              <div class="h-28 rounded-xl bg-background border border-border/50 p-3.5 flex flex-col justify-between relative overflow-hidden group-hover:border-primary/30 transition-colors">
+                <div class="flex items-center gap-1.5 text-[9px] text-green-500 font-bold">
+                  <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                  WhatsApp Ready
+                </div>
+                <div class="p-1.5 bg-green-500/10 border border-green-500/20 rounded-lg text-center font-bold text-[10px] text-green-500">
+                  "Halo, saya ingin pesan..."
+                </div>
+                <div class="text-[9px] text-text-muted text-center">Langsung Terhubung ke Kasir/Admin</div>
+              </div>
+
+              <h3 class="text-lg font-bold text-text-primary">4. Mempermudah Pelanggan</h3>
+              <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+                Pelanggan dapat langsung menghubungi, mengisi form booking, atau mengirim pesanan tanpa proses yang berbelit.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-border/40 text-[11px] font-semibold text-primary">
+              Proses Cepat & Praktis →
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 4: SERVICES (Varied Layout & Visual Mockups)         -->
+    <!-- ============================================================ -->
+    <section id="services" class="py-20 md:py-28 bg-surface border-t border-border/50 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mx-auto text-center mb-14 md:mb-20 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/25 bg-primary/10 shadow-sm">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-primary">Layanan Galacode</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-text-primary tracking-tight">
+            Apa yang Bisa <span class="text-primary">Kami Bantu?</span>
+          </h2>
+          <p class="text-base sm:text-lg text-text-secondary leading-relaxed text-balance">
+            Setiap bisnis memiliki skala dan alur kerja yang unik. Galacode menyediakan empat layanan utama yang dapat disesuaikan dengan kebutuhan Anda.
+          </p>
+        </div>
+
+        <!-- 4 Services: 2x2 Asymmetric Varied Showcase Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          
+          <!-- Service 1: Pembuatan Website Baru -->
+          <div class="bg-background border border-border/70 rounded-2xl sm:rounded-3xl p-7 md:p-8 flex flex-col justify-between transition-all duration-300 hover:border-primary/50 shadow-soft">
+            <div class="space-y-6">
+              <!-- Visual Mockup Header: Multi-device Preview -->
+              <div class="h-44 sm:h-52 bg-surface rounded-2xl border border-border/60 p-4 relative overflow-hidden flex flex-col justify-between">
+                <div class="flex items-center justify-between border-b border-border/40 pb-2">
+                  <div class="flex items-center gap-1.5">
+                    <span class="w-2.5 h-2.5 rounded-full bg-red-400"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-green-400"></span>
+                  </div>
+                  <span class="text-[10px] font-mono text-text-muted">Website Profil & Landing Page</span>
+                </div>
+                <div class="p-3 bg-background rounded-xl border border-border/50 space-y-2">
+                  <div class="h-3 w-1/3 bg-primary/20 rounded"></div>
+                  <div class="h-2 w-4/5 bg-text-muted/20 rounded"></div>
+                  <div class="flex gap-2 pt-1">
+                    <div class="h-5 px-3 bg-primary text-primary-foreground text-[9px] font-bold rounded flex items-center">Pesan Layanan</div>
+                    <div class="h-5 px-3 bg-surface border border-border text-[9px] font-bold rounded flex items-center">Katalog</div>
+                  </div>
+                </div>
+                <div class="flex items-center justify-between text-[10px] text-text-muted font-mono">
+                  <span>Responsive Layout</span>
+                  <span class="text-green-500 font-bold">100% Mobile Ready</span>
+                </div>
+              </div>
+
+              <!-- Service Information -->
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-primary uppercase tracking-widest">01 • Website Development</span>
+                  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary">Dari Nol</span>
+                </div>
+                <h3 class="text-2xl font-black text-text-primary">Pembuatan Website</h3>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                  Belum memiliki website? Kami membangun website dari awal sesuai identitas dan kebutuhan bisnis Anda — rapi, informatif, dan langsung siap pakai.
+                </p>
+                <div class="flex flex-wrap gap-1.5 pt-2">
+                  <span class="px-2.5 py-1 bg-surface border border-border/60 rounded-md text-[11px] font-medium text-text-muted">Company Profile</span>
+                  <span class="px-2.5 py-1 bg-surface border border-border/60 rounded-md text-[11px] font-medium text-text-muted">Website Bisnis</span>
+                  <span class="px-2.5 py-1 bg-surface border border-border/60 rounded-md text-[11px] font-medium text-text-muted">Landing Page Promosi</span>
+                  <span class="px-2.5 py-1 bg-surface border border-border/60 rounded-md text-[11px] font-medium text-text-muted">Website Personal</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-border/40">
+              <a href="/contact" class="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-secondary transition-colors">
+                <span>Buat Website Bisnis Anda</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Service 2: Perbaikan & Pembaruan Website (Before / After Mockup) -->
+          <div class="bg-background border border-border/70 rounded-2xl sm:rounded-3xl p-7 md:p-8 flex flex-col justify-between transition-all duration-300 hover:border-accent/50 shadow-soft">
+            <div class="space-y-6">
+              <!-- Visual Mockup: Before vs After Split -->
+              <div class="h-44 sm:h-52 bg-surface rounded-2xl border border-border/60 p-4 relative overflow-hidden grid grid-cols-2 gap-3 items-center">
+                <!-- Before -->
+                <div class="h-full bg-background/80 rounded-xl p-3 border border-red-500/20 flex flex-col justify-between opacity-75">
+                  <span class="inline-block px-1.5 py-0.5 rounded bg-red-500/10 text-red-500 text-[9px] font-bold">SEBELUM</span>
+                  <div class="space-y-1">
+                    <div class="h-2 w-3/4 bg-red-400/40 rounded"></div>
+                    <div class="h-2 w-1/2 bg-red-400/30 rounded"></div>
+                  </div>
+                  <div class="text-[9px] text-red-500 font-mono">Tampilan Usang (3.8s)</div>
+                </div>
+
+                <!-- After -->
+                <div class="h-full bg-background rounded-xl p-3 border border-green-500/40 flex flex-col justify-between shadow-sm">
+                  <span class="inline-block px-1.5 py-0.5 rounded bg-green-500/10 text-green-500 text-[9px] font-bold">SETELAH GALACODE</span>
+                  <div class="space-y-1">
+                    <div class="h-2.5 w-3/4 bg-primary/40 rounded"></div>
+                    <div class="h-2 w-full bg-accent/30 rounded"></div>
+                  </div>
+                  <div class="text-[9px] text-green-500 font-mono font-bold">Modern & Cepat (0.4s)</div>
+                </div>
+              </div>
+
+              <!-- Service Information -->
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-accent uppercase tracking-widest">02 • Website Redesign</span>
+                  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-accent/10 text-accent">Pembaruan</span>
+                </div>
+                <h3 class="text-2xl font-black text-text-primary">Perbaikan & Pembaruan Website</h3>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                  Sudah memiliki website tapi tampilannya kuno atau berat di HP? Kami memperbarui desain dan performanya agar segar, nyaman digunakan, dan relevan dengan usaha saat ini.
+                </p>
+                <div class="flex flex-wrap gap-1.5 pt-2">
+                  <span class="px-2.5 py-1 bg-surface border border-border/60 rounded-md text-[11px] font-medium text-text-muted">Desain Visual Modern</span>
+                  <span class="px-2.5 py-1 bg-surface border border-border/60 rounded-md text-[11px] font-medium text-text-muted">Optimasi Layar HP</span>
+                  <span class="px-2.5 py-1 bg-surface border border-border/60 rounded-md text-[11px] font-medium text-text-muted">Percepatan Loading</span>
+                  <span class="px-2.5 py-1 bg-surface border border-border/60 rounded-md text-[11px] font-medium text-text-muted">Perbaikan Tata Letak</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-border/40">
+              <a href="/contact" class="inline-flex items-center gap-2 text-sm font-bold text-accent hover:text-primary transition-colors">
+                <span>Perbarui Website Anda</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Service 3: Pembuatan Sistem Berbasis Web -->
+          <div class="bg-background border border-border/70 rounded-2xl sm:rounded-3xl p-7 md:p-8 flex flex-col justify-between transition-all duration-300 hover:border-secondary/50 shadow-soft">
+            <div class="space-y-6">
+              <!-- Visual Mockup: Operational Dashboard Preview -->
+              <div class="h-44 sm:h-52 bg-surface rounded-2xl border border-border/60 p-4 relative overflow-hidden flex flex-col justify-between">
+                <div class="flex items-center justify-between border-b border-border/40 pb-2">
+                  <span class="text-[10px] font-mono text-text-muted">Dashboard Operasional Bisnis</span>
+                  <span class="text-[9px] font-bold text-secondary bg-secondary/10 px-2 py-0.5 rounded">Sistem Web</span>
+                </div>
+                <!-- Real-world business simulation items -->
+                <div class="grid grid-cols-3 gap-2">
+                  <div class="p-2 rounded-lg bg-background border border-border/50 text-[10px] text-center">
+                    <div class="text-[8px] text-text-muted">Rental Mobil</div>
+                    <div class="font-bold text-text-primary">Jadwal Armada</div>
+                  </div>
+                  <div class="p-2 rounded-lg bg-background border border-border/50 text-[10px] text-center">
+                    <div class="text-[8px] text-text-muted">Bengkel</div>
+                    <div class="font-bold text-text-primary">Booking Servis</div>
+                  </div>
+                  <div class="p-2 rounded-lg bg-background border border-border/50 text-[10px] text-center">
+                    <div class="text-[8px] text-text-muted">Katering</div>
+                    <div class="font-bold text-text-primary">Order Paket</div>
+                  </div>
+                </div>
+                <div class="p-2 rounded-lg bg-background border border-border/50 flex items-center justify-between text-[10px]">
+                  <span class="text-text-muted">Total Transaksi Masuk</span>
+                  <span class="font-extrabold text-green-500 font-mono">Terekap Otomatis</span>
+                </div>
+              </div>
+
+              <!-- Service Information -->
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-secondary uppercase tracking-widest">03 • Web Application</span>
+                  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-secondary/10 text-secondary">Sistem Operasional</span>
+                </div>
+                <h3 class="text-2xl font-black text-text-primary">Pembuatan Sistem Berbasis Web</h3>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                  Perlu aplikasi web untuk mengelola booking, data stok, atau form pemesanan pelanggan? Kami membuat sistem yang bisa diakses via browser untuk mempermudah operasional harian.
+                </p>
+                <div class="flex flex-wrap gap-1.5 pt-2">
+                  <span class="px-2.5 py-1 bg-surface border border-border/60 rounded-md text-[11px] font-medium text-text-muted">Sistem Booking & Reservasi</span>
+                  <span class="px-2.5 py-1 bg-surface border border-border/60 rounded-md text-[11px] font-medium text-text-muted">Dashboard Admin</span>
+                  <span class="px-2.5 py-1 bg-surface border border-border/60 rounded-md text-[11px] font-medium text-text-muted">Manajemen Data & Stok</span>
+                  <span class="px-2.5 py-1 bg-surface border border-border/60 rounded-md text-[11px] font-medium text-text-muted">Aplikasi Web Kustom</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-border/40">
+              <a href="/contact" class="inline-flex items-center gap-2 text-sm font-bold text-secondary hover:text-primary transition-colors">
+                <span>Diskusikan Kebutuhan Sistem Anda</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Service 4: Perawatan & Pemeliharaan Website -->
+          <div class="bg-background border border-border/70 rounded-2xl sm:rounded-3xl p-7 md:p-8 flex flex-col justify-between transition-all duration-300 hover:border-primary/50 shadow-soft">
+            <div class="space-y-6">
+              <!-- Visual Mockup: Health & Security Monitoring Console -->
+              <div class="h-44 sm:h-52 bg-surface rounded-2xl border border-border/60 p-4 relative overflow-hidden flex flex-col justify-between">
+                <div class="flex items-center justify-between border-b border-border/40 pb-2">
+                  <span class="text-[10px] font-mono text-text-muted">Status Pemeliharaan Sistem</span>
+                  <span class="text-[9px] font-bold text-green-500 bg-green-500/10 px-2 py-0.5 rounded">All Good</span>
+                </div>
+                <div class="space-y-2">
+                  <div class="flex items-center justify-between p-2 rounded-lg bg-background border border-border/50 text-[10px]">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                      <span>Keamanan & SSL Aktif</span>
+                    </div>
+                    <span class="font-mono text-green-500 font-bold">Aman</span>
+                  </div>
+                  <div class="flex items-center justify-between p-2 rounded-lg bg-background border border-border/50 text-[10px]">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                      <span>Pemeriksaan Error & Bug</span>
+                    </div>
+                    <span class="font-mono text-green-500 font-bold">0 Error</span>
+                  </div>
+                </div>
+                <div class="text-[9px] text-text-muted text-center font-mono">
+                  Pemeliharaan Teknis Sesuai Kesepakatan Layanan
+                </div>
+              </div>
+
+              <!-- Service Information -->
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold text-primary uppercase tracking-widest">04 • Maintenance</span>
+                  <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary">Dukungan Teknis</span>
+                </div>
+                <h3 class="text-2xl font-black text-text-primary">Perawatan & Pemeliharaan Website</h3>
+                <p class="text-sm text-text-secondary leading-relaxed">
+                  Website yang sudah online tetap butuh dirawat agar tidak bermasalah. Kami membantu menjaga website Anda tetap aktif, aman, dan mutakhir sesuai ruang lingkup yang disepakati.
+                </p>
+                <div class="flex flex-wrap gap-1.5 pt-2">
+                  <span class="px-2.5 py-1 bg-surface border border-border/60 rounded-md text-[11px] font-medium text-text-muted">Perbaikan Error Website</span>
+                  <span class="px-2.5 py-1 bg-surface border border-border/60 rounded-md text-[11px] font-medium text-text-muted">Update Informasi & Menu</span>
+                  <span class="px-2.5 py-1 bg-surface border border-border/60 rounded-md text-[11px] font-medium text-text-muted">Pemantauan Kecepatan</span>
+                  <span class="px-2.5 py-1 bg-surface border border-border/60 rounded-md text-[11px] font-medium text-text-muted">Dukungan Teknis Berkala</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-border/40">
+              <a href="/contact" class="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-secondary transition-colors">
+                <span>Konsultasikan Perawatan Website</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 5: WHY CHOOSE GALACODE (Bento Grid of Advantages)    -->
+    <!-- ============================================================ -->
+    <section id="why-choose" class="py-20 md:py-28 bg-background border-t border-border/40 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mx-auto text-center mb-14 md:mb-20 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/25 bg-primary/10 shadow-sm">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-primary">Keunggulan Galacode</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-text-primary tracking-tight">
+            Mengapa Memilih <span class="text-primary">Galacode?</span>
+          </h2>
+          <p class="text-base sm:text-lg text-text-secondary leading-relaxed text-balance">
+            Kami percaya solusi digital yang baik bukan hanya terlihat indah, tetapi harus benar-benar fungsional dan memberi nilai nyata untuk perkembangan bisnis Anda.
+          </p>
+        </div>
+
+        <!-- 6 Visual Advantages -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          
+          <div class="bg-surface-elevated border border-border/70 rounded-2xl p-6 space-y-4 transition-all duration-300 md:hover:-translate-y-1 md:hover:border-primary/40 md:hover:shadow-soft">
+            <div class="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-text-primary">Tampilan Profesional & Khas</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Website dirancang sesuai karakter brand usaha Anda, bukan sekadar menempelkan teks ke dalam template generik yang dipakai ribuan bisnis lain.
+            </p>
+          </div>
+
+          <div class="bg-surface-elevated border border-border/70 rounded-2xl p-6 space-y-4 transition-all duration-300 md:hover:-translate-y-1 md:hover:border-accent/40 md:hover:shadow-soft">
+            <div class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-text-primary">Nyaman di Semua Perangkat</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Lebih dari 80% pelanggan membuka website dari smartphone. Kami pastikan tulisan, gambar, dan tombol tampil presisi di layar HP, tablet, maupun laptop.
+            </p>
+          </div>
+
+          <div class="bg-surface-elevated border border-border/70 rounded-2xl p-6 space-y-4 transition-all duration-300 md:hover:-translate-y-1 md:hover:border-secondary/40 md:hover:shadow-soft">
+            <div class="w-11 h-11 rounded-xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-secondary">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-text-primary">Informasi Terorganisir Rapi</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Daftar produk, harga, jam operasional, dan lokasi disusun dengan navigasi yang mudah agar pelanggan langsung menemukan hal yang mereka cari.
+            </p>
+          </div>
+
+          <div class="bg-surface-elevated border border-border/70 rounded-2xl p-6 space-y-4 transition-all duration-300 md:hover:-translate-y-1 md:hover:border-primary/40 md:hover:shadow-soft">
+            <div class="w-11 h-11 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-text-primary">Membantu Efisiensi Bisnis</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Mengurangi proses manual berulang. Pelanggan dapat melihat katalog dan mengirim order terstruktur tanpa membuat admin Anda kewalahan membalas chat.
+            </p>
+          </div>
+
+          <div class="bg-surface-elevated border border-border/70 rounded-2xl p-6 space-y-4 transition-all duration-300 md:hover:-translate-y-1 md:hover:border-accent/40 md:hover:shadow-soft">
+            <div class="w-11 h-11 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-text-primary">Solusi Sesuai Kebutuhan</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Kami menyarankan fitur yang memang bermanfaat untuk bisnis Anda, tanpa memaksa tambahan fitur rumit yang tidak diperlukan dan membebani biaya.
+            </p>
+          </div>
+
+          <div class="bg-surface-elevated border border-border/70 rounded-2xl p-6 space-y-4 transition-all duration-300 md:hover:-translate-y-1 md:hover:border-secondary/40 md:hover:shadow-soft">
+            <div class="w-11 h-11 rounded-xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-secondary">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-text-primary">Siap Dikembangkan</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Dibangun dengan fondasi teknologi modern, sehingga website Anda mudah ditambah halaman, produk, atau fitur baru saat bisnis Anda semakin bertumbuh.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 6: VISION & MISSION (Impactful Visual Composition)   -->
+    <!-- ============================================================ -->
+    <section id="vision-mission" class="py-20 md:py-28 bg-surface border-t border-border/50 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          
+          <!-- Vision: Bold Quotation Card (6 cols) -->
+          <div class="lg:col-span-6 bg-background border border-border/80 rounded-2xl sm:rounded-3xl p-8 sm:p-10 relative overflow-hidden shadow-soft">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-accent"></div>
+            <div class="space-y-6">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider">
+                Visi Kami
+              </div>
+              <blockquote class="text-2xl sm:text-3xl font-black text-text-primary leading-snug">
+                "Menjadi mitra pengembangan digital yang membantu bisnis beradaptasi, berkembang, dan menciptakan peluang melalui teknologi."
+              </blockquote>
+              <div class="flex items-center gap-3 pt-2 text-xs font-semibold text-text-muted">
+                <span class="w-8 h-[2px] bg-primary"></span>
+                <span>Komitmen Galacode untuk Kemajuan Bisnis Klien</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mission: 4 Node List (6 cols) -->
+          <div class="lg:col-span-6 space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary text-xs font-bold uppercase tracking-wider">
+              Misi Kami
+            </div>
+            <h3 class="text-2xl sm:text-3xl font-extrabold text-text-primary tracking-tight">
+              Langkah Nyata Mewujudkan Visi
+            </h3>
+
+            <div class="space-y-3 pt-2">
+              <div class="flex items-start gap-4 p-4 rounded-xl bg-background border border-border/60">
+                <div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-bold text-sm shrink-0">1</div>
+                <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+                  Membantu bisnis memiliki identitas digital yang profesional dan terpercaya.
+                </p>
+              </div>
+
+              <div class="flex items-start gap-4 p-4 rounded-xl bg-background border border-border/60">
+                <div class="w-8 h-8 rounded-lg bg-accent/10 text-accent flex items-center justify-center font-bold text-sm shrink-0">2</div>
+                <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+                  Menyediakan solusi teknologi sesuai kebutuhan dan anggaran klien secara transparan.
+                </p>
+              </div>
+
+              <div class="flex items-start gap-4 p-4 rounded-xl bg-background border border-border/60">
+                <div class="w-8 h-8 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center font-bold text-sm shrink-0">3</div>
+                <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+                  Mengembangkan website dan sistem yang fungsional, mudah digunakan, serta dapat dikembangkan.
+                </p>
+              </div>
+
+              <div class="flex items-start gap-4 p-4 rounded-xl bg-background border border-border/60">
+                <div class="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center font-bold text-sm shrink-0">4</div>
+                <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+                  Membangun hubungan kerja sama jangka panjang melalui komunikasi yang terbuka dan bertanggung jawab.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 7: WORKFLOW (Process Timeline)                      -->
+    <!-- ============================================================ -->
+    <section id="workflow" class="py-20 md:py-28 bg-background border-t border-border/40 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mx-auto text-center mb-14 md:mb-20 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/25 bg-primary/10 shadow-sm">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-primary">Alur Kerja Sama</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-text-primary tracking-tight">
+            Bagaimana Proses <span class="text-primary">Kerja Kami?</span>
+          </h2>
+          <p class="text-base sm:text-lg text-text-secondary leading-relaxed text-balance">
+            Setiap proyek dikerjakan melalui tahapan terstruktur agar hasilnya tepat sasaran, selesai tepat waktu, dan sesuai kesepakatan.
+          </p>
+        </div>
+
+        <!-- Desktop Horizontal Timeline / Mobile Vertical Timeline -->
+        <div class="relative">
+          
+          <!-- Connector line for desktop -->
+          <div class="hidden lg:block absolute top-10 left-[5%] right-[5%] h-[2px] bg-gradient-to-r from-primary via-secondary to-accent z-0 opacity-40"></div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10">
+            
+            <!-- Step 1 -->
+            <div class="bg-surface-elevated border border-border/70 rounded-2xl p-5 space-y-3 transition-all duration-300 md:hover:-translate-y-1">
+              <div class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 text-primary font-black text-base flex items-center justify-center">
+                01
+              </div>
+              <h4 class="text-base font-extrabold text-text-primary">1. Konsultasi & Kebutuhan</h4>
+              <p class="text-xs text-text-secondary leading-relaxed">
+                Mendengarkan tujuan bisnis Anda dan menganalisis apa saja yang dibutuhkan tanpa perlu Anda mengerti istilah teknis.
+              </p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="bg-surface-elevated border border-border/70 rounded-2xl p-5 space-y-3 transition-all duration-300 md:hover:-translate-y-1">
+              <div class="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 text-accent font-black text-base flex items-center justify-center">
+                02
+              </div>
+              <h4 class="text-base font-extrabold text-text-primary">2. Perencanaan Solusi</h4>
+              <p class="text-xs text-text-secondary leading-relaxed">
+                Menyusun struktur halaman, menentukan fitur esensial, serta menyepakati ruang lingkup kerja dan anggaran.
+              </p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="bg-surface-elevated border border-border/70 rounded-2xl p-5 space-y-3 transition-all duration-300 md:hover:-translate-y-1">
+              <div class="w-12 h-12 rounded-xl bg-secondary/10 border border-secondary/20 text-secondary font-black text-base flex items-center justify-center">
+                03
+              </div>
+              <h4 class="text-base font-extrabold text-text-primary">3. Desain & Pembuatan</h4>
+              <p class="text-xs text-text-secondary leading-relaxed">
+                Mengembangkan antarmuka dan sistem website dengan kode bersih sesuai konsep yang telah disepakati bersama.
+              </p>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="bg-surface-elevated border border-border/70 rounded-2xl p-5 space-y-3 transition-all duration-300 md:hover:-translate-y-1">
+              <div class="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 text-primary font-black text-base flex items-center justify-center">
+                04
+              </div>
+              <h4 class="text-base font-extrabold text-text-primary">4. Uji Coba Fungsi</h4>
+              <p class="text-xs text-text-secondary leading-relaxed">
+                Memastikan tampilan rapi di HP, tablet, dan laptop, serta seluruh tombol dan form berjalan normal tanpa error.
+              </p>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="bg-surface-elevated border border-primary/40 rounded-2xl p-5 space-y-3 transition-all duration-300 md:hover:-translate-y-1 shadow-sm">
+              <div class="w-12 h-12 rounded-xl bg-primary text-primary-foreground font-black text-base flex items-center justify-center shadow-md">
+                05
+              </div>
+              <h4 class="text-base font-extrabold text-text-primary">5. Rilis & Dukungan</h4>
+              <p class="text-xs text-text-secondary leading-relaxed">
+                Website resmi diluncurkan online dan siap menerima kunjungan. Panduan dan dukungan teknis diberikan setelah rilis.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 8: PRINCIPLES (5 Core Values Visual Cards)          -->
+    <!-- ============================================================ -->
+    <section id="principles" class="py-20 md:py-28 bg-surface border-t border-border/50 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mx-auto text-center mb-14 md:mb-18 space-y-4">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-border bg-background shadow-sm">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-text-primary">Prinsip Kerja</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-text-primary tracking-tight">
+            Prinsip Kerja <span class="text-primary">Kami.</span>
+          </h2>
+          <p class="text-base sm:text-lg text-text-secondary leading-relaxed text-balance">
+            Lima nilai utama yang menjadi pedoman tim Galacode dalam memberikan layanan terbaik bagi setiap klien.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
+          
+          <div class="bg-background border border-border/70 rounded-2xl p-5 text-center space-y-3 transition-all duration-300 hover:border-primary/40 shadow-sm">
+            <div class="w-10 h-10 mx-auto rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21l2-7.5L2 9h7z"/></svg>
+            </div>
+            <h4 class="text-base font-extrabold text-text-primary">Quality</h4>
+            <p class="text-xs text-text-muted leading-relaxed">
+              Kualitas hasil kerja dari baris kode hingga detail tampilan.
+            </p>
+          </div>
+
+          <div class="bg-background border border-border/70 rounded-2xl p-5 text-center space-y-3 transition-all duration-300 hover:border-accent/40 shadow-sm">
+            <div class="w-10 h-10 mx-auto rounded-xl bg-accent/10 text-accent flex items-center justify-center font-bold">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            </div>
+            <h4 class="text-base font-extrabold text-text-primary">Transparency</h4>
+            <p class="text-xs text-text-muted leading-relaxed">
+              Biaya dan ruang lingkup kerja dijelaskan secara terbuka.
+            </p>
+          </div>
+
+          <div class="bg-background border border-border/70 rounded-2xl p-5 text-center space-y-3 transition-all duration-300 hover:border-secondary/40 shadow-sm">
+            <div class="w-10 h-10 mx-auto rounded-xl bg-secondary/10 text-secondary flex items-center justify-center font-bold">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <h4 class="text-base font-extrabold text-text-primary">Innovation</h4>
+            <p class="text-xs text-text-muted leading-relaxed">
+              Menggunakan teknologi modern yang relevan & efisien.
+            </p>
+          </div>
+
+          <div class="bg-background border border-border/70 rounded-2xl p-5 text-center space-y-3 transition-all duration-300 hover:border-primary/40 shadow-sm">
+            <div class="w-10 h-10 mx-auto rounded-xl bg-primary/10 text-primary flex items-center justify-center font-bold">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h4 class="text-base font-extrabold text-text-primary">Reliability</h4>
+            <p class="text-xs text-text-muted leading-relaxed">
+              Sistem berjalan stabil, aman, dan dapat diandalkan.
+            </p>
+          </div>
+
+          <div class="col-span-2 md:col-span-1 bg-background border border-border/70 rounded-2xl p-5 text-center space-y-3 transition-all duration-300 hover:border-accent/40 shadow-sm">
+            <div class="w-10 h-10 mx-auto rounded-xl bg-accent/10 text-accent flex items-center justify-center font-bold">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+            </div>
+            <h4 class="text-base font-extrabold text-text-primary">Adaptability</h4>
+            <p class="text-xs text-text-muted leading-relaxed">
+              Solusi yang fleksibel dan siap menyesuaikan perkembangan bisnis.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 9: PORTFOLIO PREVIEW (Showcase Real Projects)        -->
+    <!-- ============================================================ -->
+    <section id="portfolio-preview" class="py-20 md:py-28 bg-background border-t border-border/40 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16">
+          <div class="space-y-4 max-w-2xl">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/25 bg-primary/10 shadow-sm">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-primary">Rekam Jejak Hasil Kerja</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-text-primary tracking-tight">
+              Portofolio <span class="text-primary">Pilihan.</span>
+            </h2>
+            <p class="text-base text-text-secondary leading-relaxed">
+              Berikut beberapa contoh hasil website nyata yang telah kami bangun dengan standar visual tinggi dan performa optimal.
+            </p>
+          </div>
+
+          <div>
+            <a 
+              href="/portfolio" 
+              class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl border border-border text-sm font-bold text-text-primary bg-surface hover:bg-surface-elevated hover:border-primary/40 transition-all duration-300 shadow-sm group"
+            >
+              <span>Lihat Semua Portfolio</span>
+              <svg class="w-4 h-4 text-primary group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- 3 Project Showcase Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {previewProjects.map((project) => (
+            <div class="group bg-surface-elevated border border-border/70 rounded-2xl sm:rounded-3xl p-3 sm:p-4 flex flex-col justify-between transition-all duration-500 md:hover:-translate-y-2 md:hover:border-primary/50 shadow-soft">
+              
+              <!-- Project Screenshot Cover -->
+              <a 
+                href={project.demoUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="relative aspect-[16/10] rounded-xl sm:rounded-2xl overflow-hidden block bg-glass-10 border border-border/30 group/link"
+              >
+                <img 
+                  src={project.image} 
+                  alt={project.name} 
+                  class="w-full h-full object-cover transition-transform duration-700 md:group-hover:scale-105" 
+                  loading="lazy" 
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                  <span class="text-xs font-bold text-white bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20">
+                    Buka Live Demo ↗
+                  </span>
+                </div>
+              </a>
+
+              <!-- Project Metadata -->
+              <div class="p-4 space-y-2.5">
+                <div class="flex items-center justify-between">
+                  <span class="text-[11px] font-bold uppercase tracking-wider text-primary">
+                    {project.category}
+                  </span>
+                  <span class="text-[10px] font-semibold px-2 py-0.5 rounded bg-surface border border-border/60 text-text-muted">
+                    {project.highlight}
+                  </span>
+                </div>
+                <h3 class="text-xl font-black text-text-primary group-hover:text-primary transition-colors">
+                  {project.name}
+                </h3>
+                <p class="text-xs text-text-secondary leading-relaxed line-clamp-2">
+                  {project.desc}
+                </p>
+              </div>
+
+              <!-- Action Link -->
+              <div class="px-4 pb-2 pt-2 border-t border-border/40 flex items-center justify-between">
+                <a 
+                  href={project.demoUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="text-xs font-bold text-text-primary hover:text-primary transition-colors inline-flex items-center gap-1"
+                >
+                  Lihat Demo
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                </a>
+                <span class="text-[10px] text-text-muted font-mono">100% Responsif</span>
+              </div>
+
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================ -->
+    <!-- SECTION 10: FINAL CLOSING CTA                               -->
+    <!-- ============================================================ -->
+    <section id="closing-cta" class="relative bg-background py-24 md:py-32 overflow-hidden flex items-center justify-center border-t border-border/40">
+      
+      <!-- Ambient Aurora Backdrop -->
+      <div class="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 w-[600px] sm:w-[800px] h-[400px] bg-[radial-gradient(ellipse,_var(--tw-gradient-stops))] from-primary/15 via-secondary/10 to-transparent rounded-full blur-[90px] pointer-events-none -z-10 opacity-70"></div>
+
+      <div class="max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="relative bg-surface-elevated border border-border/80 rounded-3xl sm:rounded-[3rem] p-8 sm:p-14 md:p-16 text-center shadow-soft-lg overflow-hidden">
+          <div class="absolute inset-0 bg-[radial-gradient(circle,_rgba(109,94,247,0.05)_1px,_transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
+
+          <div class="relative z-10 flex flex-col items-center max-w-2xl mx-auto space-y-6">
+            
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/10 text-primary font-bold tracking-wider uppercase text-xs shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-primary animate-ping"></span>
+              Siap Memulai?
+            </div>
+
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-black text-text-primary leading-[1.12] tracking-tight text-balance">
+              Bisnis Anda Punya <span class="text-primary bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Kebutuhan Digital?</span>
+            </h2>
+
+            <p class="text-base sm:text-lg text-text-secondary leading-relaxed text-balance">
+              Baik Anda ingin membuat website baru, memperbarui website lama, atau mengembangkan sistem untuk bisnis — Galacode siap membantu mendiskusikan solusi yang tepat sasaran.
+            </p>
+
+            <!-- Dual Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full pt-2">
+              <a 
+                href="/contact" 
+                class="w-full sm:w-auto inline-flex justify-center items-center gap-2.5 bg-primary hover:bg-secondary text-primary-foreground font-bold text-base min-h-[54px] py-4 px-9 rounded-xl shadow-lg shadow-primary/30 transition-all duration-300 md:hover:scale-[1.03] active:scale-95"
+              >
+                <span>Konsultasi Gratis</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+              </a>
+
+              <a 
+                href="/portfolio" 
+                class="w-full sm:w-auto inline-flex justify-center items-center gap-2 border border-border text-text-primary font-bold text-base min-h-[54px] py-4 px-9 rounded-xl bg-surface hover:bg-surface-elevated hover:border-border transition-all duration-300 md:hover:scale-[1.02] active:scale-95 shadow-sm"
+              >
+                Lihat Portfolio
+              </a>
+            </div>
+
+            <!-- Trust Points / Assurances -->
+            <div class="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 pt-6 border-t border-border/50 text-xs font-semibold text-text-muted">
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Tanpa kewajiban order</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Biaya transparan sejak awal</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+                <span>Solusi sesuai kebutuhan riil</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes float-delayed {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-14px); }
+  }
+  @keyframes float-fast {
+    0%, 100% { transform: translateY(0px) rotate(1deg); }
+    50% { transform: translateY(-8px) rotate(-1deg); }
+  }
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.35; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.04); }
+  }
+
+  @media (min-width: 640px) {
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-float-delayed { animation: float-delayed 7s ease-in-out infinite; }
+    .animate-float-fast { animation: float-fast 5s ease-in-out infinite; }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  .animate-pulse-slow {
+    animation: pulse-slow 8s infinite ease-in-out;
+  }
+</style>
+
+<script>
+  import { animate, inView, stagger } from "motion";
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!prefersReducedMotion) {
+    const easing = [0.22, 1, 0.36, 1] as [number, number, number, number];
+
+    // Subtle scroll reveal on sections
+    const sections = ["#who-we-are", "#why-website", "#services", "#why-choose", "#vision-mission", "#workflow", "#principles", "#portfolio-preview"];
+
+    sections.forEach((secId) => {
+      const el = document.querySelector(secId);
+      if (el) {
+        let done = false;
+        inView(el, () => {
+          if (done) return;
+          done = true;
+          animate(
+            el,
+            { opacity: [0.3, 1], y: [16, 0] },
+            { duration: 0.6, easing }
+          );
+        }, { margin: "-10% 0px" });
+      }
+    });
+  }
+</script>
