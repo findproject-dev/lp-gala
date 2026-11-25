@@ -1,19 +1,19 @@
 ---
 // src/components/portfolio/PortfolioGrid.astro
 
-const categories = ["Semua", "Landing Page", "Company Profile", "UMKM"];
+const categories = ["Semua", "Landing Page", "Company Profile", "UMKM", "Sistem Booking"];
 
 const projects = [
   {
     id: 1,
     name: "Gala Cafe",
     category: "Landing Page",
-    description: "Halaman konversi tinggi untuk klinik kecantikan dengan fitur pemesanan jadwal konsultasi langsung ke sistem klinik.",
+    description: "Landing page kafe modern dengan menu digital, lokasi, dan pemesanan meja langsung via WhatsApp.",
     tech: ["Astro", "Tailwind CSS"],
-    features: ["Booking System", "Responsive", "SEO Ready"],
+    features: ["Menu Digital", "Reservasi Meja", "SEO Ready"],
     perf: "99",
-    challenge: "Pasien kesulitan memesan jadwal secara online dan sering terjadi tumpang tindih waktu konsultasi.",
-    solution: "Membangun antarmuka landing page responsif dengan integrasi kalender interaktif untuk mencegah double-booking.",
+    challenge: "Pelanggan kafe sulit mengetahui menu dan ketersediaan meja tanpa harus datang langsung.",
+    solution: "Landing page modern dengan tampilan menu digital dan form reservasi meja yang mudah digunakan.",
     demoUrl: "https://gala-cafe.vercel.app/",
     image: "/images/cover-findfein.png",
   },
@@ -21,12 +21,12 @@ const projects = [
     id: 2,
     name: "Findsnaps",
     category: "UMKM",
-    description: "Katalog menu restoran interaktif dengan filter kategori dan pesanan antar (delivery) langsung via WhatsApp.",
-    tech: ["Laravel", "Tailwind CSS"],
-    features: ["Online Order", "WhatsApp API", "Mobile First"],
+    description: "Portofolio fotografer profesional dengan galeri karya, paket layanan, dan sistem booking sesi foto.",
+    tech: ["Astro", "Tailwind CSS"],
+    features: ["Galeri Karya", "Paket Layanan", "Booking Sesi Foto"],
     perf: "98",
-    challenge: "Proses pemesanan takeaway masih manual sehingga sering terjadi kesalahan pencatatan menu.",
-    solution: "Sistem katalog menu digital yang otomatis menghitung total harga dan format pesanan siap kirim ke WhatsApp kasir.",
+    challenge: "Klien fotografer sulit melihat portofolio dan memesan sesi foto tanpa bertemu langsung.",
+    solution: "Website galeri profesional dengan paket layanan yang jelas dan form booking online yang mudah diisi.",
     demoUrl: "https://gala-photography-chi.vercel.app/",
     image: "/images/cover-findsnaps.png",
   },
@@ -34,15 +34,158 @@ const projects = [
     id: 3,
     name: "Findwell",
     category: "Company Profile",
-    description: "Website profil perusahaan konstruksi baja dengan galeri portfolio proyek dan sistem tender online.",
-    tech: ["Next.js", "React"],
-    features: ["Project Gallery", "CMS", "B2B Form"],
+    description: "Website profil perusahaan konstruksi baja dengan galeri portfolio proyek dan formulir penawaran tender.",
+    tech: ["Astro", "Tailwind CSS"],
+    features: ["Galeri Proyek", "Profil Perusahaan", "Form Penawaran"],
     perf: "100",
     challenge: "Perusahaan kesulitan menampilkan skala proyek besar mereka kepada calon mitra B2B secara profesional.",
-    solution: "Pembuatan profil korporat dengan galeri resolusi tinggi yang dioptimalkan (lazy loading) tanpa mengorbankan kecepatan.",
+    solution: "Website profil korporat dengan galeri proyek resolusi tinggi dan halaman layanan yang terstruktur.",
     demoUrl: "https://web-construction-eight.vercel.app/",
     image: "/images/cover-findwell.png",
-  }
+  },
+  {
+    id: 4,
+    name: "Findfresh",
+    category: "UMKM",
+    description: "Website layanan laundry dengan informasi layanan, pricelist yang jelas, dan pemesanan pickup & delivery online.",
+    tech: ["Astro", "Tailwind CSS"],
+    features: ["Order Laundry Online", "Cek Status Cucian", "Pricelist Jelas"],
+    perf: "99",
+    challenge: "Pelanggan laundry sering menelepon untuk menanyakan harga, status cucian, dan jadwal pickup.",
+    solution: "Website informatif dengan halaman status cucian dan form pemesanan pickup & delivery yang mudah digunakan.",
+    demoUrl: "https://gala-laundry.vercel.app",
+    image: "/images/cover-findfresh.png",
+  },
+  {
+    id: 5,
+    name: "Findfirm",
+    category: "Company Profile",
+    description: "Website kantor advokat profesional dengan profil pengacara, area praktik hukum, dan form konsultasi.",
+    tech: ["Astro", "Tailwind CSS"],
+    features: ["Profil Advokat", "Area Praktik Hukum", "Form Konsultasi"],
+    perf: "100",
+    challenge: "Klien kesulitan menemukan informasi layanan hukum dan menghubungi pengacara secara online.",
+    solution: "Website formal dan terpercaya dengan detail layanan hukum, profil tim, dan kontak langsung pengacara.",
+    demoUrl: "https://gala-advokat.vercel.app/",
+    image: "/images/cover-findfirm.png",
+  },
+  {
+    id: 6,
+    name: "Findfix",
+    category: "Sistem Booking",
+    description: "Website bengkel motor & mobil dengan sistem booking servis online, daftar layanan, dan estimasi biaya perbaikan.",
+    tech: ["Astro", "Tailwind CSS"],
+    features: ["Booking Servis Online", "Estimasi Biaya", "Daftar Layanan"],
+    perf: "98",
+    challenge: "Antrian panjang di bengkel karena semua pelanggan datang tanpa jadwal dan tidak tahu estimasi biaya.",
+    solution: "Sistem reservasi jadwal servis online dengan daftar layanan dan estimasi biaya yang transparan.",
+    demoUrl: "https://gala-bengkel-iota.vercel.app/",
+    image: "/images/cover-findfix.png",
+  },
+  {
+    id: 7,
+    name: "Rental Mobil",
+    category: "Sistem Booking",
+    description: "Platform booking rental mobil dengan katalog armada, pemilihan tanggal, dan pemesanan langsung.",
+    tech: ["Astro", "Tailwind CSS"],
+    features: ["Katalog Armada Mobil", "Booking Online", "Pemilihan Tanggal"],
+    perf: "99",
+    challenge: "Pelanggan rental sering menelepon untuk menanyakan ketersediaan mobil dan harga sewa per hari.",
+    solution: "Katalog armada dengan detail spesifikasi, harga, dan form pemesanan terstruktur dengan pemilihan tanggal.",
+    demoUrl: "https://gala-rentalmobil.vercel.app/",
+    image: "/images/cover-finddrive.png",
+  },
+  {
+    id: 8,
+    name: "Catering Seleroo",
+    category: "UMKM",
+    description: "Website catering dengan menu paket lengkap, galeri hidangan, dan sistem permintaan penawaran harga.",
+    tech: ["Astro", "Tailwind CSS"],
+    features: ["Daftar Paket Catering", "Galeri Menu", "Request Penawaran"],
+    perf: "98",
+    challenge: "Calon klien kesulitan mengetahui variasi paket, menu, dan kisaran harga catering tanpa bertemu langsung.",
+    solution: "Halaman paket catering terstruktur dengan galeri foto menu dan form pengajuan penawaran yang spesifik.",
+    demoUrl: "https://gala-catering.vercel.app/",
+    image: "/images/cover-findseleroo.png",
+  },
+  {
+    id: 9,
+    name: "Findpath",
+    category: "Sistem Booking",
+    description: "Website agen tour & travel dengan paket wisata lengkap, itinerary detail, dan booking perjalanan online.",
+    tech: ["Astro", "Tailwind CSS"],
+    features: ["Paket Wisata Lengkap", "Itinerary Detail", "Booking Perjalanan"],
+    perf: "99",
+    challenge: "Wisatawan sulit membandingkan paket tur dan mengetahui ketersediaan jadwal keberangkatan.",
+    solution: "Katalog paket wisata dengan detail itinerary harian, foto destinasi, dan form booking yang mudah diisi.",
+    demoUrl: "https://gala-tour.vercel.app/",
+    image: "/images/cover-findpath.png",
+  },
+  {
+    id: 10,
+    name: "Findbeauty",
+    category: "Sistem Booking",
+    description: "Website klinik kecantikan dengan katalog treatment, profil dokter, dan sistem booking konsultasi online.",
+    tech: ["Astro", "Tailwind CSS"],
+    features: ["Katalog Treatment", "Booking Konsultasi", "Profil Dokter"],
+    perf: "100",
+    challenge: "Pasien klinik sering mengalami tumpang tindih jadwal dan tidak tahu treatment apa yang tersedia.",
+    solution: "Website dengan katalog treatment lengkap, profil dokter, dan sistem booking konsultasi yang terstruktur.",
+    demoUrl: "https://gala-clinic.vercel.app/",
+    image: "/images/cover-findbeauty.png",
+  },
+  {
+    id: 11,
+    name: "Findstyle",
+    category: "Sistem Booking",
+    description: "Website barbershop modern dengan galeri gaya rambut, jadwal barber, dan reservasi antrian online.",
+    tech: ["Astro", "Tailwind CSS"],
+    features: ["Galeri Style Rambut", "Booking Antrian", "Jadwal Barber"],
+    perf: "99",
+    challenge: "Pelanggan barbershop harus antre lama tanpa kepastian waktu dan tidak bisa memilih barber pilihan.",
+    solution: "Sistem reservasi antrian online dengan pilihan barber, waktu, dan galeri style rambut sebagai referensi.",
+    demoUrl: "https://gala-barbershop.vercel.app",
+    image: "/images/cover-findstyle.png",
+  },
+  {
+    id: 12,
+    name: "Aurelia",
+    category: "Company Profile",
+    description: "Website lembaga kursus bahasa dengan program belajar, jadwal kelas, dan pendaftaran siswa online.",
+    tech: ["Astro", "Tailwind CSS"],
+    features: ["Program Kursus Lengkap", "Jadwal Kelas", "Daftar Online"],
+    perf: "100",
+    challenge: "Calon siswa kesulitan menemukan info program kursus dan harus datang langsung untuk mendaftar.",
+    solution: "Website informatif dengan detail program, jadwal kelas, biaya, dan form pendaftaran online yang mudah diisi.",
+    demoUrl: "https://web-kursus-bahasa.vercel.app",
+    image: "/images/cover-aurelia.png",
+  },
+  {
+    id: 13,
+    name: "Findride",
+    category: "Sistem Booking",
+    description: "Platform rental motor harian dengan pilihan armada, cek ketersediaan unit, dan pemesanan langsung.",
+    tech: ["Astro", "Tailwind CSS"],
+    features: ["Katalog Motor", "Cek Ketersediaan", "Booking Harian"],
+    perf: "98",
+    challenge: "Pelanggan rental motor harus menelepon satu per satu untuk menanyakan ketersediaan dan harga sewa.",
+    solution: "Katalog unit motor dengan spesifikasi lengkap, harga sewa harian, dan form booking yang praktis.",
+    demoUrl: "https://web-rentalmotor.vercel.app/",
+    image: "/images/cover-findride.png",
+  },
+  {
+    id: 14,
+    name: "Sehatara",
+    category: "Sistem Booking",
+    description: "Website klinik umum dengan layanan dokter, jadwal praktik, pendaftaran pasien online, dan info layanan BPJS.",
+    tech: ["Astro", "Tailwind CSS"],
+    features: ["Daftar Pasien Online", "Jadwal Dokter", "Info Layanan BPJS"],
+    perf: "99",
+    challenge: "Pasien harus datang pagi-pagi hanya untuk mendapatkan nomor antrian dan tidak tahu jadwal dokter.",
+    solution: "Sistem pendaftaran pasien online dengan pilihan jadwal, layanan dokter, dan informasi BPJS yang lengkap.",
+    demoUrl: "https://gala-klinik-umum-azure.vercel.app",
+    image: "/images/cover-sehatara.png",
+  },
 ];
 ---
 
@@ -88,6 +231,11 @@ const projects = [
               </>
             )}
             
+            <!-- Category Badge -->
+            <div class="absolute top-3 left-3 z-10">
+              <span class="inline-block px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/20 text-[10px] font-bold text-white tracking-wide uppercase">{project.category}</span>
+            </div>
+
             <!-- Dark Gradient Overlay for Contrast -->
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 md:group-hover:opacity-100 transition-opacity duration-500"></div>
             
@@ -100,12 +248,22 @@ const projects = [
           </a>
 
           <!-- Content Area -->
-          <div class="px-3 pt-5 pb-3 flex items-center justify-between gap-4 mt-auto">
-            <h3 class="text-xl md:text-2xl font-black text-text-primary tracking-tight md:group-hover:text-primary transition-colors duration-300 truncate">{project.name}</h3>
-            
-            <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" class="group/btn inline-flex items-center justify-center w-12 h-12 rounded-full bg-surface border border-border text-text-secondary transition-all duration-300 md:hover:bg-primary md:hover:text-primary-foreground md:hover:border-primary md:hover:shadow-lg hover:shadow-primary/30 shrink-0" aria-label="Live Demo">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 md:group-hover/btn:translate-x-0.5 md:group-hover/btn:-translate-y-0.5"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
-            </a>
+          <div class="px-3 pt-4 pb-3 flex flex-col gap-2.5 mt-auto">
+            <!-- Name + Link Row -->
+            <div class="flex items-center justify-between gap-3">
+              <h3 class="text-lg md:text-xl font-black text-text-primary tracking-tight md:group-hover:text-primary transition-colors duration-300 truncate">{project.name}</h3>
+              <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" class="group/btn inline-flex items-center justify-center w-10 h-10 rounded-full bg-surface border border-border text-text-secondary transition-all duration-300 md:hover:bg-primary md:hover:text-primary-foreground md:hover:border-primary md:hover:shadow-lg hover:shadow-primary/30 shrink-0" aria-label="Live Demo">
+                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 md:group-hover/btn:translate-x-0.5 md:group-hover/btn:-translate-y-0.5"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+              </a>
+            </div>
+            <!-- Description -->
+            <p class="text-xs text-text-secondary leading-relaxed line-clamp-2">{project.description}</p>
+            <!-- Feature Tags -->
+            <div class="flex flex-wrap gap-1.5">
+              {project.features.map((feat) => (
+                <span class="inline-block px-2.5 py-1 rounded-full bg-primary/8 border border-primary/15 text-[10px] font-semibold text-primary/80 tracking-wide">{feat}</span>
+              ))}
+            </div>
           </div>
         </div>
       </div>
