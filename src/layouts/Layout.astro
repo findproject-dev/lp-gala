@@ -5,7 +5,7 @@ interface Props {
 	description?: string;
 }
 
-const { title, description = "GALACODE - Jasa Pembuatan Website Profesional. Tingkatkan Kepercayaan Pelanggan dengan Website Profesional." } = Astro.props;
+const { title, description = "Galacode — Digital Growth Studio. Kami membantu bisnis membangun website yang tidak hanya menarik secara visual, tetapi dirancang untuk mendatangkan calon pelanggan dan meningkatkan peluang penjualan." } = Astro.props;
 ---
 
 <!doctype html>
@@ -14,6 +14,10 @@ const { title, description = "GALACODE - Jasa Pembuatan Website Profesional. Tin
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="description" content={description} />
+		<meta name="robots" content="index, follow" />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
 		<link rel="icon" type="image/png" href="/favicon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>

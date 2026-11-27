@@ -1,143 +1,227 @@
 ---
-// src/components/Services.astro
+// src/components/Services.astro — Solusi yang Kami Bangun
 ---
 
-<section id="services" class="bg-background py-24 md:py-32 relative border-t border-glass-5">
+<section id="services" class="bg-surface py-24 md:py-32 relative border-t border-glass-5">
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-    <!-- Header Area -->
-    <div class="services-header max-w-3xl mx-auto text-center mb-12 md:mb-20">
-      <span class="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-primary font-semibold tracking-wider uppercase text-[10px] md:text-xs mb-4 shadow-[0_0_15px_rgba(37,99,235,0.1)]">
-        Pilihan Website
+    <!-- Header -->
+    <div class="services-header max-w-3xl mx-auto text-center mb-14 md:mb-20">
+      <span class="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-primary font-bold tracking-widest uppercase text-[10px] md:text-xs mb-5">
+        Solusi yang Kami Bangun
       </span>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight text-balance mb-4 md:mb-0">
-        Pilih Sesuai <span class="text-primary block md:inline mt-1 md:mt-0">Kebutuhan Bisnis</span>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight text-balance mb-4">
+        Pilih Website yang Pas <span class="text-primary block md:inline mt-1 md:mt-0">sama Tujuan Bisnis Anda</span>
       </h2>
-      <p class="mt-4 md:mt-6 text-base sm:text-lg text-text-secondary leading-relaxed text-balance px-2 md:px-0">
-        Setiap bisnis punya alur beda. Pilih struktur website yang paling pas dengan cara kerja Anda.
+      <p class="mt-4 md:mt-5 text-base sm:text-lg text-text-secondary leading-relaxed text-balance px-2 md:px-0">
+        Setiap website kami bangun dengan tujuan yang jelas — bukan cuma pajangan, tapi sistem yang beneran bantu kerja bisnis Anda.
       </p>
     </div>
 
-    <!-- Services Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+    <!-- Services Grid: 2x2 -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
 
-      <!-- Card -->
-      <div class="services-card group relative bg-surface-elevated border border-border rounded-2xl p-6 md:p-8 transition-all duration-300 ease-out md:hover:-translate-y-1 md:hover:shadow-md md:hover:border-primary/40 active:scale-[0.98] active:bg-surface-elevated/80 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="relative z-10">
-          <div class="w-14 h-14 rounded-2xl bg-glass-5 border border-border flex items-center justify-center mb-5 md:mb-6 text-primary md:group-hover:scale-110 md:group-hover:bg-primary/10 transition-transform">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="m14 14 3-3-3-3"/><path d="M3 11v8a2 2 0 0 0 2 2h4"/><path d="M3 11V6a2 2 0 0 1 2-2h4"/><path d="M9 14 6 11 9 8"/></svg>
+      <!-- Service 1: Lead Generation Website -->
+      <div class="services-card group relative bg-background border border-border/70 rounded-2xl md:rounded-3xl p-7 md:p-8 flex flex-col overflow-hidden transition-all duration-300 md:hover:-translate-y-1 md:hover:border-primary/40 md:hover:shadow-soft-lg active:scale-[0.98]">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/8 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"></div>
+        <div class="relative z-10 flex flex-col h-full">
+          <div class="flex items-start justify-between mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary md:group-hover:scale-110 md:group-hover:bg-primary/20 transition-all duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </div>
+            <span class="text-[10px] font-black uppercase tracking-widest text-primary bg-primary/10 border border-primary/20 px-2.5 py-1 rounded-full">01</span>
           </div>
-          <h3 class="text-xl font-bold text-text-primary mb-3">Halaman Promo Khusus</h3>
-          <div class="space-y-3">
-             <p class="text-text-secondary leading-relaxed text-sm">
-               Fokus pada satu produk unggulan. Tampil detail dengan tombol pesan langsung ke WhatsApp.
-             </p>
-             <div class="flex flex-wrap gap-2 pt-2">
-                <span class="px-2 py-1 bg-surface border border-glass-5 rounded-md text-[10px] font-bold text-text-muted uppercase">Satu Halaman</span>
-                <span class="px-2 py-1 bg-surface border border-glass-5 rounded-md text-[10px] font-bold text-text-muted uppercase">Tujuan Spesifik</span>
-             </div>
+
+          <div class="space-y-3 flex-1">
+            <h3 class="text-xl md:text-2xl font-bold text-text-primary tracking-tight">Website Lead Generation</h3>
+            <p class="text-text-secondary text-sm md:text-base leading-relaxed">
+              Dibuat khusus buat bisnis yang butuh lebih banyak calon pelanggan. Pengunjung diarahkan buat langsung isi form, minta penawaran, atau chat ke WhatsApp.
+            </p>
+
+            <div class="space-y-2 pt-2">
+              <div class="flex items-center gap-2 text-sm text-text-secondary">
+                <div class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></div>
+                Form kontak &amp; permintaan penawaran harga
+              </div>
+              <div class="flex items-center gap-2 text-sm text-text-secondary">
+                <div class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></div>
+                Tombol WhatsApp di posisi yang pas
+              </div>
+              <div class="flex items-center gap-2 text-sm text-text-secondary">
+                <div class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></div>
+                Halaman penawaran khusus &amp; konsultasi
+              </div>
+              <div class="flex items-center gap-2 text-sm text-text-secondary">
+                <div class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></div>
+                Penjelasan layanan yang meyakinkan calon klien
+              </div>
+            </div>
+
+            <div class="mt-4 p-3.5 bg-primary/5 border border-primary/15 rounded-xl text-sm text-text-secondary leading-relaxed">
+              <strong class="text-text-primary">Cocok buat:</strong> Konsultan, agensi, jasa B2B, kontraktor, klinik, dan usaha jasa yang cari lebih banyak prospek.
+            </div>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-border/40 flex items-center justify-between gap-4">
+            <a href="/contact" class="inline-flex items-center gap-2 text-sm font-bold text-primary md:hover:text-accent transition-colors">
+              <span>Ngobrolin Kebutuhan Anda</span>
+              <svg class="w-4 h-4 md:group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </a>
+            <a href="/layanan#lead-generation" class="text-xs font-semibold text-text-muted hover:text-text-primary transition-colors">Detail →</a>
           </div>
         </div>
       </div>
 
-      <!-- Card -->
-      <div class="services-card group relative bg-surface-elevated border border-border rounded-2xl p-6 md:p-8 transition-all duration-300 ease-out md:hover:-translate-y-1 md:hover:shadow-md md:hover:border-primary/40 active:scale-[0.98] active:bg-surface-elevated/80 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="relative z-10">
-          <div class="w-14 h-14 rounded-2xl bg-glass-5 border border-border flex items-center justify-center mb-5 md:mb-6 text-primary md:group-hover:scale-110 md:group-hover:bg-primary/10 transition-transform">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <!-- Service 2: Booking Website -->
+      <div class="services-card group relative bg-background border border-border/70 rounded-2xl md:rounded-3xl p-7 md:p-8 flex flex-col overflow-hidden transition-all duration-300 md:hover:-translate-y-1 md:hover:border-accent/40 md:hover:shadow-soft-lg active:scale-[0.98]">
+        <div class="absolute inset-0 bg-gradient-to-br from-accent/8 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"></div>
+        <div class="relative z-10 flex flex-col h-full">
+          <div class="flex items-start justify-between mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-accent/10 border border-accent/20 flex items-center justify-center text-accent md:group-hover:scale-110 md:group-hover:bg-accent/20 transition-all duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <span class="text-[10px] font-black uppercase tracking-widest text-accent bg-accent/10 border border-accent/20 px-2.5 py-1 rounded-full">02</span>
           </div>
-          <h3 class="text-xl font-bold text-text-primary mb-3">Profil Usaha Lengkap</h3>
-          <div class="space-y-3">
-             <p class="text-text-secondary leading-relaxed text-sm">
-               Tampilkan info legal, alamat, dan daftar layanan resmi untuk yakinkan mitra atau klien baru.
-             </p>
-             <div class="flex flex-wrap gap-2 pt-2">
-                <span class="px-2 py-1 bg-surface border border-glass-5 rounded-md text-[10px] font-bold text-text-muted uppercase">Identitas Bisnis</span>
-                <span class="px-2 py-1 bg-surface border border-glass-5 rounded-md text-[10px] font-bold text-text-muted uppercase">Lengkap</span>
-             </div>
+
+          <div class="space-y-3 flex-1">
+            <h3 class="text-xl md:text-2xl font-bold text-text-primary tracking-tight">Website Booking</h3>
+            <p class="text-text-secondary text-sm md:text-base leading-relaxed">
+              Bikin pelanggan gampang lihat daftar layanan, pilih jadwal yang cocok, dan langsung booking dari website. Nggak perlu lagi rebutan antrian lewat chat.
+            </p>
+
+            <div class="space-y-2 pt-2">
+              <div class="flex items-center gap-2 text-sm text-text-secondary">
+                <div class="w-1.5 h-1.5 rounded-full bg-accent shrink-0"></div>
+                Pilihan jadwal &amp; tanggal pemesanan
+              </div>
+              <div class="flex items-center gap-2 text-sm text-text-secondary">
+                <div class="w-1.5 h-1.5 rounded-full bg-accent shrink-0"></div>
+                Form booking yang langsung masuk ke admin
+              </div>
+              <div class="flex items-center gap-2 text-sm text-text-secondary">
+                <div class="w-1.5 h-1.5 rounded-full bg-accent shrink-0"></div>
+                Daftar layanan lengkap sama estimasi harga
+              </div>
+              <div class="flex items-center gap-2 text-sm text-text-secondary">
+                <div class="w-1.5 h-1.5 rounded-full bg-accent shrink-0"></div>
+                Profil tim, dokter, atau teknisi
+              </div>
+            </div>
+
+            <div class="mt-4 p-3.5 bg-accent/5 border border-accent/15 rounded-xl text-sm text-text-secondary leading-relaxed">
+              <strong class="text-text-primary">Cocok buat:</strong> Klinik, bengkel, salon, barbershop, studio foto, rental, dan usaha yang pakai sistem janji temu.
+            </div>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-border/40 flex items-center justify-between gap-4">
+            <a href="/contact" class="inline-flex items-center gap-2 text-sm font-bold text-accent md:hover:text-primary transition-colors">
+              <span>Ngobrolin Kebutuhan Anda</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </a>
+            <a href="/layanan#booking" class="text-xs font-semibold text-text-muted hover:text-text-primary transition-colors">Detail →</a>
           </div>
         </div>
       </div>
 
-      <!-- Card -->
-      <div class="services-card group relative bg-surface-elevated border border-border rounded-2xl p-6 md:p-8 transition-all duration-300 ease-out md:hover:-translate-y-1 md:hover:shadow-md md:hover:border-primary/40 active:scale-[0.98] active:bg-surface-elevated/80 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="relative z-10">
-          <div class="w-14 h-14 rounded-2xl bg-glass-5 border border-border flex items-center justify-center mb-5 md:mb-6 text-primary md:group-hover:scale-110 md:group-hover:bg-primary/10 transition-transform">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z"/></svg>
+      <!-- Service 3: Sales Website -->
+      <div class="services-card group relative bg-background border border-border/70 rounded-2xl md:rounded-3xl p-7 md:p-8 flex flex-col overflow-hidden transition-all duration-300 md:hover:-translate-y-1 md:hover:border-secondary/40 md:hover:shadow-soft-lg active:scale-[0.98]">
+        <div class="absolute inset-0 bg-gradient-to-br from-secondary/8 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"></div>
+        <div class="relative z-10 flex flex-col h-full">
+          <div class="flex items-start justify-between mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center text-secondary md:group-hover:scale-110 md:group-hover:bg-secondary/20 transition-all duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            </div>
+            <span class="text-[10px] font-black uppercase tracking-widest text-secondary bg-secondary/10 border border-secondary/20 px-2.5 py-1 rounded-full">03</span>
           </div>
-          <h3 class="text-xl font-bold text-text-primary mb-3">Katalog & Order</h3>
-          <div class="space-y-3">
-             <p class="text-text-secondary leading-relaxed text-sm">
-               Daftar produk rapi dengan filter. Mudahkan pembeli memilih dan langsung order ke Anda.
-             </p>
-             <div class="flex flex-wrap gap-2 pt-2">
-                <span class="px-2 py-1 bg-surface border border-glass-5 rounded-md text-[10px] font-bold text-text-muted uppercase">List Barang</span>
-                <span class="px-2 py-1 bg-surface border border-glass-5 rounded-md text-[10px] font-bold text-text-muted uppercase">Pilih & Pesan</span>
-             </div>
+
+          <div class="space-y-3 flex-1">
+            <h3 class="text-xl md:text-2xl font-bold text-text-primary tracking-tight">Website Sales / Jualan</h3>
+            <p class="text-text-secondary text-sm md:text-base leading-relaxed">
+              Bantu bisnis jualan produk secara online lewat katalog yang rapi, pilihan varian yang jelas, dan proses checkout yang nggak bikin pembeli bingung.
+            </p>
+
+            <div class="space-y-2 pt-2">
+              <div class="flex items-center gap-2 text-sm text-text-secondary">
+                <div class="w-1.5 h-1.5 rounded-full bg-secondary shrink-0"></div>
+                Katalog produk pakai kategori &amp; filter
+              </div>
+              <div class="flex items-center gap-2 text-sm text-text-secondary">
+                <div class="w-1.5 h-1.5 rounded-full bg-secondary shrink-0"></div>
+                Halaman detail produk yang jelas &amp; lengkap
+              </div>
+              <div class="flex items-center gap-2 text-sm text-text-secondary">
+                <div class="w-1.5 h-1.5 rounded-full bg-secondary shrink-0"></div>
+                Keranjang belanja &amp; checkout langsung ke WhatsApp
+              </div>
+              <div class="flex items-center gap-2 text-sm text-text-secondary">
+                <div class="w-1.5 h-1.5 rounded-full bg-secondary shrink-0"></div>
+                Halaman promo atau paket penawaran khusus
+              </div>
+            </div>
+
+            <div class="mt-4 p-3.5 bg-secondary/5 border border-secondary/15 rounded-xl text-sm text-text-secondary leading-relaxed">
+              <strong class="text-text-primary">Cocok buat:</strong> Toko retail, kuliner &amp; catering, UMKM produk fisik, supplier, dan distributor.
+            </div>
+          </div>
+
+          <div class="mt-6 pt-5 border-t border-border/40 flex items-center justify-between gap-4">
+            <a href="/contact" class="inline-flex items-center gap-2 text-sm font-bold text-secondary md:hover:text-primary transition-colors">
+              <span>Ngobrolin Kebutuhan Anda</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </a>
+            <a href="/layanan#sales" class="text-xs font-semibold text-text-muted hover:text-text-primary transition-colors">Detail →</a>
           </div>
         </div>
       </div>
 
-      <!-- Card -->
-      <div class="services-card group relative bg-surface-elevated border border-border rounded-2xl p-6 md:p-8 transition-all duration-300 ease-out md:hover:-translate-y-1 md:hover:shadow-md md:hover:border-primary/40 active:scale-[0.98] active:bg-surface-elevated/80 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="relative z-10">
-          <div class="w-14 h-14 rounded-2xl bg-glass-5 border border-border flex items-center justify-center mb-5 md:mb-6 text-primary md:group-hover:scale-110 md:group-hover:bg-primary/10 transition-transform">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.16 3.84a2.76 2.76 0 0 0-3.92 0l-12.4 12.4a2 2 0 0 0-.5.98l-.78 4.71a.75.75 0 0 0 .9.9l4.72-.78a2 2 0 0 0 .98-.5l12.4-12.4a2.76 2.76 0 0 0 0-3.92Z"/><path d="m16.5 7.5 4 4"/></svg>
+      <!-- Service 4: Business Website -->
+      <div class="services-card group relative bg-background border border-border/70 rounded-2xl md:rounded-3xl p-7 md:p-8 flex flex-col overflow-hidden transition-all duration-300 md:hover:-translate-y-1 md:hover:border-primary/40 md:hover:shadow-soft-lg active:scale-[0.98]">
+        <div class="absolute inset-0 bg-gradient-to-br from-primary/8 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"></div>
+        <div class="relative z-10 flex flex-col h-full">
+          <div class="flex items-start justify-between mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 flex items-center justify-center text-primary md:group-hover:scale-110 md:group-hover:bg-primary/20 transition-all duration-300">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <span class="text-[10px] font-black uppercase tracking-widest text-primary bg-primary/10 border border-primary/20 px-2.5 py-1 rounded-full">04</span>
           </div>
-          <h3 class="text-xl font-bold text-text-primary mb-3">Galeri & Rekam Jejak</h3>
-          <div class="space-y-3">
-             <p class="text-text-secondary leading-relaxed text-sm">
-               Kumpulkan foto hasil proyek Anda dalam satu galeri rapi sebagai bukti nyata rekam jejak bisnis.
-             </p>
-             <div class="flex flex-wrap gap-2 pt-2">
-                <span class="px-2 py-1 bg-surface border border-glass-5 rounded-md text-[10px] font-bold text-text-muted uppercase">Galeri Foto</span>
-                <span class="px-2 py-1 bg-surface border border-glass-5 rounded-md text-[10px] font-bold text-text-muted uppercase">Riwayat Proyek</span>
-             </div>
-          </div>
-        </div>
-      </div>
 
-      <!-- Card -->
-      <div class="services-card group relative bg-surface-elevated border border-border rounded-2xl p-6 md:p-8 transition-all duration-300 ease-out md:hover:-translate-y-1 md:hover:shadow-md md:hover:border-primary/40 active:scale-[0.98] active:bg-surface-elevated/80 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="relative z-10">
-          <div class="w-14 h-14 rounded-2xl bg-glass-5 border border-border flex items-center justify-center mb-5 md:mb-6 text-primary md:group-hover:scale-110 md:group-hover:bg-primary/10 transition-transform">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          <div class="space-y-3 flex-1">
+            <h3 class="text-xl md:text-2xl font-bold text-text-primary tracking-tight">Website Bisnis</h3>
+            <p class="text-text-secondary text-sm md:text-base leading-relaxed">
+              Jadi pusat info resmi bisnis Anda. Calon pelanggan atau mitra jadi gampang kenal layanan Anda, lihat portofolio, cek lokasi, dan langsung menghubungi.
+            </p>
+
+            <div class="space-y-2 pt-2">
+              <div class="flex items-center gap-2 text-sm text-text-secondary">
+                <div class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></div>
+                Profil usaha &amp; halaman layanan lengkap
+              </div>
+              <div class="flex items-center gap-2 text-sm text-text-secondary">
+                <div class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></div>
+                Galeri portofolio &amp; rekam jejak proyek
+              </div>
+              <div class="flex items-center gap-2 text-sm text-text-secondary">
+                <div class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></div>
+                Info lokasi, jam buka, &amp; kontak cabang
+              </div>
+              <div class="flex items-center gap-2 text-sm text-text-secondary">
+                <div class="w-1.5 h-1.5 rounded-full bg-primary shrink-0"></div>
+                Struktur SEO dasar biar gampang ketemu di Google
+              </div>
+            </div>
+
+            <div class="mt-4 p-3.5 bg-primary/5 border border-primary/15 rounded-xl text-sm text-text-secondary leading-relaxed">
+              <strong class="text-text-primary">Cocok buat:</strong> Perusahaan (PT/CV), kontraktor, lembaga pendidikan, dan bisnis yang punya beberapa cabang.
+            </div>
           </div>
-          <h3 class="text-xl font-bold text-text-primary mb-3">Info Bisnis & Cabang</h3>
-          <div class="space-y-3">
-             <p class="text-text-secondary leading-relaxed text-sm">
-               Pusat info lokasi, jam buka, dan peta petunjuk arah agar pelanggan mudah berkunjung langsung.
-             </p>
-             <div class="flex flex-wrap gap-2 pt-2">
-                <span class="px-2 py-1 bg-surface border border-glass-5 rounded-md text-[10px] font-bold text-text-muted uppercase">Peta Lokasi</span>
-                <span class="px-2 py-1 bg-surface border border-glass-5 rounded-md text-[10px] font-bold text-text-muted uppercase">Jadwal Buka</span>
-             </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Card -->
-      <div class="services-card group relative bg-surface-elevated border border-border rounded-2xl p-6 md:p-8 transition-all duration-300 ease-out md:hover:-translate-y-1 md:hover:shadow-md md:hover:border-primary/40 active:scale-[0.98] active:bg-surface-elevated/80 overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="relative z-10">
-          <div class="w-14 h-14 rounded-2xl bg-glass-5 border border-border flex items-center justify-center mb-5 md:mb-6 text-primary md:group-hover:scale-110 md:group-hover:bg-primary/10 transition-transform">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M7 7v10"/><path d="M11 7v10"/><path d="m15 14 3-3-3-3"/></svg>
-          </div>
-          <h3 class="text-xl font-bold text-text-primary mb-3">Sistem Khusus / Kustom</h3>
-          <div class="space-y-3">
-             <p class="text-text-secondary leading-relaxed text-sm">
-               Butuh fitur spesial seperti pendaftaran member atau isi form? Kami bisa buatkan sistem kustomnya.
-             </p>
-             <div class="flex flex-wrap gap-2 pt-2">
-                <span class="px-2 py-1 bg-surface border border-glass-5 rounded-md text-[10px] font-bold text-text-muted uppercase">Sesuai Alur</span>
-                <span class="px-2 py-1 bg-surface border border-glass-5 rounded-md text-[10px] font-bold text-text-muted uppercase">Bisa Kustomisasi</span>
-             </div>
+
+          <div class="mt-6 pt-5 border-t border-border/40 flex items-center justify-between gap-4">
+            <a href="/contact" class="inline-flex items-center gap-2 text-sm font-bold text-primary md:hover:text-accent transition-colors">
+              <span>Ngobrolin Kebutuhan Anda</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+            </a>
+            <a href="/layanan#business" class="text-xs font-semibold text-text-muted hover:text-text-primary transition-colors">Detail →</a>
           </div>
         </div>
       </div>
@@ -145,15 +229,17 @@
     </div>
 
     <!-- Bottom CTA -->
-    <div class="services-bottom text-center mt-12 md:mt-24 px-4 md:px-0">
+    <div class="services-bottom text-center mt-14 md:mt-20 px-4 md:px-0">
+      <p class="text-sm text-text-muted mb-2 font-medium">Masih bingung mana yang paling pas buat bisnis Anda?</p>
       <h3 class="text-2xl md:text-3xl font-bold text-text-primary text-balance mb-3 md:mb-4">
-        Belum yakin mana yang cocok?
+        Ceritain aja bisnis Anda, nanti kami bantu pilihkan.
       </h3>
-      <p class="max-w-xl mx-auto text-base sm:text-lg text-text-secondary text-balance mb-6 md:mb-8">
-        Bicarakan cara kerja bisnis Anda. Kami bantu pilihkan struktur yang paling efisien dan sesuai budget.
+      <p class="max-w-xl mx-auto text-base text-text-secondary text-balance mb-7">
+        Konsultasinya gratis dan santai. Kami bantu lihat kebutuhan bisnis Anda dulu, baru kasih rekomendasi yang paling masuk akal.
       </p>
-      <a href="/contact" class="inline-flex justify-center items-center gap-2 bg-primary hover:bg-accent text-primary-foreground font-bold py-4 px-8 rounded-xl min-h-[56px] shadow-md transition-all duration-300 md:hover:scale-105 md:hover:shadow-sm active:scale-95 w-full sm:w-auto">
-        Konsultasi Sekarang
+      <a href="/contact" class="inline-flex justify-center items-center gap-2.5 bg-primary hover:bg-accent text-primary-foreground font-bold py-4 px-10 rounded-xl min-h-[56px] shadow-md transition-all duration-300 md:hover:scale-105 active:scale-95 w-full sm:w-auto">
+        Konsultasi Gratis
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
       </a>
     </div>
 
@@ -170,47 +256,31 @@
     const cards = document.querySelectorAll(".services-card");
     const bottom = document.querySelector(".services-bottom");
 
-    if (header) header.style.opacity = "0";
-    if (bottom) bottom.style.opacity = "0";
+    if (header) (header as HTMLElement).style.opacity = "0";
+    if (bottom) (bottom as HTMLElement).style.opacity = "0";
     cards.forEach(c => (c as HTMLElement).style.opacity = "0");
 
     let animated = false;
-    inView(header, () => {
-      if (animated) return;
-      animated = true;
+    if (header) {
+      inView(header, () => {
+        if (animated) return;
+        animated = true;
 
-      const isMobile = window.innerWidth < 768;
-      const yOffset = isMobile ? 16 : 32;
+        const isMobile = window.innerWidth < 768;
+        const yOffset = isMobile ? 16 : 28;
 
-      // Animate header
-      if (header) {
-        animate(
-          header,
-          { opacity: [0, 1], y: [yOffset, 0] },
-          { duration: 0.6, easing: [0.22, 1, 0.36, 1] }
-        );
-      }
+        animate(header, { opacity: [0, 1], y: [yOffset, 0] }, { duration: 0.6, easing: [0.22, 1, 0.36, 1] });
 
-      // Animate cards staggered
-      setTimeout(() => {
-        animate(
-          ".services-card",
-          { opacity: [0, 1], y: [yOffset, 0] },
-          { duration: 0.6, delay: stagger(isMobile ? 0.05 : 0.1), easing: [0.22, 1, 0.36, 1] }
-        );
-      }, 200);
-
-      // Animate bottom CTA
-      if (bottom) {
         setTimeout(() => {
-          animate(
-            bottom,
-            { opacity: [0, 1], y: [yOffset, 0] },
-            { duration: 0.6, easing: [0.22, 1, 0.36, 1] }
-          );
-        }, 600);
-      }
+          animate(".services-card", { opacity: [0, 1], y: [yOffset, 0] }, { duration: 0.6, delay: stagger(isMobile ? 0.05 : 0.1), easing: [0.22, 1, 0.36, 1] });
+        }, 200);
 
-    }, { margin: "-15% 0px" });
+        if (bottom) {
+          setTimeout(() => {
+            animate(bottom, { opacity: [0, 1], y: [yOffset, 0] }, { duration: 0.6, easing: [0.22, 1, 0.36, 1] });
+          }, 650);
+        }
+      }, { margin: "-15% 0px" });
+    }
   }
 </script>

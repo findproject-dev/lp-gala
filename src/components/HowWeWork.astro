@@ -1,112 +1,131 @@
 ---
-// src/components/HowWeWork.astro
+// src/components/HowWeWork.astro — Cara Kami Kerja
 ---
 
-<section id="how-we-work" class="py-24 md:py-32 bg-background relative overflow-hidden">
+<section id="how-we-work" class="py-24 md:py-32 bg-background relative overflow-hidden border-t border-glass-5">
+
+  <!-- Subtle background accent -->
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse,_var(--tw-gradient-stops))] from-primary/5 to-transparent rounded-full blur-[64px] pointer-events-none -z-0 transform-gpu"></div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    
+
     <!-- Section Header -->
     <div class="hww-header max-w-3xl mx-auto text-center mb-16 md:mb-24 px-2 md:px-0">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full border border-border bg-surface shadow-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        <span class="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-text-primary">Alur Kerja</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        <span class="text-[10px] md:text-xs font-bold uppercase tracking-wider text-text-primary">Cara Kami Kerja</span>
       </div>
-      
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight text-balance mb-4 md:mb-6">
-        Proses Kerja yang Jelas
+
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight text-balance mb-5">
+        Alur Kerja yang <span class="text-primary">Jelas</span> dan Gampang Dipantau
       </h2>
-      
+
       <p class="text-base sm:text-lg text-text-secondary leading-relaxed text-balance">
-        Dari awal diskusi sampai website jadi, setiap langkah berjalan transparan dan bisa Anda pantau.
+        Dari awal ngobrolin bisnis Anda sampai website siap dipakai — setiap tahapannya jelas dan bisa Anda ikuti.
       </p>
     </div>
 
-    <!-- Timeline Container -->
+    <!-- Steps -->
     <div class="hww-timeline relative">
-      
-      <!-- Subtle Connector Lines (Hidden behind cards, visible in gaps) -->
-      <div class="absolute inset-0 z-0 pointer-events-none">
-        <!-- Desktop Horizontal Line -->
-        <div class="hidden lg:block absolute top-[56px] left-[5%] right-[5%] h-[1px] bg-gradient-to-r from-transparent via-border to-transparent"></div>
-        
-        <!-- Mobile Vertical Line -->
-        <div class="block md:hidden absolute top-[5%] bottom-[5%] left-[48px] w-[1px] bg-gradient-to-b from-transparent via-border to-transparent"></div>
-      </div>
 
-      <!-- Steps Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 relative z-10">
-        
-        <!-- Step 1: Diskusi -->
-        <div class="group relative bg-surface-elevated border border-border/50 rounded-2xl p-6 lg:p-8 transition-all duration-500 md:hover:-translate-y-1 md:hover:border-border md:hover:shadow-soft-lg active:scale-[0.98] flex flex-col h-full">
-          
+      <!-- Desktop Connector Line -->
+      <div class="hidden lg:block absolute top-[52px] left-[12.5%] right-[12.5%] h-[1px] bg-gradient-to-r from-transparent via-border to-transparent z-0 pointer-events-none"></div>
+
+      <!-- Mobile Connector Line -->
+      <div class="block lg:hidden absolute top-[5%] bottom-[5%] left-[31px] w-[1px] bg-gradient-to-b from-transparent via-border to-transparent z-0 pointer-events-none"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 relative z-10">
+
+        <!-- Step 1: Understand -->
+        <div class="group relative bg-surface-elevated border border-border/50 rounded-2xl p-6 lg:p-7 transition-all duration-400 md:hover:-translate-y-1.5 md:hover:border-border md:hover:shadow-soft-lg active:scale-[0.98] flex flex-col h-full">
           <div class="flex items-center justify-between mb-6 md:mb-8">
-            <div class="w-12 h-12 rounded-full bg-surface border border-border flex items-center justify-center text-text-secondary group-hover:text-primary transition-all duration-500">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <div class="w-[52px] h-[52px] rounded-full bg-surface border border-border flex items-center justify-center text-text-secondary md:group-hover:text-primary md:group-hover:border-primary/40 md:group-hover:bg-primary/5 transition-all duration-400">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
             </div>
-            <div class="px-3 py-1 text-[10px] md:text-xs font-bold uppercase tracking-wider rounded-full bg-surface border border-border text-text-muted group-hover:text-text-primary transition-colors duration-500">
-              Langkah 1
+            <div class="px-3 py-1 text-[10px] md:text-xs font-black uppercase tracking-widest rounded-full bg-surface border border-border text-text-muted md:group-hover:text-primary md:group-hover:border-primary/30 transition-colors duration-400">
+              01
             </div>
           </div>
-          
-          <h3 class="text-lg md:text-xl font-bold text-text-primary mb-2 md:mb-3">Ngobrol Kebutuhan</h3>
-          <p class="text-sm text-text-secondary leading-relaxed">
-            Ceritakan apa yang bisnis Anda butuhkan. Kami bantu susun fitur utama tanpa memaksa tambahan yang tak perlu.
+
+          <h3 class="text-lg md:text-xl font-bold text-text-primary mb-2.5 md:mb-3 tracking-tight">Pahami Bisnisnya</h3>
+          <p class="text-sm text-text-secondary leading-relaxed flex-1">
+            Kami mulai dengan dengerin dulu bisnis Anda, siapa target pembelinya, dan kendala apa yang mau diselesaikan — nggak langsung asal nawarin paket.
           </p>
+
+          <div class="mt-5 pt-4 border-t border-border/40 flex flex-wrap gap-1.5">
+            <span class="text-[10px] font-semibold text-text-muted bg-surface border border-border/50 px-2 py-1 rounded-md">Ngobrolin bisnis</span>
+            <span class="text-[10px] font-semibold text-text-muted bg-surface border border-border/50 px-2 py-1 rounded-md">Cari akar masalah</span>
+          </div>
         </div>
 
-        <!-- Step 2: Desain -->
-        <div class="group relative bg-surface-elevated border border-border/50 rounded-2xl p-6 lg:p-8 transition-all duration-500 md:hover:-translate-y-1 md:hover:border-border md:hover:shadow-soft-lg active:scale-[0.98] flex flex-col h-full">
-          
+        <!-- Step 2: Strategize -->
+        <div class="group relative bg-surface-elevated border border-border/50 rounded-2xl p-6 lg:p-7 transition-all duration-400 md:hover:-translate-y-1.5 md:hover:border-border md:hover:shadow-soft-lg active:scale-[0.98] flex flex-col h-full">
           <div class="flex items-center justify-between mb-6 md:mb-8">
-            <div class="w-12 h-12 rounded-full bg-surface border border-border flex items-center justify-center text-text-secondary group-hover:text-primary transition-all duration-500">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <div class="w-[52px] h-[52px] rounded-full bg-surface border border-border flex items-center justify-center text-text-secondary md:group-hover:text-primary md:group-hover:border-primary/40 md:group-hover:bg-primary/5 transition-all duration-400">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 10c-.83 0-1.5-.67-1.5-1.5v-5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5z"/><path d="M20.5 10H19V8.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/><path d="M9.5 14c.83 0 1.5.67 1.5 1.5v5c0 .83-.67 1.5-1.5 1.5S8 21.33 8 20.5v-5c0-.83.67-1.5 1.5-1.5z"/><path d="M3.5 14H5v1.5c0 .83-.67 1.5-1.5 1.5S2 16.33 2 15.5 2.67 14 3.5 14z"/><path d="M14 14.5c0-.83.67-1.5 1.5-1.5h5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5z"/><path d="M15.5 9H14v1.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5S16.33 9 15.5 9z"/><path d="M10 9.5C10 8.67 9.33 8 8.5 8h-5C2.67 8 2 8.67 2 9.5S2.67 11 3.5 11h5c.83 0 1.5-.67 1.5-1.5z"/><path d="M8.5 15H10v-1.5c0-.83-.67-1.5-1.5-1.5S7 12.67 7 13.5 7.67 15 8.5 15z"/></svg>
             </div>
-            <div class="px-3 py-1 text-[10px] md:text-xs font-bold uppercase tracking-wider rounded-full bg-surface border border-border text-text-muted group-hover:text-text-primary transition-colors duration-500">
-              Langkah 2
+            <div class="px-3 py-1 text-[10px] md:text-xs font-black uppercase tracking-widest rounded-full bg-surface border border-border text-text-muted md:group-hover:text-primary md:group-hover:border-primary/30 transition-colors duration-400">
+              02
             </div>
           </div>
-          
-          <h3 class="text-lg md:text-xl font-bold text-text-primary mb-2 md:mb-3">Cek Desain Awal</h3>
-          <p class="text-sm text-text-secondary leading-relaxed">
-            Kami menyiapkan konsep tampilan atau wireframe sederhana sebagai acuan. Untuk project yang lebih kompleks, desain dibuat lebih detail sebelum proses pengembangan dimulai.
+
+          <h3 class="text-lg md:text-xl font-bold text-text-primary mb-2.5 md:mb-3 tracking-tight">Susun Strategi</h3>
+          <p class="text-sm text-text-secondary leading-relaxed flex-1">
+            Nentuin tujuan utama website, susunan info biar gampang dibaca, alur pengunjung pas mau pesan, dan fitur yang beneran kepakai.
           </p>
+
+          <div class="mt-5 pt-4 border-t border-border/40 flex flex-wrap gap-1.5">
+            <span class="text-[10px] font-semibold text-text-muted bg-surface border border-border/50 px-2 py-1 rounded-md">Tujuan website</span>
+            <span class="text-[10px] font-semibold text-text-muted bg-surface border border-border/50 px-2 py-1 rounded-md">Alur pengunjung</span>
+          </div>
         </div>
 
-        <!-- Step 3: Development -->
-        <div class="group relative bg-surface-elevated border border-border/50 rounded-2xl p-6 lg:p-8 transition-all duration-500 md:hover:-translate-y-1 md:hover:border-border md:hover:shadow-soft-lg active:scale-[0.98] flex flex-col h-full">
-          
+        <!-- Step 3: Build -->
+        <div class="group relative bg-surface-elevated border border-border/50 rounded-2xl p-6 lg:p-7 transition-all duration-400 md:hover:-translate-y-1.5 md:hover:border-border md:hover:shadow-soft-lg active:scale-[0.98] flex flex-col h-full">
           <div class="flex items-center justify-between mb-6 md:mb-8">
-            <div class="w-12 h-12 rounded-full bg-surface border border-border flex items-center justify-center text-text-secondary group-hover:text-primary transition-all duration-500">
+            <div class="w-[52px] h-[52px] rounded-full bg-surface border border-border flex items-center justify-center text-text-secondary md:group-hover:text-primary md:group-hover:border-primary/40 md:group-hover:bg-primary/5 transition-all duration-400">
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
             </div>
-            <div class="px-3 py-1 text-[10px] md:text-xs font-bold uppercase tracking-wider rounded-full bg-surface border border-border text-text-muted group-hover:text-text-primary transition-colors duration-500">
-              Langkah 3
+            <div class="px-3 py-1 text-[10px] md:text-xs font-black uppercase tracking-widest rounded-full bg-surface border border-border text-text-muted md:group-hover:text-primary md:group-hover:border-primary/30 transition-colors duration-400">
+              03
             </div>
           </div>
-          
-          <h3 class="text-lg md:text-xl font-bold text-text-primary mb-2 md:mb-3">Mulai Koding</h3>
-          <p class="text-sm text-text-secondary leading-relaxed">
-            Tim kami merancang sistem dengan kode rapi agar website berjalan ringan tanpa error.
+
+          <h3 class="text-lg md:text-xl font-bold text-text-primary mb-2.5 md:mb-3 tracking-tight">Desain &amp; Bangun</h3>
+          <p class="text-sm text-text-secondary leading-relaxed flex-1">
+            Ngedesain dan ngoding website dengan kode yang rapi, ringan, dan pas di layar HP maupun laptop. Semuanya dibuat biar pengunjung nyaman dan mau bertindak.
           </p>
+
+          <div class="mt-5 pt-4 border-t border-border/40 flex flex-wrap gap-1.5">
+            <span class="text-[10px] font-semibold text-text-muted bg-surface border border-border/50 px-2 py-1 rounded-md">Desain custom</span>
+            <span class="text-[10px] font-semibold text-text-muted bg-surface border border-border/50 px-2 py-1 rounded-md">Pengembangan</span>
+          </div>
         </div>
 
-        <!-- Step 4: Launch -->
-        <div class="group relative bg-surface-elevated border border-primary/20 rounded-2xl p-6 lg:p-8 transition-all duration-500 md:hover:-translate-y-1 md:hover:border-primary/50 md:hover:shadow-soft-lg active:scale-[0.98] flex flex-col h-full">
-          
-          <div class="flex items-center justify-between mb-6 md:mb-8">
-            <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground shadow-sm group-hover:scale-110 transition-transform duration-500">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15a2.18 2.18 0 0 0-2.91-.09c-.79.78-.81 2.07-.09 2.91 1.26 1.5 5 2 5 2s-.5-3.74-2-5"/><path d="M9 12a2.18 2.18 0 0 0-2.91-.09c-.79.78-.81 2.07-.09 2.91 1.26 1.5 5 2 5 2s-.5-3.74-2-5"/><path d="M15 12a2.18 2.18 0 0 0-2.91-.09c-.79.78-.81 2.07-.09 2.91 1.26 1.5 5 2 5 2s-.5-3.74-2-5"/><path d="M22 2 7 17"/></svg>
+        <!-- Step 4: Optimize (Highlighted) -->
+        <div class="group relative bg-surface-elevated border border-primary/20 rounded-2xl p-6 lg:p-7 transition-all duration-400 md:hover:-translate-y-1.5 md:hover:border-primary/50 md:hover:shadow-soft-lg active:scale-[0.98] flex flex-col h-full">
+          <div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent rounded-2xl pointer-events-none"></div>
+          <div class="flex items-center justify-between mb-6 md:mb-8 relative z-10">
+            <div class="w-[52px] h-[52px] rounded-full bg-primary flex items-center justify-center text-primary-foreground shadow-md md:group-hover:scale-110 transition-transform duration-400">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
             </div>
-            <div class="px-3 py-1 text-[10px] md:text-xs font-bold uppercase tracking-wider rounded-full bg-surface border border-primary/20 text-primary transition-colors duration-500">
-              Langkah 4
+            <div class="px-3 py-1 text-[10px] md:text-xs font-black uppercase tracking-widest rounded-full bg-primary/10 border border-primary/20 text-primary">
+              04
             </div>
           </div>
-          
-          <h3 class="text-lg md:text-xl font-bold text-text-primary mb-2 md:mb-3">Cek Akhir & Rilis</h3>
-          <p class="text-sm text-text-secondary leading-relaxed">
-            Setelah semua fitur dipastikan berjalan normal, website resmi diserahkan kepada Anda.
-          </p>
+
+          <div class="relative z-10 flex flex-col h-full">
+            <h3 class="text-lg md:text-xl font-bold text-text-primary mb-2.5 md:mb-3 tracking-tight">Optimasi</h3>
+            <p class="text-sm text-text-secondary leading-relaxed flex-1">
+              Mastiin website jalan sesuai tujuan bisnis — loading cepat, SEO dasar aman, rapi di HP, dan tombol CTA gampang ditemukan pengunjung.
+            </p>
+
+            <div class="mt-5 pt-4 border-t border-primary/15 flex flex-wrap gap-1.5">
+              <span class="text-[10px] font-semibold text-primary/80 bg-primary/5 border border-primary/15 px-2 py-1 rounded-md">Cepat</span>
+              <span class="text-[10px] font-semibold text-primary/80 bg-primary/5 border border-primary/15 px-2 py-1 rounded-md">SEO dasar</span>
+              <span class="text-[10px] font-semibold text-primary/80 bg-primary/5 border border-primary/15 px-2 py-1 rounded-md">Nyaman di HP</span>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -124,8 +143,8 @@
     const header = document.querySelector(".hww-header");
     const timeline = document.querySelector(".hww-timeline");
 
-    if (header) header.style.opacity = "0";
-    if (timeline) timeline.style.opacity = "0";
+    if (header) (header as HTMLElement).style.opacity = "0";
+    if (timeline) (timeline as HTMLElement).style.opacity = "0";
 
     let animated = false;
     inView("#how-we-work", () => {
@@ -133,26 +152,17 @@
       animated = true;
 
       const isMobile = window.innerWidth < 768;
-      const yOffset = isMobile ? 16 : 32;
+      const yOffset = isMobile ? 16 : 28;
 
       if (header) {
-        animate(
-          header,
-          { opacity: [0, 1], y: [yOffset, 0] },
-          { duration: 0.6, easing: [0.22, 1, 0.36, 1] }
-        );
+        animate(header, { opacity: [0, 1], y: [yOffset, 0] }, { duration: 0.6, easing: [0.22, 1, 0.36, 1] });
       }
 
       if (timeline) {
         setTimeout(() => {
-          animate(
-            timeline,
-            { opacity: [0, 1], y: [yOffset, 0] },
-            { duration: 0.6, easing: [0.22, 1, 0.36, 1] }
-          );
-        }, 200);
+          animate(timeline, { opacity: [0, 1], y: [yOffset, 0] }, { duration: 0.6, easing: [0.22, 1, 0.36, 1] });
+        }, 220);
       }
-
     }, { margin: "-15% 0px" });
   }
 </script>

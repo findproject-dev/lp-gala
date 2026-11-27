@@ -2,24 +2,25 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
-import WhyGalacode from "../components/WhyGalacode.astro";
 import Problem from "../components/Problem.astro";
 import Services from "../components/Services.astro";
-
 import HowWeWork from "../components/HowWeWork.astro";
+import PortfolioPreview from "../components/PortfolioPreview.astro";
 import CTA from "../components/CTA.astro";
 import Footer from "../components/Footer.astro";
 ---
 
-<Layout title="GALACODE | Jasa Pembuatan Website Profesional">
+<Layout
+	title="GALACODE | Digital Growth Studio — Ubah Pengunjung Jadi Pelanggan"
+	description="Galacode bantu bisnis bangun website yang nggak cuma enak dilihat, tapi juga dirancang buat narik calon pelanggan, mempermudah proses beli, dan dukung pertumbuhan bisnis."
+>
 	<Header />
 	<main>
 		<Hero />
-		<WhyGalacode />
 		<Problem />
 		<Services />
-
 		<HowWeWork />
+		<PortfolioPreview />
 		<CTA />
 	</main>
 	<Footer />

@@ -21,10 +21,10 @@ import { MessageSquare, ArrowRight, ChevronDown, Zap, Handshake, Sparkles } from
           <span>💬</span> Hubungi Kami
         </div>
         <h1 class="text-4xl md:text-5xl font-extrabold text-text-primary tracking-tight mb-6 animate-fade-in-up leading-tight" style="animation-delay: 100ms;">
-          Mari Diskusikan Website Impian Bisnismu
+          Yuk Ngobrolin Bisnis Anda
         </h1>
         <p class="text-lg md:text-xl text-text-secondary leading-relaxed animate-fade-in-up max-w-2xl mx-auto" style="animation-delay: 200ms;">
-          Ceritakan kebutuhan website Anda melalui form di bawah. Kami akan membantu memilih solusi yang paling sesuai untuk bisnis Anda.
+          Ceritain kebutuhan usaha dan target yang mau dicapai. Kami bantu pilihkan solusi website yang paling pas buat nambah calon pelanggan.
         </p>
       </section>
 
@@ -34,7 +34,7 @@ import { MessageSquare, ArrowRight, ChevronDown, Zap, Handshake, Sparkles } from
           <div class="bg-surface rounded-[2.5rem] border border-border shadow-xl shadow-primary/5 p-8 md:p-12 lg:p-16 relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-br from-white/40 dark:from-white/5 to-transparent pointer-events-none"></div>
             <div class="relative z-10">
-              <form id="wa-form" class="space-y-8">
+              <form id="wa-form" data-track="form_submit" class="space-y-8">
                 <!-- Form Row 1 -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div class="space-y-2 relative">
@@ -54,12 +54,12 @@ import { MessageSquare, ArrowRight, ChevronDown, Zap, Handshake, Sparkles } from
                   <div class="space-y-2 relative">
                     <label class="text-sm font-semibold text-text-secondary ml-1">Jenis Website <span class="text-red-500">*</span></label>
                     <select id="wa-type" class="form-input w-full bg-background border-2 border-glass-10 rounded-2xl px-5 py-3.5 focus:outline-none focus:border-accent/40 focus:ring-4 focus:ring-accent/10 transition-all text-text-primary cursor-pointer">
-                      <option value="" disabled selected>Pilih Jenis Website</option>
-                      <option value="Landing Page">Landing Page</option>
-                      <option value="Company Profile">Company Profile</option>
-                      <option value="Website CMS">Website CMS</option>
-                      <option value="E-Commerce">E-Commerce</option>
-                      <option value="Sistem Custom">Sistem Custom</option>
+                      <option value="" disabled selected>Pilih Solusi Website</option>
+                      <option value="Lead Generation Website">Lead Generation Website</option>
+                      <option value="Booking Website">Booking Website</option>
+                      <option value="Sales Website">Sales Website</option>
+                      <option value="Business Website">Business Website</option>
+                      <option value="Lainnya / Belum Yakin">Lainnya / Belum Yakin</option>
                     </select>
                     <span class="error-msg absolute -bottom-5 left-2 text-xs font-medium text-red-500 opacity-0 transition-opacity">Pilih jenis website</span>
                   </div>
@@ -206,6 +206,7 @@ import { MessageSquare, ArrowRight, ChevronDown, Zap, Handshake, Sparkles } from
               href="https://wa.me/6281919564548?text=Halo%20Galacode%20%F0%9F%91%8B%0A%0ASaya%20tertarik%20menggunakan%20jasa%20pembuatan%20website.%0ABoleh%20berkonsultasi%20terlebih%20dahulu%3F%0A%0ATerima%20kasih." 
               target="_blank" 
               rel="noopener noreferrer"
+              data-track="whatsapp_click"
               class="inline-flex items-center gap-2 bg-primary hover:bg-secondary text-primary-foreground shadow-lg shadow-primary/25 border border-border px-6 py-3.5 rounded-xl font-bold text-sm md:text-base hover:bg-surface-elevated/90 transition-all hover:-translate-y-1 hover:shadow-lg hover:shadow-secondary/20 focus:outline-none focus-visible:ring-4 focus-visible:ring-secondary/30 active:scale-95 group/btn"
               aria-label="Konsultasi via WhatsApp"
             >

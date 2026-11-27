@@ -1,0 +1,235 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import CTA from "../components/CTA.astro";
+import Footer from "../components/Footer.astro";
+
+const solutions = [
+  {
+    id: "lead-generation",
+    number: "01",
+    title: "Website Lead Generation",
+    subtitle: "Buat bisnis yang pengen dapat lebih banyak calon pelanggan dan permintaan penawaran.",
+    suitableFor: "Konsultan, agensi, jasa B2B, kontraktor, klinik spesialis, lembaga kursus, dan usaha berbasis layanan lainnya.",
+    problemsSolved: [
+      "Calon klien susah nangkep layanan dan keunggulan bisnis Anda sebelum mulai chat.",
+      "Pengunjung datang lihat-lihat info, tapi pergi gitu aja tanpa ninggalin kontak atau nanya.",
+      "Pertanyaan awal yang masuk berantakan sehingga admin harus nanya kebutuhan klien dari nol.",
+    ],
+    features: [
+      {
+        name: "Form Permintaan Penawaran & Konsultasi",
+        why: "Biar calon klien yang serius bisa langsung ngisi detail kebutuhannya sejak awal sebelum tim Anda membalas.",
+      },
+      {
+        name: "Tombol WhatsApp di Posisi yang Pas",
+        why: "Bikin pengunjung gampang langsung chat dalam satu klik pas mereka lagi tertarik sama layanan Anda.",
+      },
+      {
+        name: "Susunan Penawaran & Bukti Kerja yang Jelas",
+        why: "Menyusun contoh hasil kerja, alur layanan, dan cakupan kerja secara rapi biar calon klien yakin buat mulai diskusi.",
+      },
+    ],
+    ownerBenefit: "Dapat calon pelanggan yang lebih tertarget dan siap ngobrol tanpa harus jelasin hal dasar berulang-ulang.",
+    customerBenefit: "Langsung paham layanan apa yang ditawarkan dan gampang banget buat mulai konsultasi.",
+    ctaText: "Ngobrolin Website Lead Generation",
+  },
+  {
+    id: "booking",
+    number: "02",
+    title: "Website Booking",
+    subtitle: "Buat bisnis berbasis jadwal yang pengen bikin pelanggan gampang pilih layanan dan pesan langsung.",
+    suitableFor: "Klinik kesehatan & kecantikan, bengkel, salon, barbershop, studio foto, rental kendaraan, dan jasa tour.",
+    problemsSolved: [
+      "Jadwal pelanggan sering tabrakan karena pencatatan masih manual lewat chat.",
+      "Admin kewalahan balas pertanyaan soal jam buka, slot kosong, dan perkiraan biaya.",
+      "Pelanggan malas nunggu balasan chat yang lama dan akhirnya pindah ke tempat lain.",
+    ],
+    features: [
+      {
+        name: "Daftar Layanan, Durasi & Perkiraan Harga",
+        why: "Pelanggan bisa langsung pilih layanan yang sesuai tanpa harus nanya satu-satu ke admin.",
+      },
+      {
+        name: "Pilihan Jadwal & Form Booking Online",
+        why: "Pelanggan bisa langsung amankan jadwal kapan aja, bahkan pas toko atau klinik lagi tutup.",
+      },
+      {
+        name: "Profil Tim / Dokter / Teknisi",
+        why: "Bikin pelanggan lebih tenang dan yakin milih siapa yang bakal nanganin kebutuhannya.",
+      },
+    ],
+    ownerBenefit: "Mengurangi kerjaan admin buat atur jadwal manual dan meminimalkan antrian yang berantakan.",
+    customerBenefit: "Pesan jadwal jadi jauh lebih praktis, jelas, dan nggak perlu nunggu lama.",
+    ctaText: "Ngobrolin Website Booking",
+  },
+  {
+    id: "sales",
+    number: "03",
+    title: "Website Sales / Jualan",
+    subtitle: "Buat bisnis produk yang pengen mempermudah pembeli milih barang sampai selesai order.",
+    suitableFor: "Toko retail, kuliner & catering, UMKM produk fisik, supplier, distributor, dan brand lokal.",
+    problemsSolved: [
+      "Foto dan harga produk kepencar di feed medsos sehingga pembeli susah bandingin pilihan.",
+      "Proses pesan lewat chat terasa panjang dan sering mandek di tengah jalan.",
+      "Pembeli nggak dapat info stok, varian, atau detail produk yang cukup buat mutusin beli.",
+    ],
+    features: [
+      {
+        name: "Katalog Produk pakai Kategori & Filter",
+        why: "Bantu pembeli nemuin produk yang sesuai kebutuhan atau budget tanpa harus scroll panjang.",
+      },
+      {
+        name: "Halaman Detail Produk yang Jelas",
+        why: "Menjawab keraguan pembeli soal ukuran, bahan, paket, dan cara pesan sebelum mereka klik beli.",
+      },
+      {
+        name: "Keranjang Belanja & Checkout Rapi",
+        why: "Ngirim ringkasan pesanan lengkap (barang, jumlah, catatan) langsung ke WhatsApp atau sistem order Anda.",
+      },
+    ],
+    ownerBenefit: "Terima pesanan dalam format yang sudah rapi dan siap diproses, plus buka peluang order 24 jam.",
+    customerBenefit: "Belanja lebih nyaman karena semua pilihan produk, harga, dan cara pesan ada di satu tempat.",
+    ctaText: "Ngobrolin Website Jualan",
+  },
+  {
+    id: "business",
+    number: "04",
+    title: "Website Bisnis",
+    subtitle: "Buat bisnis yang butuh pusat info resmi biar gampang ditemukan dan dipercaya.",
+    suitableFor: "Perusahaan (PT/CV), kontraktor, lembaga pendidikan, manufaktur, dan bisnis dengan beberapa cabang.",
+    problemsSolved: [
+      "Info bisnis (profil, layanan, lokasi, kontak) kepencar di banyak tempat dan nggak seragam.",
+      "Calon mitra atau klien perusahaan susah ngecek profil resmi bisnis Anda pas cari di Google.",
+      "Rekam jejak proyek atau portofolio nggak terdokumentasi di tempat yang gampang diakses.",
+    ],
+    features: [
+      {
+        name: "Profil Usaha & Halaman Layanan Lengkap",
+        why: "Ngasih gambaran utuh soal kapasitas bisnis, pengalaman, dan layanan yang Anda tawarkan ke calon mitra.",
+      },
+      {
+        name: "Galeri Portofolio & Rekam Jejak",
+        why: "Nunjukin bukti nyata pengalaman kerja bisnis Anda secara rapi dan gampang ditelusuri.",
+      },
+      {
+        name: "Info Lokasi, Cabang & SEO Dasar",
+        why: "Bantu bisnis Anda lebih gampang ketemu di Google pas calon pelanggan nyari layanan terkait di area Anda.",
+      },
+    ],
+    ownerBenefit: "Punya aset digital resmi yang sepenuhnya Anda pegang sebagai pusat rujukan semua channel promosi.",
+    customerBenefit: "Gampang kenal bisnis Anda, cek lokasi/kontak resmi, dan langsung hubungi tim yang tepat.",
+    ctaText: "Ngobrolin Website Bisnis",
+  },
+];
+---
+
+<Layout
+  title="Layanan Galacode | Solusi Website untuk Pertumbuhan Bisnis"
+  description="Empat kategori solusi website Galacode: Website Lead Generation, Website Booking, Website Sales/Jualan, dan Website Bisnis yang dirancang sesuai tujuan usaha Anda."
+>
+  <Header />
+
+  <main class="pt-28 md:pt-36 pb-16 overflow-x-hidden">
+    <!-- Hero -->
+    <section class="px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center space-y-6 mb-20 md:mb-28">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/25 bg-primary/10 text-primary text-xs font-bold uppercase tracking-[0.15em]">
+        Layanan &amp; Solusi
+      </div>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-text-primary leading-[1.1] tracking-tight text-balance">
+        Solusi Digital yang Dibuat <span class="text-primary">Sesuai Tujuan Bisnis Anda</span>
+      </h1>
+      <p class="text-base sm:text-lg md:text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed text-balance">
+        Setiap bisnis punya cara kerja dan target yang beda. Kami bagi solusi berdasarkan tujuan yang mau dicapai — bukan cuma deretan fitur teknis yang bikin pusing.
+      </p>
+    </section>
+
+    <!-- 4 Solution Categories -->
+    <section class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12 md:space-y-16 mb-20">
+      {solutions.map((item) => (
+        <article id={item.id} class="bg-surface-elevated border border-border/70 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-soft scroll-mt-28">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+
+            <!-- Left Column: Overview & Problems Solved -->
+            <div class="lg:col-span-5 space-y-6">
+              <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-black tracking-widest">
+                  {item.number}
+                </span>
+                <span class="text-xs font-bold uppercase tracking-wider text-text-muted">Kategori Solusi</span>
+              </div>
+
+              <div>
+                <h2 class="text-2xl sm:text-3xl font-black text-text-primary tracking-tight mb-3">
+                  {item.title}
+                </h2>
+                <p class="text-base text-text-secondary leading-relaxed">
+                  {item.subtitle}
+                </p>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-background border border-border/60 space-y-1.5">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-primary block">Cocok Buat Bisnis</span>
+                <p class="text-sm text-text-secondary leading-relaxed">{item.suitableFor}</p>
+              </div>
+
+              <div class="space-y-3">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-red-400">Masalah yang Diselesaikan</h3>
+                <ul class="space-y-2.5">
+                  {item.problemsSolved.map((prob) => (
+                    <li class="flex items-start gap-2.5 text-sm text-text-secondary leading-relaxed">
+                      <span class="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 shrink-0"></span>
+                      <span>{prob}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <!-- Right Column: Features + Why + Benefits + CTA -->
+            <div class="lg:col-span-7 space-y-6">
+              <div class="space-y-4">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted">Fitur yang Dikembangkan &amp; Kegunaannya</h3>
+                <div class="space-y-3">
+                  {item.features.map((feat) => (
+                    <div class="p-4 sm:p-5 rounded-2xl bg-background border border-border/60 space-y-1.5">
+                      <h4 class="text-sm sm:text-base font-bold text-text-primary">{feat.name}</h4>
+                      <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">{feat.why}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Benefits for Owner & Customer -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="p-4 rounded-2xl bg-primary/5 border border-primary/15 space-y-1.5">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-primary block">Manfaat buat Pemilik Bisnis</span>
+                  <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">{item.ownerBenefit}</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-surface border border-border/60 space-y-1.5">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-text-primary block">Manfaat buat Pelanggan</span>
+                  <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">{item.customerBenefit}</p>
+                </div>
+              </div>
+
+              <div class="pt-2">
+                <a
+                  href="/contact"
+                  class="inline-flex items-center gap-2.5 bg-primary hover:bg-accent text-primary-foreground font-bold text-sm sm:text-base px-7 py-3.5 rounded-xl shadow-md transition-all duration-300 md:hover:scale-[1.02] active:scale-95"
+                >
+                  <span>{item.ctaText}</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <CTA />
+  </main>
+
+  <Footer />
+</Layout>

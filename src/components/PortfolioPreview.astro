@@ -1,0 +1,153 @@
+---
+// src/components/PortfolioPreview.astro — Portofolio Pilihan di Beranda
+import { projects } from "../data/projects";
+
+// Proyek pilihan dari berbagai jenis usaha
+const featuredIds = [10, 6, 3, 8]; // Findbeauty, Findfix, Findwell, Catering Seleroo
+const featuredProjects = featuredIds
+  .map((id) => projects.find((p) => p.id === id))
+  .filter((p): p is NonNullable<typeof p> => Boolean(p));
+---
+
+<section id="portfolio" class="py-24 md:py-32 bg-surface relative overflow-hidden border-t border-glass-5">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+    <!-- Section Header -->
+    <div class="portfolio-preview-header flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 md:mb-18">
+      <div class="space-y-4 max-w-2xl">
+        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-primary font-bold tracking-widest uppercase text-[10px] md:text-xs">
+          Hasil Kerja Kami
+        </span>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight tracking-tight">
+          Contoh Solusi untuk <span class="text-primary">Berbagai Jenis Usaha</span>
+        </h2>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          Setiap proyek dibuat sesuai kebutuhan bisnisnya — mulai dari merapikan info layanan sampai mempermudah pelanggan buat pesan.
+        </p>
+      </div>
+
+      <a
+        href="/portfolio"
+        class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl border border-border text-sm font-bold text-text-primary bg-background hover:bg-surface-elevated hover:border-primary/40 transition-all duration-300 shadow-sm shrink-0 group self-start md:self-auto"
+      >
+        <span>Lihat Semua Portofolio</span>
+        <svg class="w-4 h-4 text-primary group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+    </div>
+
+    <!-- 2x2 Case Study Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+      {featuredProjects.map((project) => (
+        <article class="portfolio-preview-card group bg-background border border-border/70 rounded-2xl md:rounded-3xl p-4 sm:p-5 flex flex-col transition-all duration-300 md:hover:-translate-y-1 md:hover:border-primary/40 md:hover:shadow-soft-lg">
+          
+          <!-- Screenshot -->
+          <a
+            href={project.demoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="relative aspect-[16/9] rounded-xl md:rounded-2xl overflow-hidden block bg-glass-10 border border-border/30 mb-5"
+          >
+            <img
+              src={project.image}
+              alt={`${project.name} — ${project.businessType}`}
+              class="w-full h-full object-cover transition-transform duration-700 md:group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute top-3 left-3 flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-black/65 backdrop-blur-md border border-white/15 text-[10px] font-bold text-white uppercase tracking-wider">
+                {project.businessType}
+              </span>
+              <span class="px-2.5 py-1 rounded-full bg-primary/90 backdrop-blur-md text-[10px] font-bold text-primary-foreground">
+                {project.solutionType}
+              </span>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-end p-4">
+              <span class="text-xs font-bold text-white bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-lg border border-white/20">
+                Buka Live Demo ↗
+              </span>
+            </div>
+          </a>
+
+          <!-- Case Details -->
+          <div class="px-2 pb-2 flex flex-col flex-1 space-y-4">
+            <div class="flex items-center justify-between gap-3">
+              <h3 class="text-xl md:text-2xl font-black text-text-primary tracking-tight">
+                {project.name}
+              </h3>
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-accent transition-colors shrink-0"
+              >
+                <span>Lihat Demo</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg>
+              </a>
+            </div>
+
+            <!-- Challenge & Solution -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs leading-relaxed flex-1">
+              <div class="p-3.5 rounded-xl bg-surface border border-border/50">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-red-400 block mb-1">Kebutuhan / Masalah</span>
+                <p class="text-text-secondary">{project.challenge}</p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-surface border border-border/50">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-primary block mb-1">Solusi yang Dibangun</span>
+                <p class="text-text-secondary">{project.solution}</p>
+              </div>
+            </div>
+
+            <!-- Key Features -->
+            <div class="pt-2 border-t border-border/40 flex flex-wrap items-center gap-1.5">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-text-muted mr-1">Fitur Utama:</span>
+              {project.features.map((feat) => (
+                <span class="px-2.5 py-1 rounded-full bg-primary/8 border border-primary/15 text-[11px] font-semibold text-primary">
+                  {feat}
+                </span>
+              ))}
+            </div>
+          </div>
+
+        </article>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  import { animate, inView, stagger } from "motion";
+
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (!prefersReducedMotion) {
+    const header = document.querySelector(".portfolio-preview-header");
+    const cards = document.querySelectorAll(".portfolio-preview-card");
+
+    if (header) (header as HTMLElement).style.opacity = "0";
+    cards.forEach((c) => ((c as HTMLElement).style.opacity = "0"));
+
+    let animated = false;
+    if (header) {
+      inView(
+        header,
+        () => {
+          if (animated) return;
+          animated = true;
+          const isMobile = window.innerWidth < 768;
+          const yOffset = isMobile ? 16 : 28;
+
+          animate(header, { opacity: [0, 1], y: [yOffset, 0] }, { duration: 0.6, easing: [0.22, 1, 0.36, 1] });
+          setTimeout(() => {
+            animate(
+              ".portfolio-preview-card",
+              { opacity: [0, 1], y: [yOffset, 0] },
+              { duration: 0.55, delay: stagger(isMobile ? 0.05 : 0.1), easing: [0.22, 1, 0.36, 1] }
+            );
+          }, 180);
+        },
+        { margin: "-15% 0px" }
+      );
+    }
+  }
+</script>
