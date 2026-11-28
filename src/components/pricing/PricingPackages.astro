@@ -9,7 +9,8 @@ const packageConfigs = [
     id: "spark",
     name: "Spark",
     price: "Rp699.000",
-    description: "Website sederhana untuk UMKM dan personal.",
+    tagline: "Langkah awal agar bisnis mudah ditemukan dan dihubungi",
+    description: "Untuk UMKM dan personal yang ingin memudahkan calon pelanggan menemukan informasi bisnis, mengenal produk atau layanan, dan menghubungi Anda dengan cepat.",
     buttonText: "Ambil Paket Spark",
     cardClasses: "border-border/60 bg-surface/95 shadow-sm hover:border-border focus-visible:ring-slate-300",
     shadowClass: "shadow-lg shadow-black/50",
@@ -31,7 +32,8 @@ const packageConfigs = [
     name: "Starter",
     price: "Rp1.499.000",
     isBestSeller: true,
-    description: "Premium landing page untuk bisnis.",
+    tagline: "Sajikan penawaran bisnis yang jelas sebelum pelanggan bertanya",
+    description: "Untuk bisnis yang membutuhkan halaman penawaran terstruktur agar calon pelanggan memahami produk, keunggulan, dan alasan memilih bisnis Anda sebelum melakukan kontak.",
     buttonText: "Ambil Paket Starter",
     cardClasses: "border-2 border-accent bg-surface shadow-xl lg:scale-[1.05] z-20 focus-visible:ring-accent/60",
     shadowClass: "",
@@ -52,7 +54,8 @@ const packageConfigs = [
     id: "growth",
     name: "Growth",
     price: "Rp2.699.000",
-    description: "Company profile profesional untuk bisnis yang membutuhkan beberapa halaman.",
+    tagline: "Bangun kredibilitas dan kepercayaan calon klien",
+    description: "Untuk perusahaan yang ingin membangun kepercayaan melalui profil perusahaan, informasi layanan, portofolio, dan informasi bisnis yang tersusun dengan baik.",
     buttonText: "Ambil Paket Growth",
     cardClasses: "border-purple-200/60 bg-surface/95 shadow-sm hover:border-purple-400 focus-visible:ring-purple-300",
     shadowClass: "shadow-md",
@@ -73,7 +76,8 @@ const packageConfigs = [
     id: "scale",
     name: "Scale",
     price: "Rp5.999.000",
-    description: "Website dengan fitur e-commerce dan dashboard admin.",
+    tagline: "Perluas jangkauan penjualan dengan katalog digital mandiri",
+    description: "Untuk bisnis yang ingin memperluas penjualan melalui katalog produk online, pengelolaan produk yang rapi, dan pengalaman belanja digital yang praktis.",
     buttonText: "Ambil Paket Scale",
     cardClasses: "border-emerald-200/60 bg-surface/95 shadow-sm hover:border-emerald-400 focus-visible:ring-emerald-300",
     shadowClass: "shadow-md",
@@ -94,7 +98,8 @@ const packageConfigs = [
     id: "enterprise",
     name: "Enterprise",
     price: "Konsultasi",
-    description: "Sistem bisnis dengan kebutuhan operasional yang lebih kompleks.",
+    tagline: "Kelola transaksi dan operasional bisnis dalam satu sistem",
+    description: "Untuk bisnis yang membutuhkan sistem digital dengan fitur operasional lebih lengkap, mulai dari manajemen pesanan, pembayaran, hingga laporan bisnis.",
     buttonText: "Ambil Paket Enterprise",
     cardClasses: "border-border/60 bg-surface/95 shadow-sm hover:border-border focus-visible:ring-border",
     shadowClass: "shadow-md",
@@ -115,7 +120,8 @@ const packageConfigs = [
     id: "custom",
     name: "Custom Solution",
     price: "Konsultasi",
-    description: "Sistem custom yang tidak cocok dimasukkan ke paket standar.",
+    tagline: "Solusi digital khusus mengikuti alur kerja unik bisnis Anda",
+    description: "Untuk bisnis yang membutuhkan sistem khusus seperti ERP, CRM, WMS, LMS, sistem reservasi, dan solusi operasional lainnya.",
     buttonText: "Ambil Paket Custom",
     cardClasses: "border-orange-200/60 bg-surface/95 shadow-sm hover:border-orange-400 focus-visible:ring-orange-300",
     shadowClass: "shadow-md",
@@ -136,21 +142,229 @@ const packageConfigs = [
     whatsapp: "Halo Galacode 👋\n\nSaya tertarik dengan Paket Custom Solution.\n\nBoleh diskusi dulu mengenai kebutuhan website saya?\n\nTerima kasih."
   }
 ];
+
+const redesignConfigs = [
+  {
+    id: "minor-refresh",
+    name: "Minor Refresh",
+    price: "Mulai Rp299.000",
+    tagline: "Rapikan tampilan agar lebih nyaman dilihat",
+    description: "Perbaikan minor pada warna, font, spacing, dan layout sederhana.",
+    buttonText: "Konsultasi Minor Refresh",
+    cardClasses: "border-border/60 bg-surface/95 shadow-sm hover:border-border focus-visible:ring-slate-300",
+    shadowClass: "shadow-lg shadow-black/50",
+    ringClass: "ring-slate-400/50",
+    iconWrapperClass: "bg-glass-10 border-border/50",
+    iconClass: "text-text-muted",
+    buttonClass: "bg-transparent border-border text-text-secondary hover:border-border hover:bg-glass-5",
+    accentText: "text-text-secondary",
+    features: {
+      "Cakupan Perbaikan": [
+        "Penyesuaian Palet Warna",
+        "Perbaikan Tipografi & Font",
+        "Perbaikan Spacing & Kerapihan",
+        "Penyesuaian Layout Sederhana",
+        "Perapihan Tampilan Mobile"
+      ],
+      "Ketentuan": [
+        "Tanpa Perubahan Backend / Fitur",
+        "Menggunakan Konten & Struktur Existing"
+      ]
+    },
+    revision: "Revisi 1x",
+    delivery: "2–3 Hari Kerja",
+    whatsapp: "Halo Galacode 👋\n\nSaya tertarik dengan layanan Redesign & Rebuild Website — Paket Minor Refresh (mulai Rp299.000).\n\nBoleh diskusi dulu mengenai kondisi website saya saat ini?\n\nTerima kasih."
+  },
+  {
+    id: "landing-refresh",
+    name: "Landing Page Refresh",
+    price: "Mulai Rp499.000",
+    tagline: "Segarkan tampilan halaman penawaran utama Anda",
+    description: "Penyegaran tampilan landing page maksimal 5 section tanpa perubahan backend atau fitur utama.",
+    buttonText: "Konsultasi Landing Page Refresh",
+    cardClasses: "border-blue-200/60 bg-surface/95 shadow-sm hover:border-accent focus-visible:ring-accent/60",
+    shadowClass: "shadow-md",
+    ringClass: "ring-accent/50",
+    iconWrapperClass: "bg-blue-50 border-blue-100 dark:bg-blue-900/20 dark:border-blue-800/30",
+    iconClass: "text-accent dark:text-blue-400",
+    buttonClass: "bg-accent border-accent text-accent-foreground hover:brightness-110 hover:border-blue-600 shadow-sm",
+    accentText: "text-blue-600 dark:text-blue-400",
+    features: {
+      "Cakupan Perbaikan": [
+        "Penyegaran Visual Maksimal 5 Section",
+        "Pembaruan Tata Letak & Hierarki Konten",
+        "Optimasi Tampilan Desktop & Mobile",
+        "Perbaikan Konsistensi Warna & Font",
+        "Penyesuaian CTA & Tombol Kontak"
+      ],
+      "Ketentuan": [
+        "Tanpa Perubahan Backend atau Fitur Utama",
+        "Fokus pada Tampilan & Keterbacaan"
+      ]
+    },
+    revision: "Revisi 2x",
+    delivery: "3–5 Hari Kerja",
+    whatsapp: "Halo Galacode 👋\n\nSaya tertarik dengan layanan Redesign & Rebuild Website — Paket Landing Page Refresh (mulai Rp499.000).\n\nBoleh diskusi dulu mengenai kondisi landing page saya saat ini?\n\nTerima kasih."
+  },
+  {
+    id: "visual-refresh",
+    name: "Website Visual Refresh",
+    price: "Mulai Rp999.000",
+    tagline: "Perbarui wajah website multi-halaman agar lebih modern",
+    description: "Penyegaran visual website dengan beberapa halaman, tanpa perubahan besar pada sistem.",
+    buttonText: "Konsultasi Visual Refresh",
+    cardClasses: "border-purple-200/60 bg-surface/95 shadow-sm hover:border-purple-400 focus-visible:ring-purple-300",
+    shadowClass: "shadow-md",
+    ringClass: "ring-purple-400/50",
+    iconWrapperClass: "bg-purple-50 border-purple-100 dark:bg-purple-900/20 dark:border-purple-800/30",
+    iconClass: "text-purple-500 dark:text-purple-400",
+    buttonClass: "bg-transparent border-purple-200 text-purple-700 dark:border-purple-700 dark:text-purple-400 hover:border-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/30",
+    accentText: "text-purple-600 dark:text-purple-400",
+    features: {
+      "Cakupan Perbaikan": [
+        "Penyegaran Visual Multi-Halaman",
+        "Pembaruan Desain Komponen & UI",
+        "Perbaikan Responsivitas Mobile",
+        "Penyeragaman Identitas Visual",
+        "Perbaikan Navigasi & Footer"
+      ],
+      "Ketentuan": [
+        "Tanpa Perubahan Besar pada Sistem",
+        "Struktur Database & Alur Utama Tetap"
+      ]
+    },
+    revision: "Revisi 2x",
+    delivery: "5–7 Hari Kerja",
+    whatsapp: "Halo Galacode 👋\n\nSaya tertarik dengan layanan Redesign & Rebuild Website — Paket Website Visual Refresh (mulai Rp999.000).\n\nBoleh diskusi dulu mengenai kondisi website saya saat ini?\n\nTerima kasih."
+  },
+  {
+    id: "website-rebuild",
+    name: "Website Rebuild",
+    price: "Mulai Rp2.499.000",
+    tagline: "Bangun ulang struktur dan pengalaman pengunjung dari awal",
+    description: "Pembangunan ulang website dengan pembaruan desain, struktur halaman, navigasi, dan pengalaman pengguna.",
+    buttonText: "Konsultasi Website Rebuild",
+    cardClasses: "border-emerald-200/60 bg-surface/95 shadow-sm hover:border-emerald-400 focus-visible:ring-emerald-300",
+    shadowClass: "shadow-md",
+    ringClass: "ring-emerald-400/50",
+    iconWrapperClass: "bg-emerald-50 border-emerald-100 dark:bg-emerald-900/20 dark:border-emerald-800/30",
+    iconClass: "text-emerald-500 dark:text-emerald-400",
+    buttonClass: "bg-transparent border-emerald-200 text-emerald-700 dark:border-emerald-700 dark:text-emerald-400 hover:border-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/30",
+    accentText: "text-emerald-600 dark:text-emerald-400",
+    features: {
+      "Cakupan Perbaikan": [
+        "Desain Ulang Menyeluruh",
+        "Penataan Ulang Struktur Halaman",
+        "Pembaruan Navigasi & Alur Pengguna",
+        "Optimasi Kecepatan & Performa",
+        "SEO Dasar & Responsif Mobile"
+      ],
+      "Infrastruktur": [
+        "Production Deployment",
+        "HTTPS / SSL"
+      ]
+    },
+    revision: "Revisi 3x",
+    delivery: "7–14 Hari Kerja",
+    whatsapp: "Halo Galacode 👋\n\nSaya tertarik dengan layanan Redesign & Rebuild Website — Paket Website Rebuild (mulai Rp2.499.000).\n\nBoleh diskusi dulu mengenai rencana pembangunan ulang website saya?\n\nTerima kasih."
+  },
+  {
+    id: "system-rebuild",
+    name: "System Rebuild",
+    price: "Konsultasi",
+    tagline: "Modernisasi sistem dan arsitektur website yang lebih kompleks",
+    description: "Pembangunan ulang website yang melibatkan perubahan backend, database, integrasi API, atau fitur sistem yang kompleks.",
+    buttonText: "Konsultasi System Rebuild",
+    cardClasses: "border-orange-200/60 bg-surface/95 shadow-sm hover:border-orange-400 focus-visible:ring-orange-300",
+    shadowClass: "shadow-md",
+    ringClass: "ring-orange-400/50",
+    iconWrapperClass: "bg-gradient-to-br from-orange-50 to-rose-50 border-orange-100 dark:from-orange-900/20 dark:to-rose-900/20 dark:border-orange-800/30",
+    iconClass: "text-orange-500 dark:text-orange-400",
+    nameClass: "text-orange-500 dark:text-orange-400",
+    priceClass: "text-orange-500 dark:text-orange-400",
+    buttonClass: "bg-transparent border-orange-200 text-orange-700 dark:border-orange-700 dark:text-orange-400 hover:border-orange-400 hover:bg-orange-50 dark:hover:bg-orange-900/30",
+    accentText: "text-orange-600 dark:text-orange-400",
+    features: {
+      "Cakupan Perbaikan": [
+        "Audit & Perancangan Ulang Sistem",
+        "Pembaruan Backend & Database",
+        "Integrasi API & Layanan Pihak Ketiga",
+        "Pengembangan Fitur Sistem Kompleks",
+        "Pembaruan UI/UX & Dashboard Admin"
+      ],
+      "Infrastruktur": [
+        "VPS / Cloud Sesuai Kebutuhan",
+        "HTTPS / SSL & Deployment"
+      ]
+    },
+    revision: "Revisi 3x",
+    delivery: "Menyesuaikan Kompleksitas",
+    whatsapp: "Halo Galacode 👋\n\nSaya tertarik dengan layanan Redesign & Rebuild Website — Paket System Rebuild.\n\nBoleh diskusi dulu mengenai sistem website yang ingin kami bangun ulang?\n\nTerima kasih."
+  }
+];
 ---
 
 <section class="relative w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-center">
-  <div id="pricing-packages-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch pricing-grid relative z-10 w-full">
-    {packageConfigs.map(config => (
-      <PricingCard {...config} />
-    ))}
+  <!-- Category Segmented Tabs -->
+  <div class="mb-12 md:mb-16 flex justify-center w-full">
+    <div role="tablist" aria-label="Kategori Layanan Harga" class="inline-flex flex-wrap sm:flex-nowrap items-center justify-center gap-1.5 p-1.5 rounded-2xl sm:rounded-full bg-surface-elevated border border-border/80 shadow-sm">
+      <button
+        type="button"
+        role="tab"
+        id="tab-website"
+        aria-selected="true"
+        aria-controls="panel-website"
+        data-tab="website"
+        class="pricing-tab-btn px-5 sm:px-7 py-2.5 sm:py-3 rounded-xl sm:rounded-full text-sm font-semibold transition-all duration-300 bg-primary text-primary-foreground shadow-sm cursor-pointer"
+      >
+        Pembuatan Website
+      </button>
+      <button
+        type="button"
+        role="tab"
+        id="tab-redesign"
+        aria-selected="false"
+        aria-controls="panel-redesign"
+        data-tab="redesign"
+        class="pricing-tab-btn px-5 sm:px-7 py-2.5 sm:py-3 rounded-xl sm:rounded-full text-sm font-semibold transition-all duration-300 text-text-secondary hover:text-text-primary hover:bg-surface/80 cursor-pointer"
+      >
+        Redesign &amp; Rebuild Website
+      </button>
+    </div>
   </div>
 
-  <div class="mt-12 text-center text-[13px] text-text-muted max-w-2xl mx-auto space-y-2">
-    <p>* Integrasi payment gateway, domain, email service, dan layanan pihak ketiga lainnya tersedia. Biaya layanan pihak ketiga ditanggung oleh client.</p>
-    <p>** Domain .com gratis untuk tahun pertama. Perpanjangan domain pada tahun berikutnya mengikuti biaya renewal.</p>
+  <!-- Panel 1: Pembuatan Website (Default Active) -->
+  <div id="panel-website" role="tabpanel" aria-labelledby="tab-website" class="pricing-tab-panel w-full flex flex-col items-center">
+    <div id="pricing-packages-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch pricing-grid relative z-10 w-full">
+      {packageConfigs.map(config => (
+        <PricingCard {...config} />
+      ))}
+    </div>
+
+    <div class="mt-12 text-center text-[13px] text-text-muted max-w-2xl mx-auto space-y-2">
+      <p>* Integrasi payment gateway, domain, email service, dan layanan pihak ketiga lainnya tersedia. Biaya layanan pihak ketiga ditanggung oleh client.</p>
+      <p>** Domain .com gratis untuk tahun pertama. Perpanjangan domain pada tahun berikutnya mengikuti biaya renewal.</p>
+    </div>
+  </div>
+
+  <!-- Panel 2: Redesign & Rebuild Website -->
+  <div id="panel-redesign" role="tabpanel" aria-labelledby="tab-redesign" class="pricing-tab-panel hidden w-full flex-col items-center">
+    <div id="redesign-packages-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch pricing-grid relative z-10 w-full">
+      {redesignConfigs.map(config => (
+        <PricingCard {...config} />
+      ))}
+    </div>
+
+    <div class="mt-12 text-center text-[13px] text-text-muted max-w-2xl mx-auto space-y-2">
+      <p>* Harga yang tertera merupakan harga awal. Harga final ditentukan berdasarkan kompleksitas, kondisi website saat ini, serta ruang lingkup pekerjaan.</p>
+    </div>
   </div>
 
   {packageConfigs.map(config => (
+    <PricingModal {...config} />
+  ))}
+
+  {redesignConfigs.map(config => (
     <PricingModal {...config} />
   ))}
 
@@ -158,30 +372,31 @@ const packageConfigs = [
     import { animate, stagger, hover, inView } from "motion";
 
     document.addEventListener("DOMContentLoaded", () => {
-      const cards = document.querySelectorAll(".pricing-card");
+      const websiteCards = document.querySelectorAll("#panel-website .pricing-card");
+      const allCards = document.querySelectorAll(".pricing-card");
       const section = document.querySelector("#pricing-packages-grid") as HTMLElement;
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // Entry Animation
-      if (!prefersReducedMotion) {
-        cards.forEach(c => {
+      // Entry Animation (only for default visible panel)
+      if (!prefersReducedMotion && section) {
+        websiteCards.forEach(c => {
           (c as HTMLElement).style.opacity = '0';
           (c as HTMLElement).style.transform = 'translateY(40px)';
         });
         
         inView(section, () => {
           animate(
-            cards,
+            websiteCards,
             { opacity: [0, 1], y: [40, 0] },
             { delay: stagger(0.1), duration: 0.6, easing: "ease-out" }
           );
         }, { margin: "-10% 0px" });
       } else {
-        cards.forEach(c => { (c as HTMLElement).style.opacity = '1'; (c as HTMLElement).style.transform = 'none'; });
+        websiteCards.forEach(c => { (c as HTMLElement).style.opacity = '1'; (c as HTMLElement).style.transform = 'none'; });
       }
 
-      // Hover Interaction
-      cards.forEach((card, index) => {
+      // Hover Interaction for all cards
+      allCards.forEach((card, index) => {
         if (!prefersReducedMotion) {
           hover(card, (element) => {
             const rotateAmt = index % 2 === 0 ? 0.5 : -0.5;
@@ -191,6 +406,73 @@ const packageConfigs = [
             };
           });
         }
+      });
+
+      // Tab Switching Logic
+      const tabBtns = document.querySelectorAll(".pricing-tab-btn");
+      const panelWebsite = document.getElementById("panel-website");
+      const panelRedesign = document.getElementById("panel-redesign");
+      const comparisonSection = document.getElementById("pricing-comparison");
+
+      const activeBtnClasses = ["bg-primary", "text-primary-foreground", "shadow-sm"];
+      const inactiveBtnClasses = ["text-text-secondary", "hover:text-text-primary", "hover:bg-surface/80"];
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const targetTab = btn.getAttribute("data-tab");
+          if (!targetTab) return;
+
+          const isAlreadyActive = btn.getAttribute("aria-selected") === "true";
+          if (isAlreadyActive) return;
+
+          // Update tab button states
+          tabBtns.forEach(b => {
+            const isTarget = b === btn;
+            b.setAttribute("aria-selected", isTarget ? "true" : "false");
+            if (isTarget) {
+              b.classList.remove(...inactiveBtnClasses);
+              b.classList.add(...activeBtnClasses);
+            } else {
+              b.classList.remove(...activeBtnClasses);
+              b.classList.add(...inactiveBtnClasses);
+            }
+          });
+
+          // Switch panels
+          const showPanel = targetTab === "website" ? panelWebsite : panelRedesign;
+          const hidePanel = targetTab === "website" ? panelRedesign : panelWebsite;
+
+          if (hidePanel) {
+            hidePanel.classList.add("hidden");
+            hidePanel.classList.remove("flex");
+          }
+          if (showPanel) {
+            showPanel.classList.remove("hidden");
+            showPanel.classList.add("flex");
+
+            if (!prefersReducedMotion) {
+              const targetCards = showPanel.querySelectorAll(".pricing-card");
+              targetCards.forEach(c => {
+                (c as HTMLElement).style.opacity = '0';
+                (c as HTMLElement).style.transform = 'translateY(20px)';
+              });
+              animate(
+                targetCards,
+                { opacity: [0, 1], y: [20, 0] },
+                { delay: stagger(0.06), duration: 0.45, easing: "ease-out" }
+              );
+            }
+          }
+
+          // Toggle comparison table visibility (specific to Pembuatan Website packages)
+          if (comparisonSection) {
+            if (targetTab === "website") {
+              comparisonSection.classList.remove("hidden");
+            } else {
+              comparisonSection.classList.add("hidden");
+            }
+          }
+        });
       });
 
       // Modal Logic

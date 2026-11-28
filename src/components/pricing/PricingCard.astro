@@ -1,12 +1,13 @@
 ---
 // src/components/pricing/PricingCard.astro
-import { Zap, Rocket, TrendingUp, ShoppingCart, Building2, Briefcase, Check, ArrowRight } from 'lucide-astro';
+import { Zap, Rocket, TrendingUp, ShoppingCart, Building2, Briefcase, Paintbrush, Sparkles, Layers, RefreshCcw, Wrench, Check, ArrowRight } from 'lucide-astro';
 
 export interface Props {
   id: string;
   name: string;
   isBestSeller?: boolean;
   price?: string;
+  tagline?: string;
   description: string;
   buttonText: string;
   
@@ -32,6 +33,7 @@ const {
   name, 
   isBestSeller = false,
   price = "Rp X.XXX.XXX", 
+  tagline,
   description, 
   buttonText,
   features,
@@ -54,7 +56,12 @@ const icons = {
   growth: TrendingUp,
   scale: ShoppingCart,
   enterprise: Building2,
-  custom: Briefcase
+  custom: Briefcase,
+  "minor-refresh": Paintbrush,
+  "landing-refresh": Sparkles,
+  "visual-refresh": Layers,
+  "website-rebuild": RefreshCcw,
+  "system-rebuild": Wrench
 };
 
 const Icon = icons[id as keyof typeof icons] || Zap;
@@ -96,9 +103,12 @@ const remainingFeatures = totalFeatures - displayedFeatures.length;
       <div class={`w-10 h-10 rounded-xl flex items-center justify-center border ${iconWrapperClass}`}>
         <Icon class={`w-5 h-5 ${iconClass}`} aria-hidden="true" />
       </div>
-      <h3 class={`text-xl lg:text-2xl font-bold ${nameClass}`}>{name}</h3>
+      <div>
+        <h3 class={`text-xl lg:text-2xl font-bold ${nameClass}`}>{name}</h3>
+        {tagline && <p class={`text-xs font-semibold mt-1 leading-snug ${accentText}`}>{tagline}</p>}
+      </div>
       <div class={`text-2xl lg:text-3xl font-extrabold tracking-tight mt-2 ${priceClass}`}>{price}</div>
-      <p class="text-sm text-text-secondary leading-relaxed min-h-[40px]">{description}</p>
+      <p class="text-sm text-text-secondary leading-relaxed min-h-[60px]">{description}</p>
     </div>
 
     <hr class="border-glass-10 my-6" />
