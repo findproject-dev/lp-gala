@@ -1,6 +1,13 @@
 ---
 // src/components/pricing/PricingComparison.astro
-import { Check, Minus } from 'lucide-astro';
+import { Minus } from 'lucide-astro';
+import { t, type Locale, type TranslationKey } from '../../i18n';
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = "id" } = Astro.props;
 
 const plans = [
   { id: 'spark', name: 'Spark', highlight: false },
@@ -9,47 +16,49 @@ const plans = [
   { id: 'scale', name: 'Scale', highlight: false },
   { id: 'enterprise', name: 'Enterprise', highlight: false },
   { id: 'custom', name: 'Custom', highlight: false }
-];
+] as const;
 
-const comparisonData = [
+type PlanId = (typeof plans)[number]['id'];
+
+const comparisonData: { rowKey: TranslationKey; values: Record<PlanId, TranslationKey | '-'> }[] = [
   {
-    rowName: 'Harga',
+    rowKey: 'pricing.comp.row.price',
     values: {
-      spark: 'Rp699.000',
-      starter: 'Rp1.499.000',
-      growth: 'Rp2.699.000',
-      scale: 'Rp5.999.000',
-      enterprise: 'Konsultasi',
-      custom: 'Konsultasi'
+      spark: 'pkg.spark.price',
+      starter: 'pkg.starter.price',
+      growth: 'pkg.growth.price',
+      scale: 'pkg.scale.price',
+      enterprise: 'pkg.enterprise.price',
+      custom: 'pkg.custom.price'
     }
   },
   {
-    rowName: 'Cocok Untuk',
+    rowKey: 'pricing.comp.row.suitable',
     values: {
-      spark: 'UMKM & Personal',
-      starter: 'Penawaran Produk & Jasa',
-      growth: 'Kredibilitas Perusahaan',
-      scale: 'Penjualan & Katalog Online',
-      enterprise: 'Operasional & Transaksi Lengkap',
-      custom: 'Kebutuhan Sistem Khusus'
+      spark: 'pricing.comp.suitable.spark',
+      starter: 'pricing.comp.suitable.starter',
+      growth: 'pricing.comp.suitable.growth',
+      scale: 'pricing.comp.suitable.scale',
+      enterprise: 'pricing.comp.suitable.enterprise',
+      custom: 'pricing.comp.suitable.custom'
     }
   },
   {
-    rowName: 'Halaman',
+    rowKey: 'pricing.comp.row.pages',
     values: {
-      spark: '1 Halaman',
-      starter: '1 Halaman',
-      growth: 'Hingga 5 Halaman',
-      scale: 'Dashboard + Website',
-      enterprise: 'Dashboard + Website',
-      custom: 'Menyesuaikan'
+      spark: 'pricing.comp.pages.spark',
+      starter: 'pricing.comp.pages.starter',
+      growth: 'pricing.comp.pages.growth',
+      scale: 'pricing.comp.pages.scale',
+      enterprise: 'pricing.comp.pages.enterprise',
+      custom: 'pricing.comp.pages.custom'
     }
   },
   {
-    rowName: 'Section',
+    rowKey: 'pricing.comp.row.sections',
     values: {
-      spark: 'Hingga 5 Section',
-      starter: 'Hingga 12 Section',
+      spark: 'pricing.comp.sections.spark',
+      starter: 'pricing.comp.sections.starter',
       growth: '-',
       scale: '-',
       enterprise: '-',
@@ -57,58 +66,58 @@ const comparisonData = [
     }
   },
   {
-    rowName: 'Desain',
+    rowKey: 'pricing.comp.row.design',
     values: {
-      spark: 'Standard',
-      starter: 'Premium',
-      growth: 'Premium',
-      scale: 'Premium',
-      enterprise: 'Premium',
-      custom: 'Custom'
+      spark: 'pricing.comp.design.spark',
+      starter: 'pricing.comp.design.starter',
+      growth: 'pricing.comp.design.growth',
+      scale: 'pricing.comp.design.scale',
+      enterprise: 'pricing.comp.design.enterprise',
+      custom: 'pricing.comp.design.custom'
     }
   },
   {
-    rowName: 'Fitur',
+    rowKey: 'pricing.comp.row.features',
     values: {
-      spark: 'WA, Maps, Form',
-      starter: 'Testimoni, FAQ, Galeri',
-      growth: 'Company Profile',
-      scale: 'CMS Produk',
-      enterprise: 'E-Commerce',
-      custom: 'Sesuai Kebutuhan'
+      spark: 'pricing.comp.features.spark',
+      starter: 'pricing.comp.features.starter',
+      growth: 'pricing.comp.features.growth',
+      scale: 'pricing.comp.features.scale',
+      enterprise: 'pricing.comp.features.enterprise',
+      custom: 'pricing.comp.features.custom'
     }
   },
   {
-    rowName: 'SEO',
+    rowKey: 'pricing.comp.row.seo',
     values: {
-      spark: 'Dasar',
-      starter: 'Dasar',
-      growth: 'Dasar',
-      scale: 'Dasar',
-      enterprise: 'Dasar',
-      custom: 'Menyesuaikan'
+      spark: 'pricing.comp.seo.basic',
+      starter: 'pricing.comp.seo.basic',
+      growth: 'pricing.comp.seo.basic',
+      scale: 'pricing.comp.seo.basic',
+      enterprise: 'pricing.comp.seo.basic',
+      custom: 'pricing.comp.seo.custom'
     }
   },
   {
-    rowName: 'Revisi',
+    rowKey: 'pricing.comp.row.revision',
     values: {
-      spark: 'Revisi 1x',
-      starter: 'Revisi 2x',
-      growth: 'Revisi 3x',
-      scale: 'Revisi 3x',
-      enterprise: 'Revisi 3x',
-      custom: 'Revisi 3x'
+      spark: 'pkg.spark.rev',
+      starter: 'pkg.starter.rev',
+      growth: 'pkg.growth.rev',
+      scale: 'pkg.scale.rev',
+      enterprise: 'pkg.enterprise.rev',
+      custom: 'pkg.custom.rev'
     }
   },
   {
-    rowName: 'Estimasi',
+    rowKey: 'pricing.comp.row.delivery',
     values: {
-      spark: '3–5 Hari Kerja',
-      starter: '5–7 Hari Kerja',
-      growth: '7–10 Hari Kerja',
-      scale: '10–14 Hari Kerja',
-      enterprise: '14–30 Hari Kerja',
-      custom: 'Menyesuaikan'
+      spark: 'pkg.spark.del',
+      starter: 'pkg.starter.del',
+      growth: 'pkg.growth.del',
+      scale: 'pkg.scale.del',
+      enterprise: 'pricing.comp.del.enterprise',
+      custom: 'pricing.comp.del.custom'
     }
   }
 ];
@@ -116,11 +125,11 @@ const comparisonData = [
 
 <section id="pricing-comparison" class="relative w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-12 md:pt-20">
   <div class="text-center mb-16 max-w-3xl mx-auto">
-    <h2 class="text-3xl md:text-5xl font-bold text-text-primary tracking-tight">
-      Bandingkan Paket
+    <h2 class="text-3xl md:text-5xl font-bold text-text-primary tracking-tight" data-i18n="pricing.comp.title">
+      {t(lang, "pricing.comp.title")}
     </h2>
-    <p class="mt-6 text-text-secondary text-lg">
-      Bandingkan cakupan setiap paket secara ringkas untuk menyesuaikan solusi dengan kebutuhan bisnismu saat ini.
+    <p class="mt-6 text-text-secondary text-lg" data-i18n="pricing.comp.subtitle">
+      {t(lang, "pricing.comp.subtitle")}
     </p>
   </div>
 
@@ -128,15 +137,15 @@ const comparisonData = [
   <div class="hidden lg:block relative border border-border bg-surface-elevated rounded-[2.5rem] shadow-sm comparison-desktop">
     <div class="overflow-x-auto rounded-[2.5rem] custom-scrollbar">
       <table class="w-full text-left border-collapse min-w-[1000px]">
-        <caption class="sr-only">Perbandingan detail fitur paket harga</caption>
+        <caption class="sr-only" data-i18n="pricing.comp.title">{t(lang, "pricing.comp.title")}</caption>
         <thead class="sticky top-0 z-30 bg-surface/95 backdrop-blur-md shadow-sm border-b border-glass-10">
           <tr>
-            <th class="p-8 font-semibold text-text-primary w-1/5 text-lg">Ringkasan</th>
+            <th class="p-8 font-semibold text-text-primary w-1/5 text-lg" data-i18n="pricing.comp.summary">{t(lang, "pricing.comp.summary")}</th>
             {plans.map(plan => (
               <th class={`p-8 text-center relative ${plan.highlight ? 'bg-accent/[0.03] border-b-2 border-accent' : ''}`}>
                 {plan.highlight && (
-                  <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent px-4 py-1 text-[10px] font-bold text-accent-foreground uppercase tracking-widest shadow-md">
-                    Best Seller
+                  <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent px-4 py-1 text-[10px] font-bold text-accent-foreground uppercase tracking-widest shadow-md" data-i18n="pricing.card.bestSeller">
+                    {t(lang, "pricing.card.bestSeller")}
                   </div>
                 )}
                 <div class={`text-xl font-bold ${plan.highlight ? 'text-accent' : 'text-text-primary'}`}>
@@ -151,18 +160,16 @@ const comparisonData = [
             <tr class={`group transition-colors duration-300 hover:bg-primary/[0.04] ${idx !== comparisonData.length - 1 ? 'border-b border-glass-10' : ''}`}>
               
               <!-- Row Header -->
-              <td class="p-6 pl-8 font-medium text-text-secondary transition-colors sticky left-0 z-20 bg-surface-elevated group-hover:bg-primary/[0.02]">
-                {row.rowName}
+              <td class="p-6 pl-8 font-medium text-text-secondary transition-colors sticky left-0 z-20 bg-surface-elevated group-hover:bg-primary/[0.02]" data-i18n={row.rowKey}>
+                {t(lang, row.rowKey)}
               </td>
               
               <!-- Values -->
               {plans.map(plan => {
-                const val = row.values[plan.id];
-                const isUnlimited = val.toLowerCase().includes('tanpa batas') || val.toLowerCase().includes('kustom');
+                const valKey = row.values[plan.id];
                 
                 return (
                   <td class={`p-6 text-center text-sm transition-colors relative ${plan.highlight ? 'bg-accent/[0.02] group-hover:bg-accent/[0.04]' : ''}`}>
-                    <!-- Vertical highlight line for starter plan -->
                     {plan.highlight && (
                        <div class="absolute inset-y-0 left-0 w-px bg-primary/20"></div>
                     )}
@@ -171,13 +178,10 @@ const comparisonData = [
                     )}
                     
                     <div class={`inline-flex items-center gap-1.5 justify-center ${plan.highlight ? 'font-semibold text-text-primary' : 'text-text-primary/75'}`}>
-                      {val === '-' ? (
+                      {valKey === '-' ? (
                         <Minus class="w-4 h-4 text-text-muted" />
                       ) : (
-                        <>
-                          {isUnlimited && <Check class="w-4 h-4 text-accent" />}
-                          <span>{val}</span>
-                        </>
+                        <span data-i18n={valKey}>{t(lang, valKey)}</span>
                       )}
                     </div>
                   </td>
@@ -195,8 +199,8 @@ const comparisonData = [
     {plans.map(plan => (
       <div class={`comparison-card relative rounded-3xl border ${plan.highlight ? 'border-accent bg-surface shadow-xl' : 'border-glass-10 bg-surface/50'} p-6 sm:p-8 overflow-hidden`}>
         {plan.highlight && (
-          <div class="absolute top-0 right-0 bg-accent text-accent-foreground px-4 py-1.5 rounded-bl-2xl text-xs font-bold uppercase tracking-wider shadow-sm">
-            Best Seller
+          <div class="absolute top-0 right-0 bg-accent text-accent-foreground px-4 py-1.5 rounded-bl-2xl text-xs font-bold uppercase tracking-wider shadow-sm" data-i18n="pricing.card.bestSeller">
+            {t(lang, "pricing.card.bestSeller")}
           </div>
         )}
         <div class="mb-8">
@@ -205,22 +209,18 @@ const comparisonData = [
         
         <div class="space-y-4">
           {comparisonData.map(row => {
-            const val = row.values[plan.id];
-            const isUnlimited = val.toLowerCase().includes('tanpa batas') || val.toLowerCase().includes('kustom');
+            const valKey = row.values[plan.id];
             
             return (
               <div class="flex justify-between items-center py-4 border-b border-glass-10 last:border-0 last:pb-0">
-                <span class="text-text-muted text-sm">{row.rowName}</span>
+                <span class="text-text-muted text-sm" data-i18n={row.rowKey}>{t(lang, row.rowKey)}</span>
                 <div class="flex items-center gap-1.5 text-right max-w-[60%]">
-                  {val === '-' ? (
+                  {valKey === '-' ? (
                     <Minus class="w-4 h-4 text-text-muted flex-shrink-0" />
                   ) : (
-                    <>
-                      {isUnlimited && <Check class="w-4 h-4 text-accent flex-shrink-0" />}
-                      <span class={`text-sm ${plan.highlight ? 'font-semibold text-text-primary' : 'font-medium text-text-secondary'}`}>
-                        {val}
-                      </span>
-                    </>
+                    <span class={`text-sm ${plan.highlight ? 'font-semibold text-text-primary' : 'font-medium text-text-secondary'}`} data-i18n={valKey}>
+                      {t(lang, valKey)}
+                    </span>
                   )}
                 </div>
               </div>
@@ -270,7 +270,6 @@ const comparisonData = [
 </script>
 
 <style>
-  /* Custom scrollbar for the table wrapper if it exceeds screen width slightly */
   .custom-scrollbar::-webkit-scrollbar {
     height: 8px;
   }

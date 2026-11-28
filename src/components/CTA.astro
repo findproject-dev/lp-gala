@@ -1,5 +1,12 @@
 ---
 // src/components/CTA.astro — Closing CTA
+import { t, getLocalizedPath, type Locale } from "../i18n";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = "id" } = Astro.props;
 ---
 
 <section id="cta" class="relative bg-background py-24 md:py-32 overflow-hidden flex items-center justify-center">
@@ -21,29 +28,27 @@
         <!-- Label -->
         <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-surface text-text-secondary font-bold tracking-widest uppercase text-[10px] sm:text-xs mb-8 shadow-sm">
           <span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
-          Yuk Mulai
+          <span data-i18n="cta.badge">{t(lang, "cta.badge")}</span>
         </span>
 
         <!-- Headline -->
-        <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-text-primary leading-[1.1] tracking-tight mb-6 text-balance max-w-4xl mx-auto">
-          Siap Bikin Website yang <span class="text-primary">Beneran Kerja buat Bisnis Anda?</span>
-        </h2>
+        <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-text-primary leading-[1.1] tracking-tight mb-6 text-balance max-w-4xl mx-auto" data-i18n-html="cta.headline" set:html={t(lang, "cta.headline")} />
 
         <!-- Description -->
-        <p class="text-base sm:text-lg md:text-xl text-text-secondary leading-relaxed mb-10 max-w-2xl mx-auto text-balance font-medium">
-          Yuk bangun website yang ngasih lebih banyak peluang buat bisnis Anda berkembang. Ngobrol dulu aja, gratis dan tanpa komitmen.
+        <p class="text-base sm:text-lg md:text-xl text-text-secondary leading-relaxed mb-10 max-w-2xl mx-auto text-balance font-medium" data-i18n="cta.desc">
+          {t(lang, "cta.desc")}
         </p>
 
         <!-- CTA Buttons -->
         <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 w-full sm:w-auto mb-10 md:mb-14">
-          <a href="/contact" class="group/btn relative w-full sm:w-auto inline-flex justify-center items-center gap-3 bg-primary hover:bg-accent text-primary-foreground font-bold text-base sm:text-lg min-h-[56px] py-4 px-10 rounded-2xl shadow-md transition-all duration-300 md:hover:scale-105 active:scale-95 overflow-hidden">
+          <a href={getLocalizedPath("/contact", lang)} data-base-href="/contact" class="group/btn relative w-full sm:w-auto inline-flex justify-center items-center gap-3 bg-primary hover:bg-accent text-primary-foreground font-bold text-base sm:text-lg min-h-[56px] py-4 px-10 rounded-2xl shadow-md transition-all duration-300 md:hover:scale-105 active:scale-95 overflow-hidden">
             <div class="absolute inset-0 bg-glass-20 translate-y-full md:group-hover/btn:translate-y-0 transition-transform duration-300 ease-out"></div>
-            <span class="relative z-10">Mulai Proyek Sekarang</span>
+            <span class="relative z-10" data-i18n="cta.primary">{t(lang, "cta.primary")}</span>
             <svg class="relative z-10 w-5 h-5 md:group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
           </a>
 
-          <a href="/portfolio" class="w-full sm:w-auto inline-flex justify-center items-center gap-3 bg-surface-elevated text-text-primary font-bold text-base sm:text-lg min-h-[56px] py-4 px-10 rounded-2xl border border-border transition-all duration-300 md:hover:bg-glass-10 md:hover:border-border/60 md:hover:scale-105 active:scale-95 active:bg-glass-10">
-            Lihat Portofolio
+          <a href={getLocalizedPath("/portfolio", lang)} data-base-href="/portfolio" class="w-full sm:w-auto inline-flex justify-center items-center gap-3 bg-surface-elevated text-text-primary font-bold text-base sm:text-lg min-h-[56px] py-4 px-10 rounded-2xl border border-border transition-all duration-300 md:hover:bg-glass-10 md:hover:border-border/60 md:hover:scale-105 active:scale-95 active:bg-glass-10" data-i18n="cta.secondary">
+            {t(lang, "cta.secondary")}
           </a>
         </div>
 
@@ -51,19 +56,19 @@
         <div class="flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-10 gap-y-4 pt-8 border-t border-glass-10 w-full max-w-3xl mx-auto">
           <div class="flex items-center gap-2 group/trust">
             <svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-            <span class="text-sm font-medium text-text-secondary group-hover/trust:text-text-primary transition-colors">Konsultasi Gratis</span>
+            <span class="text-sm font-medium text-text-secondary group-hover/trust:text-text-primary transition-colors" data-i18n="cta.trust1">{t(lang, "cta.trust1")}</span>
           </div>
           <div class="flex items-center gap-2 group/trust">
             <svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-            <span class="text-sm font-medium text-text-secondary group-hover/trust:text-text-primary transition-colors">Tanpa Komitmen</span>
+            <span class="text-sm font-medium text-text-secondary group-hover/trust:text-text-primary transition-colors" data-i18n="cta.trust2">{t(lang, "cta.trust2")}</span>
           </div>
           <div class="flex items-center gap-2 group/trust">
             <svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-            <span class="text-sm font-medium text-text-secondary group-hover/trust:text-text-primary transition-colors">Respon Cepat</span>
+            <span class="text-sm font-medium text-text-secondary group-hover/trust:text-text-primary transition-colors" data-i18n="cta.trust3">{t(lang, "cta.trust3")}</span>
           </div>
           <div class="flex items-center gap-2 group/trust">
             <svg class="w-4 h-4 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
-            <span class="text-sm font-medium text-text-secondary group-hover/trust:text-text-primary transition-colors">Desain Custom</span>
+            <span class="text-sm font-medium text-text-secondary group-hover/trust:text-text-primary transition-colors" data-i18n="cta.trust4">{t(lang, "cta.trust4")}</span>
           </div>
         </div>
 

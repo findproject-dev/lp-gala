@@ -1,5 +1,12 @@
 ---
 // src/components/HowWeWork.astro — Cara Kami Kerja
+import { t, type Locale } from "../i18n";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = "id" } = Astro.props;
 ---
 
 <section id="how-we-work" class="py-24 md:py-32 bg-background relative overflow-hidden border-t border-glass-5">
@@ -13,15 +20,13 @@
     <div class="hww-header max-w-3xl mx-auto text-center mb-16 md:mb-24 px-2 md:px-0">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full border border-border bg-surface shadow-sm">
         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-        <span class="text-[10px] md:text-xs font-bold uppercase tracking-wider text-text-primary">Cara Kami Kerja</span>
+        <span class="text-[10px] md:text-xs font-bold uppercase tracking-wider text-text-primary" data-i18n="hww.badge">{t(lang, "hww.badge")}</span>
       </div>
 
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight text-balance mb-5">
-        Alur Kerja yang <span class="text-primary">Jelas</span> dan Gampang Dipantau
-      </h2>
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight text-balance mb-5" data-i18n-html="hww.headline" set:html={t(lang, "hww.headline")} />
 
-      <p class="text-base sm:text-lg text-text-secondary leading-relaxed text-balance">
-        Dari awal ngobrolin bisnis Anda sampai website siap dipakai — setiap tahapannya jelas dan bisa Anda ikuti.
+      <p class="text-base sm:text-lg text-text-secondary leading-relaxed text-balance" data-i18n="hww.subtitle">
+        {t(lang, "hww.subtitle")}
       </p>
     </div>
 
@@ -47,14 +52,14 @@
             </div>
           </div>
 
-          <h3 class="text-lg md:text-xl font-bold text-text-primary mb-2.5 md:mb-3 tracking-tight">Pahami Bisnisnya</h3>
-          <p class="text-sm text-text-secondary leading-relaxed flex-1">
-            Kami mulai dengan dengerin dulu bisnis Anda, siapa target pembelinya, dan kendala apa yang mau diselesaikan — nggak langsung asal nawarin paket.
+          <h3 class="text-lg md:text-xl font-bold text-text-primary mb-2.5 md:mb-3 tracking-tight" data-i18n="hww.1.title">{t(lang, "hww.1.title")}</h3>
+          <p class="text-sm text-text-secondary leading-relaxed flex-1" data-i18n="hww.1.desc">
+            {t(lang, "hww.1.desc")}
           </p>
 
           <div class="mt-5 pt-4 border-t border-border/40 flex flex-wrap gap-1.5">
-            <span class="text-[10px] font-semibold text-text-muted bg-surface border border-border/50 px-2 py-1 rounded-md">Ngobrolin bisnis</span>
-            <span class="text-[10px] font-semibold text-text-muted bg-surface border border-border/50 px-2 py-1 rounded-md">Cari akar masalah</span>
+            <span class="text-[10px] font-semibold text-text-muted bg-surface border border-border/50 px-2 py-1 rounded-md" data-i18n="hww.1.t1">{t(lang, "hww.1.t1")}</span>
+            <span class="text-[10px] font-semibold text-text-muted bg-surface border border-border/50 px-2 py-1 rounded-md" data-i18n="hww.1.t2">{t(lang, "hww.1.t2")}</span>
           </div>
         </div>
 
@@ -69,14 +74,14 @@
             </div>
           </div>
 
-          <h3 class="text-lg md:text-xl font-bold text-text-primary mb-2.5 md:mb-3 tracking-tight">Susun Strategi</h3>
-          <p class="text-sm text-text-secondary leading-relaxed flex-1">
-            Nentuin tujuan utama website, susunan info biar gampang dibaca, alur pengunjung pas mau pesan, dan fitur yang beneran kepakai.
+          <h3 class="text-lg md:text-xl font-bold text-text-primary mb-2.5 md:mb-3 tracking-tight" data-i18n="hww.2.title">{t(lang, "hww.2.title")}</h3>
+          <p class="text-sm text-text-secondary leading-relaxed flex-1" data-i18n="hww.2.desc">
+            {t(lang, "hww.2.desc")}
           </p>
 
           <div class="mt-5 pt-4 border-t border-border/40 flex flex-wrap gap-1.5">
-            <span class="text-[10px] font-semibold text-text-muted bg-surface border border-border/50 px-2 py-1 rounded-md">Tujuan website</span>
-            <span class="text-[10px] font-semibold text-text-muted bg-surface border border-border/50 px-2 py-1 rounded-md">Alur pengunjung</span>
+            <span class="text-[10px] font-semibold text-text-muted bg-surface border border-border/50 px-2 py-1 rounded-md" data-i18n="hww.2.t1">{t(lang, "hww.2.t1")}</span>
+            <span class="text-[10px] font-semibold text-text-muted bg-surface border border-border/50 px-2 py-1 rounded-md" data-i18n="hww.2.t2">{t(lang, "hww.2.t2")}</span>
           </div>
         </div>
 
@@ -91,14 +96,14 @@
             </div>
           </div>
 
-          <h3 class="text-lg md:text-xl font-bold text-text-primary mb-2.5 md:mb-3 tracking-tight">Desain &amp; Bangun</h3>
-          <p class="text-sm text-text-secondary leading-relaxed flex-1">
-            Ngedesain dan ngoding website dengan kode yang rapi, ringan, dan pas di layar HP maupun laptop. Semuanya dibuat biar pengunjung nyaman dan mau bertindak.
+          <h3 class="text-lg md:text-xl font-bold text-text-primary mb-2.5 md:mb-3 tracking-tight" data-i18n="hww.3.title">{t(lang, "hww.3.title")}</h3>
+          <p class="text-sm text-text-secondary leading-relaxed flex-1" data-i18n="hww.3.desc">
+            {t(lang, "hww.3.desc")}
           </p>
 
           <div class="mt-5 pt-4 border-t border-border/40 flex flex-wrap gap-1.5">
-            <span class="text-[10px] font-semibold text-text-muted bg-surface border border-border/50 px-2 py-1 rounded-md">Desain custom</span>
-            <span class="text-[10px] font-semibold text-text-muted bg-surface border border-border/50 px-2 py-1 rounded-md">Pengembangan</span>
+            <span class="text-[10px] font-semibold text-text-muted bg-surface border border-border/50 px-2 py-1 rounded-md" data-i18n="hww.3.t1">{t(lang, "hww.3.t1")}</span>
+            <span class="text-[10px] font-semibold text-text-muted bg-surface border border-border/50 px-2 py-1 rounded-md" data-i18n="hww.3.t2">{t(lang, "hww.3.t2")}</span>
           </div>
         </div>
 
@@ -115,15 +120,15 @@
           </div>
 
           <div class="relative z-10 flex flex-col h-full">
-            <h3 class="text-lg md:text-xl font-bold text-text-primary mb-2.5 md:mb-3 tracking-tight">Optimasi</h3>
-            <p class="text-sm text-text-secondary leading-relaxed flex-1">
-              Mastiin website jalan sesuai tujuan bisnis — loading cepat, SEO dasar aman, rapi di HP, dan tombol CTA gampang ditemukan pengunjung.
+            <h3 class="text-lg md:text-xl font-bold text-text-primary mb-2.5 md:mb-3 tracking-tight" data-i18n="hww.4.title">{t(lang, "hww.4.title")}</h3>
+            <p class="text-sm text-text-secondary leading-relaxed flex-1" data-i18n="hww.4.desc">
+              {t(lang, "hww.4.desc")}
             </p>
 
             <div class="mt-5 pt-4 border-t border-primary/15 flex flex-wrap gap-1.5">
-              <span class="text-[10px] font-semibold text-primary/80 bg-primary/5 border border-primary/15 px-2 py-1 rounded-md">Cepat</span>
-              <span class="text-[10px] font-semibold text-primary/80 bg-primary/5 border border-primary/15 px-2 py-1 rounded-md">SEO dasar</span>
-              <span class="text-[10px] font-semibold text-primary/80 bg-primary/5 border border-primary/15 px-2 py-1 rounded-md">Nyaman di HP</span>
+              <span class="text-[10px] font-semibold text-primary/80 bg-primary/5 border border-primary/15 px-2 py-1 rounded-md" data-i18n="hww.4.t1">{t(lang, "hww.4.t1")}</span>
+              <span class="text-[10px] font-semibold text-primary/80 bg-primary/5 border border-primary/15 px-2 py-1 rounded-md" data-i18n="hww.4.t2">{t(lang, "hww.4.t2")}</span>
+              <span class="text-[10px] font-semibold text-primary/80 bg-primary/5 border border-primary/15 px-2 py-1 rounded-md" data-i18n="hww.4.t3">{t(lang, "hww.4.t3")}</span>
             </div>
           </div>
         </div>

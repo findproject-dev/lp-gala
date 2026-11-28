@@ -1,5 +1,22 @@
 ---
 import { Instagram } from 'lucide-astro';
+import { t, getLocalizedPath, type Locale, type TranslationKey } from '../i18n';
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = 'id' } = Astro.props;
+
+const footerLinks: { key: TranslationKey; baseHref: string }[] = [
+  { key: "nav.home", baseHref: "/" },
+  { key: "nav.tentang", baseHref: "/tentang" },
+  { key: "nav.layanan", baseHref: "/layanan" },
+  { key: "nav.portfolio", baseHref: "/portfolio" },
+  { key: "nav.pricing", baseHref: "/pricing" },
+  { key: "nav.faq", baseHref: "/faq" },
+  { key: "nav.contact", baseHref: "/contact" },
+];
 ---
 <footer class="bg-surface border-t border-border py-12 mt-auto">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -7,18 +24,21 @@ import { Instagram } from 'lucide-astro';
       <!-- Brand -->
       <div>
         <span class="text-xl font-black tracking-widest text-primary uppercase">GALACODE</span>
-        <p class="text-sm text-text-secondary mt-2">Digital Growth Studio</p>
-        <p class="text-sm text-text-secondary mt-1">© 2026 Galacode. All rights reserved.</p>
+        <p class="text-sm text-text-secondary mt-2" data-i18n="footer.tagline">{t(lang, "footer.tagline")}</p>
+        <p class="text-sm text-text-secondary mt-1" data-i18n="footer.copyright">{t(lang, "footer.copyright")}</p>
       </div>
       <!-- Nav Links -->
       <div class="flex flex-wrap gap-x-8 gap-y-3">
-        <a href="/" class="text-sm text-text-muted hover:text-text-primary transition-colors">Home</a>
-        <a href="/tentang" class="text-sm text-text-muted hover:text-text-primary transition-colors">Tentang</a>
-        <a href="/layanan" class="text-sm text-text-muted hover:text-text-primary transition-colors">Layanan</a>
-        <a href="/portfolio" class="text-sm text-text-muted hover:text-text-primary transition-colors">Portfolio</a>
-        <a href="/pricing" class="text-sm text-text-muted hover:text-text-primary transition-colors">Harga</a>
-        <a href="/faq" class="text-sm text-text-muted hover:text-text-primary transition-colors">FAQ</a>
-        <a href="/contact" class="text-sm text-text-muted hover:text-text-primary transition-colors">Kontak</a>
+        {footerLinks.map((link) => (
+          <a
+            href={getLocalizedPath(link.baseHref, lang)}
+            data-base-href={link.baseHref}
+            data-i18n={link.key}
+            class="text-sm text-text-muted hover:text-text-primary transition-colors"
+          >
+            {t(lang, link.key)}
+          </a>
+        ))}
       </div>
       <!-- Social -->
       <div class="flex gap-5">

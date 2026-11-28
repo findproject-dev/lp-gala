@@ -1,5 +1,12 @@
 ---
 // src/components/pricing/PricingCTA.astro
+import { t, getLocalizedPath, type Locale } from '../../i18n';
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = "id" } = Astro.props;
 ---
 
 <section id="pricing-cta-section" class="relative w-full px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto py-16 md:py-24">
@@ -11,34 +18,34 @@
     <div class="relative z-10 w-full max-w-3xl mx-auto flex flex-col items-center">
       
       <!-- Headline -->
-      <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-text-primary tracking-tight text-balance mb-3 md:mb-4">
-        Masih Bingung Memilih Paket?
+      <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-text-primary tracking-tight text-balance mb-3 md:mb-4" data-i18n="pricing.cta.title">
+        {t(lang, "pricing.cta.title")}
       </h2>
       
       <!-- Short description -->
-      <p class="text-base md:text-lg text-text-secondary text-balance max-w-2xl mb-8 md:mb-10 leading-relaxed">
-        Setiap bisnis memiliki kebutuhan yang berbeda. Mari diskusikan fitur apa saja yang benar-benar Anda perlukan sebelum mengambil keputusan.
+      <p class="text-base md:text-lg text-text-secondary text-balance max-w-2xl mb-8 md:mb-10 leading-relaxed" data-i18n="pricing.cta.desc">
+        {t(lang, "pricing.cta.desc")}
       </p>
       
-      <!-- 3 Small Trust Points (Horizontal on Desktop, Stacked on Mobile) -->
+      <!-- 3 Small Trust Points -->
       <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-8 w-full mb-10 md:mb-12">
         <div class="flex items-center gap-2">
           <svg class="w-5 h-5 text-primary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          <span class="text-sm md:text-base text-text-primary font-medium">Konsultasi Gratis</span>
+          <span class="text-sm md:text-base text-text-primary font-medium" data-i18n="pricing.cta.trust1">{t(lang, "pricing.cta.trust1")}</span>
         </div>
         <div class="flex items-center gap-2">
           <svg class="w-5 h-5 text-primary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          <span class="text-sm md:text-base text-text-primary font-medium">Tanpa Komitmen</span>
+          <span class="text-sm md:text-base text-text-primary font-medium" data-i18n="pricing.cta.trust2">{t(lang, "pricing.cta.trust2")}</span>
         </div>
         <div class="flex items-center gap-2">
           <svg class="w-5 h-5 text-primary shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          <span class="text-sm md:text-base text-text-primary font-medium">Solusi Sesuai Kebutuhan Bisnis</span>
+          <span class="text-sm md:text-base text-text-primary font-medium" data-i18n="pricing.cta.trust3">{t(lang, "pricing.cta.trust3")}</span>
         </div>
       </div>
       
-      <!-- One Primary CTA Button -->
-      <a href="/contact" class="w-full sm:w-auto inline-flex justify-center items-center gap-3 bg-primary hover:bg-secondary text-primary-foreground font-bold py-4 px-10 rounded-xl min-h-[56px] shadow-sm transition-all duration-300 md:hover:scale-105 md:hover:shadow-md active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary group">
-        <span>Konsultasi Gratis</span>
+      <!-- Primary CTA Button -->
+      <a href={getLocalizedPath("/contact", lang)} data-base-href="/contact" class="w-full sm:w-auto inline-flex justify-center items-center gap-3 bg-primary hover:bg-secondary text-primary-foreground font-bold py-4 px-10 rounded-xl min-h-[56px] shadow-sm transition-all duration-300 md:hover:scale-105 md:hover:shadow-md active:scale-[0.98] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary group">
+        <span data-i18n="pricing.cta.btn">{t(lang, "pricing.cta.btn")}</span>
         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 md:group-hover:translate-x-1"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </a>
       

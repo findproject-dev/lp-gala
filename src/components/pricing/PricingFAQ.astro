@@ -1,55 +1,28 @@
 ---
 // src/components/pricing/PricingFAQ.astro
-import { ChevronDown, MessageCircleQuestion } from 'lucide-astro';
+import { ChevronDown } from 'lucide-astro';
+import { t, type Locale, type TranslationKey } from '../../i18n';
 
-const faqs = [
-  {
-    q: "Apa saja yang sudah termasuk dalam paket website?",
-    a: "Setiap paket sudah mencakup perancangan tampilan, pembuatan website, penghubung kontak seperti tombol WhatsApp dan formulir, serta pengaturan agar website cepat dibuka. Untuk paket menengah hingga atas, Anda juga dibantu penyusunan teks penawaran agar lebih mudah dipahami calon pelanggan."
-  },
-  {
-    q: "Berapa lama proses pengerjaan website?",
-    a: "Durasi pengerjaan bervariasi tergantung paket yang dipilih, mulai dari 3 hari hingga 5 minggu. Kami selalu memberikan estimasi waktu yang jelas di awal dan mengabari Anda secara berkala mengenai progresnya."
-  },
-  {
-    q: "Apakah saya bisa request desain sesuai keinginan?",
-    a: "Tentu saja! Anda bisa memberikan referensi tampilan yang Anda sukai. Tim kami juga akan membantu merancangkan tampilan yang rapi, nyaman dilihat, dan sesuai dengan karakter bisnis Anda."
-  },
-  {
-    q: "Kalau belum punya domain atau hosting bagaimana?",
-    a: "Tidak perlu khawatir, kami akan membantu seluruh proses pendaftaran nama domain (seperti .com atau .id) beserta penyediaan hosting yang cepat dan aman. Anda tinggal terima beres dan website siap online."
-  },
-  {
-    q: "Apakah website bisa dibuka di HP?",
-    a: "Pasti. Semua website yang kami bangun dijamin 100% responsif. Artinya, tampilan website Anda akan otomatis menyesuaikan diri dan tetap terlihat rapi baik saat dibuka melalui HP, tablet, maupun layar desktop."
-  },
-  {
-    q: "Setelah website selesai, apakah masih bisa direvisi?",
-    a: "Tentu bisa. Setiap paket sudah dilengkapi dengan kuota revisi (mulai dari 1x hingga 3x revisi) sebelum website sepenuhnya diserahterimakan. Kami ingin memastikan hasil akhir benar-benar sesuai dengan ekspektasi Anda."
-  },
-  {
-    q: "Bagaimana cara memulai pemesanan?",
-    a: "Langkahnya sangat mudah! Anda cukup menekan tombol 'Ambil Paket' atau menghubungi kami melalui WhatsApp. Tim kami akan segera merespons untuk berkonsultasi mengenai kebutuhan Anda secara gratis."
-  },
-  {
-    q: "Bagaimana jika kebutuhan saya tidak sesuai dengan paket yang tersedia?",
-    a: "Tidak masalah, kami menyediakan paket 'Custom Solution' yang fleksibel. Ceritakan kebutuhan operasional atau alur kerja bisnis Anda, dan kami akan merancang sistem khusus yang benar-benar sesuai."
-  }
-];
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = "id" } = Astro.props;
+
+const faqs = Array.from({ length: 8 }, (_, idx) => ({
+  qKey: `pricing.faq.${idx + 1}.q` as TranslationKey,
+  aKey: `pricing.faq.${idx + 1}.a` as TranslationKey,
+}));
 
 const half = Math.ceil(faqs.length / 2);
 const leftFaqs = faqs.slice(0, half);
 const rightFaqs = faqs.slice(half);
-
 ---
 
 <section class="relative w-full px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto pt-24 md:pt-32 pb-24">
   <div class="text-center mb-16 md:mb-20">
-    <h2 class="text-3xl md:text-5xl font-bold text-text-primary tracking-tight mb-4">Pertanyaan yang Sering Ditanyakan</h2>
-    <p class="text-text-secondary text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-      Masih bingung menentukan paket yang tepat?<br class="hidden md:block" />
-      Berikut beberapa pertanyaan yang paling sering ditanyakan sebelum memulai proyek.
-    </p>
+    <h2 class="text-3xl md:text-5xl font-bold text-text-primary tracking-tight mb-4" data-i18n="pricing.faq.title">{t(lang, "pricing.faq.title")}</h2>
+    <p class="text-text-secondary text-lg md:text-xl max-w-2xl mx-auto leading-relaxed" data-i18n-html="pricing.faq.subtitle" set:html={t(lang, "pricing.faq.subtitle")} />
   </div>
 
   <div id="pricing-faq-container" class="faq-container w-full grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-start">
@@ -63,17 +36,15 @@ const rightFaqs = faqs.slice(half);
             aria-expanded="false"
             class="faq-trigger flex w-full items-start justify-between p-6 md:p-8 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/20 rounded-2xl z-10 relative"
           >
-            <span class="text-lg font-semibold text-text-primary group-hover:text-accent transition-colors pr-8 leading-snug">{faq.q}</span>
+            <span class="text-lg font-semibold text-text-primary group-hover:text-accent transition-colors pr-8 leading-snug" data-i18n={faq.qKey}>{t(lang, faq.qKey)}</span>
             <div class="w-8 h-8 rounded-full bg-border/50 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-primary/20 transition-colors">
               <ChevronDown class="faq-icon h-5 w-5 text-text-primary group-hover:text-accent transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]" aria-hidden="true" />
             </div>
           </button>
           
-          <div 
-            class="faq-content h-0 overflow-hidden opacity-0 relative z-10"
-          >
-            <div class="px-6 md:px-8 pb-6 md:pb-8 pt-0 text-text-secondary leading-relaxed text-base">
-               {faq.a}
+          <div class="faq-content h-0 overflow-hidden opacity-0 relative z-10">
+            <div class="px-6 md:px-8 pb-6 md:pb-8 pt-0 text-text-secondary leading-relaxed text-base" data-i18n={faq.aKey}>
+               {t(lang, faq.aKey)}
             </div>
           </div>
         </div>
@@ -90,33 +61,21 @@ const rightFaqs = faqs.slice(half);
             aria-expanded="false"
             class="faq-trigger flex w-full items-start justify-between p-6 md:p-8 text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-primary/20 rounded-2xl z-10 relative"
           >
-            <span class="text-lg font-semibold text-text-primary group-hover:text-accent transition-colors pr-8 leading-snug">{faq.q}</span>
+            <span class="text-lg font-semibold text-text-primary group-hover:text-accent transition-colors pr-8 leading-snug" data-i18n={faq.qKey}>{t(lang, faq.qKey)}</span>
             <div class="w-8 h-8 rounded-full bg-border/50 flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-primary/20 transition-colors">
               <ChevronDown class="faq-icon h-5 w-5 text-text-primary group-hover:text-accent transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]" aria-hidden="true" />
             </div>
           </button>
           
-          <div 
-            class="faq-content h-0 overflow-hidden opacity-0 relative z-10"
-          >
-            <div class="px-6 md:px-8 pb-6 md:pb-8 pt-0 text-text-secondary leading-relaxed text-base">
-               {faq.a}
+          <div class="faq-content h-0 overflow-hidden opacity-0 relative z-10">
+            <div class="px-6 md:px-8 pb-6 md:pb-8 pt-0 text-text-secondary leading-relaxed text-base" data-i18n={faq.aKey}>
+               {t(lang, faq.aKey)}
             </div>
           </div>
         </div>
       ))}
     </div>
   </div>
-
-  <style>
-    @keyframes bounce-slight {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-3px); }
-    }
-    .animate-bounce-slight {
-      animation: bounce-slight 2s infinite ease-in-out;
-    }
-  </style>
 
   <script>
     import { animate, inView, stagger } from "motion";
@@ -125,7 +84,6 @@ const rightFaqs = faqs.slice(half);
       const cards = document.querySelectorAll(".faq-card");
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      // Scroll Reveal for cards
       if (!prefersReducedMotion && cards.length > 0) {
         cards.forEach(card => {
           (card as HTMLElement).style.opacity = '0';
@@ -149,15 +107,15 @@ const rightFaqs = faqs.slice(half);
       cards.forEach(card => {
         const trigger = card.querySelector(".faq-trigger");
         const content = card.querySelector(".faq-content");
-        const icon = card.querySelector(".faq-icon");
+        const icon = card.querySelector(".faq-icon") as HTMLElement | null;
         let isOpen = false;
 
         const toggleAccordion = () => {
           if (!isOpen) {
             isOpen = true;
             trigger?.setAttribute("aria-expanded", "true");
-            card.classList.add("border-glass-10", "shadow-md");
-            card.classList.remove("border-glass-10", "shadow-sm");
+            card.classList.add("shadow-md");
+            card.classList.remove("shadow-sm");
             
             if (icon && !prefersReducedMotion) icon.style.transform = "rotate(180deg)";
             
@@ -180,8 +138,8 @@ const rightFaqs = faqs.slice(half);
           } else {
             isOpen = false;
             trigger?.setAttribute("aria-expanded", "false");
-            card.classList.remove("border-glass-10", "shadow-md");
-            card.classList.add("border-glass-10", "shadow-sm");
+            card.classList.remove("shadow-md");
+            card.classList.add("shadow-sm");
             
             if (icon && !prefersReducedMotion) icon.style.transform = "rotate(0deg)";
             

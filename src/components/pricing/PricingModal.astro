@@ -1,20 +1,23 @@
 ---
 // src/components/pricing/PricingModal.astro
 import { Zap, Rocket, TrendingUp, ShoppingCart, Building2, Briefcase, Paintbrush, Sparkles, Layers, Wrench, Check, Clock, RefreshCcw, X } from 'lucide-astro';
+import { t, type Locale, type TranslationKey } from '../../i18n';
+import type { FeatureGroup } from './PricingCard.astro';
 
 export interface Props {
+  lang?: Locale;
   id: string;
-  name: string;
+  nameKey: TranslationKey;
   isBestSeller?: boolean;
-  price?: string;
-  tagline?: string;
-  description: string;
-  buttonText: string;
+  priceKey: TranslationKey;
+  taglineKey?: TranslationKey;
+  descriptionKey: TranslationKey;
+  buttonTextKey: TranslationKey;
   
-  features: Record<string, string[]>;
-  revision: string;
-  delivery: string;
-  whatsapp: string;
+  featureGroups: FeatureGroup[];
+  revisionKey: TranslationKey;
+  deliveryKey: TranslationKey;
+  whatsappKey: TranslationKey;
   
   iconWrapperClass: string;
   iconClass: string;
@@ -25,17 +28,18 @@ export interface Props {
 }
 
 const { 
+  lang = "id",
   id, 
-  name, 
+  nameKey, 
   isBestSeller = false,
-  price = "Rp X.XXX.XXX", 
-  tagline,
-  description,
-  buttonText,
-  features,
-  revision,
-  delivery,
-  whatsapp,
+  priceKey, 
+  taglineKey,
+  descriptionKey,
+  buttonTextKey,
+  featureGroups,
+  revisionKey,
+  deliveryKey,
+  whatsappKey,
   iconWrapperClass,
   iconClass,
   nameClass = "text-text-primary",
@@ -44,7 +48,6 @@ const {
   accentText = "text-text-secondary"
 } = Astro.props;
 
-// Determine icon dynamically
 const icons = {
   spark: Zap,
   starter: Rocket,
@@ -69,7 +72,7 @@ const Icon = icons[id as keyof typeof icons] || Zap;
     {/* Close Button */}
     <button type="button" class="close-modal absolute right-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-glass-10 text-text-muted hover:bg-glass-20 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/20">
       <X class="w-5 h-5" />
-      <span class="sr-only">Tutup</span>
+      <span class="sr-only" data-i18n="pricing.modal.closeAria">{t(lang, "pricing.modal.closeAria")}</span>
     </button>
 
     <div class="flex-grow overflow-y-auto px-5 py-6 sm:px-8 sm:py-6 no-scrollbar">
@@ -80,16 +83,16 @@ const Icon = icons[id as keyof typeof icons] || Zap;
         </div>
         <div>
           <div class="flex items-center gap-3">
-            <h3 class={`text-xl sm:text-2xl font-bold ${nameClass}`}>{name}</h3>
+            <h3 class={`text-xl sm:text-2xl font-bold ${nameClass}`} data-i18n={nameKey}>{t(lang, nameKey)}</h3>
             {isBestSeller && (
-              <span class="rounded-full bg-primary/20 px-2.5 py-1 text-[10px] sm:text-xs font-bold text-accent uppercase tracking-wide">
-                Best Seller
+              <span class="rounded-full bg-primary/20 px-2.5 py-1 text-[10px] sm:text-xs font-bold text-accent uppercase tracking-wide" data-i18n="pricing.card.bestSeller">
+                {t(lang, "pricing.card.bestSeller")}
               </span>
             )}
           </div>
-          {tagline && <p class={`text-xs sm:text-sm font-semibold mt-1 ${accentText}`}>{tagline}</p>}
-          <div class={`text-2xl sm:text-3xl font-extrabold tracking-tight mt-2 ${priceClass}`}>{price}</div>
-          <p class="text-xs sm:text-sm text-text-secondary leading-relaxed mt-2">{description}</p>
+          {taglineKey && <p class={`text-xs sm:text-sm font-semibold mt-1 ${accentText}`} data-i18n={taglineKey}>{t(lang, taglineKey)}</p>}
+          <div class={`text-2xl sm:text-3xl font-extrabold tracking-tight mt-2 ${priceClass}`} data-i18n={priceKey}>{t(lang, priceKey)}</div>
+          <p class="text-xs sm:text-sm text-text-secondary leading-relaxed mt-2" data-i18n={descriptionKey}>{t(lang, descriptionKey)}</p>
         </div>
       </div>
 
@@ -97,14 +100,14 @@ const Icon = icons[id as keyof typeof icons] || Zap;
 
       {/* Features */}
       <div class="space-y-6">
-        {Object.entries(features).map(([groupName, groupFeatures]) => (
+        {featureGroups.map((group) => (
           <div class="space-y-3">
-            <h5 class="text-[13px] font-bold text-text-secondary uppercase tracking-wider">{groupName}</h5>
+            <h5 class="text-[13px] font-bold text-text-secondary uppercase tracking-wider" data-i18n={group.groupKey}>{t(lang, group.groupKey)}</h5>
             <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-x-6 sm:gap-y-3">
-              {groupFeatures.map((feature) => (
+              {group.itemKeys.map((featKey) => (
                 <li class="flex items-start gap-2.5">
                   <Check class={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 ${accentText} mt-0.5 sm:mt-0`} />
-                  <span class="text-text-secondary text-[13px] sm:text-sm leading-relaxed">{feature}</span>
+                  <span class="text-text-secondary text-[13px] sm:text-sm leading-relaxed" data-i18n={featKey}>{t(lang, featKey)}</span>
                 </li>
               ))}
             </ul>
@@ -119,16 +122,16 @@ const Icon = icons[id as keyof typeof icons] || Zap;
         <div class="flex items-start gap-3 sm:gap-4">
           <RefreshCcw class={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5 ${accentText}`} />
           <div>
-            <p class="text-[11px] sm:text-xs text-text-muted font-medium uppercase tracking-wider">Revisi</p>
-            <p class="font-semibold text-text-primary text-[13px] sm:text-sm">{revision}</p>
+            <p class="text-[11px] sm:text-xs text-text-muted font-medium uppercase tracking-wider" data-i18n="pricing.modal.revisionLabel">{t(lang, "pricing.modal.revisionLabel")}</p>
+            <p class="font-semibold text-text-primary text-[13px] sm:text-sm" data-i18n={revisionKey}>{t(lang, revisionKey)}</p>
           </div>
         </div>
 
         <div class="flex items-start gap-3 sm:gap-4">
           <Clock class={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5 ${accentText}`} />
           <div>
-            <p class="text-[11px] sm:text-xs text-text-muted font-medium uppercase tracking-wider">Estimasi Pengerjaan</p>
-            <p class="font-semibold text-text-primary text-[13px] sm:text-sm">{delivery}</p>
+            <p class="text-[11px] sm:text-xs text-text-muted font-medium uppercase tracking-wider" data-i18n="pricing.modal.deliveryLabel">{t(lang, "pricing.modal.deliveryLabel")}</p>
+            <p class="font-semibold text-text-primary text-[13px] sm:text-sm" data-i18n={deliveryKey}>{t(lang, deliveryKey)}</p>
           </div>
         </div>
       </div>
@@ -137,12 +140,14 @@ const Icon = icons[id as keyof typeof icons] || Zap;
     {/* Sticky Footer CTA */}
     <div class="border-t border-glass-10 bg-surface/90 p-5 sm:px-8 backdrop-blur-md">
       <a 
-        href={`https://wa.me/6281919564548?text=${encodeURIComponent(whatsapp)}`} 
+        href={`https://wa.me/6281919564548?text=${encodeURIComponent(t(lang, whatsappKey))}`}
+        data-i18n-wa={whatsappKey}
         target="_blank"
         rel="noopener noreferrer"
         class={`flex w-full items-center justify-center rounded-2xl py-3.5 text-sm font-semibold transition-all hover:scale-[1.02] shadow-sm ${buttonClass}`}
+        data-i18n={buttonTextKey}
       >
-        {buttonText}
+        {t(lang, buttonTextKey)}
       </a>
     </div>
 
@@ -150,7 +155,6 @@ const Icon = icons[id as keyof typeof icons] || Zap;
 </dialog>
 
 <style>
-  /* Hide scrollbar for the modal content */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }

@@ -1,0 +1,126 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../Header.astro";
+import CTA from "../CTA.astro";
+import Footer from "../Footer.astro";
+import { t, getLocalizedPath, type Locale, type TranslationKey } from "../../i18n";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = "id" } = Astro.props;
+
+const solutions = [
+  { id: "lead-generation", number: "01", prefix: "layanan.1" },
+  { id: "booking", number: "02", prefix: "layanan.2" },
+  { id: "sales", number: "03", prefix: "layanan.3" },
+  { id: "business", number: "04", prefix: "layanan.4" },
+];
+---
+
+<Layout lang={lang} pageKey="layanan">
+  <Header lang={lang} />
+
+  <main class="pt-28 md:pt-36 pb-16 overflow-x-hidden">
+    <!-- Hero -->
+    <section class="px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center space-y-6 mb-20 md:mb-28">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/25 bg-primary/10 text-primary text-xs font-bold uppercase tracking-[0.15em]" data-i18n="layanan.hero.badge">
+        {t(lang, "layanan.hero.badge")}
+      </div>
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-black text-text-primary leading-[1.1] tracking-tight text-balance" data-i18n-html="layanan.hero.headline" set:html={t(lang, "layanan.hero.headline")} />
+      <p class="text-base sm:text-lg md:text-xl text-text-secondary max-w-3xl mx-auto leading-relaxed text-balance" data-i18n="layanan.hero.desc">
+        {t(lang, "layanan.hero.desc")}
+      </p>
+    </section>
+
+    <!-- 4 Solution Categories -->
+    <section class="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12 md:space-y-16 mb-20">
+      {solutions.map((item) => (
+        <article id={item.id} class="bg-surface-elevated border border-border/70 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-soft scroll-mt-28">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+
+            <!-- Left Column: Overview & Problems Solved -->
+            <div class="lg:col-span-5 space-y-6">
+              <div class="flex items-center gap-3">
+                <span class="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-black tracking-widest">
+                  {item.number}
+                </span>
+                <span class="text-xs font-bold uppercase tracking-wider text-text-muted" data-i18n="layanan.catLabel">{t(lang, "layanan.catLabel")}</span>
+              </div>
+
+              <div>
+                <h2 class="text-2xl sm:text-3xl font-black text-text-primary tracking-tight mb-3" data-i18n={`${item.prefix}.title`}>
+                  {t(lang, `${item.prefix}.title` as TranslationKey)}
+                </h2>
+                <p class="text-base text-text-secondary leading-relaxed" data-i18n={`${item.prefix}.subtitle`}>
+                  {t(lang, `${item.prefix}.subtitle` as TranslationKey)}
+                </p>
+              </div>
+
+              <div class="p-4 rounded-2xl bg-background border border-border/60 space-y-1.5">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-primary block" data-i18n="layanan.suitableLabel">{t(lang, "layanan.suitableLabel")}</span>
+                <p class="text-sm text-text-secondary leading-relaxed" data-i18n={`${item.prefix}.suitable`}>{t(lang, `${item.prefix}.suitable` as TranslationKey)}</p>
+              </div>
+
+              <div class="space-y-3">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-red-400" data-i18n="layanan.problemsLabel">{t(lang, "layanan.problemsLabel")}</h3>
+                <ul class="space-y-2.5">
+                  {["p1", "p2", "p3"].map((pk) => (
+                    <li class="flex items-start gap-2.5 text-sm text-text-secondary leading-relaxed">
+                      <span class="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 shrink-0"></span>
+                      <span data-i18n={`${item.prefix}.${pk}`}>{t(lang, `${item.prefix}.${pk}` as TranslationKey)}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <!-- Right Column: Features + Why + Benefits + CTA -->
+            <div class="lg:col-span-7 space-y-6">
+              <div class="space-y-4">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-text-muted" data-i18n="layanan.featuresLabel">{t(lang, "layanan.featuresLabel")}</h3>
+                <div class="space-y-3">
+                  {["f1", "f2", "f3"].map((fk) => (
+                    <div class="p-4 sm:p-5 rounded-2xl bg-background border border-border/60 space-y-1.5">
+                      <h4 class="text-sm sm:text-base font-bold text-text-primary" data-i18n={`${item.prefix}.${fk}.name`}>{t(lang, `${item.prefix}.${fk}.name` as TranslationKey)}</h4>
+                      <p class="text-xs sm:text-sm text-text-secondary leading-relaxed" data-i18n={`${item.prefix}.${fk}.why`}>{t(lang, `${item.prefix}.${fk}.why` as TranslationKey)}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Benefits for Owner & Customer -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="p-4 rounded-2xl bg-primary/5 border border-primary/15 space-y-1.5">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-primary block" data-i18n="layanan.ownerBenefitLabel">{t(lang, "layanan.ownerBenefitLabel")}</span>
+                  <p class="text-xs sm:text-sm text-text-secondary leading-relaxed" data-i18n={`${item.prefix}.owner`}>{t(lang, `${item.prefix}.owner` as TranslationKey)}</p>
+                </div>
+                <div class="p-4 rounded-2xl bg-surface border border-border/60 space-y-1.5">
+                  <span class="text-[10px] font-bold uppercase tracking-wider text-text-primary block" data-i18n="layanan.customerBenefitLabel">{t(lang, "layanan.customerBenefitLabel")}</span>
+                  <p class="text-xs sm:text-sm text-text-secondary leading-relaxed" data-i18n={`${item.prefix}.customer`}>{t(lang, `${item.prefix}.customer` as TranslationKey)}</p>
+                </div>
+              </div>
+
+              <div class="pt-2">
+                <a
+                  href={getLocalizedPath("/contact", lang)}
+                  data-base-href="/contact"
+                  class="inline-flex items-center gap-2.5 bg-primary hover:bg-accent text-primary-foreground font-bold text-sm sm:text-base px-7 py-3.5 rounded-xl shadow-md transition-all duration-300 md:hover:scale-[1.02] active:scale-95"
+                >
+                  <span data-i18n={`${item.prefix}.cta`}>{t(lang, `${item.prefix}.cta` as TranslationKey)}</span>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </article>
+      ))}
+    </section>
+
+    <CTA lang={lang} />
+  </main>
+
+  <Footer lang={lang} />
+</Layout>

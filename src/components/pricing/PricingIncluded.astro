@@ -1,39 +1,46 @@
 ---
 // src/components/pricing/PricingIncluded.astro
-import { Globe, Cloud, Lock, Smartphone, Zap, MessageCircle } from 'lucide-astro';
+import { Globe, Lock, Smartphone, Zap, MessageCircle } from 'lucide-astro';
+import { t, type Locale, type TranslationKey } from '../../i18n';
 
-const includedFeatures = [
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = "id" } = Astro.props;
+
+const includedFeatures: { titleKey: TranslationKey; descKey: TranslationKey; icon: any; color: string; bg: string }[] = [
   {
-    title: "Domain .com Gratis — Tahun Pertama",
-    description: "Alamat website resmi (.com) untuk tahun pertama tanpa biaya tambahan, sehingga bisnis lebih mudah diingat dan dipercaya.",
+    titleKey: "pricing.inc.1.title",
+    descKey: "pricing.inc.1.desc",
     icon: Globe,
     color: "text-blue-500",
     bg: "bg-blue-500/10"
   },
   {
-    title: "SSL / HTTPS",
-    description: "Perlindungan keamanan koneksi website agar pengunjung merasa aman saat mengakses informasi atau mengisi formulir.",
+    titleKey: "pricing.inc.2.title",
+    descKey: "pricing.inc.2.desc",
     icon: Lock,
     color: "text-emerald-500",
     bg: "bg-emerald-500/10"
   },
   {
-    title: "Responsif Mobile",
-    description: "Tampilan website tetap rapi dan nyaman dibaca saat diakses pelanggan melalui HP, tablet, maupun komputer.",
+    titleKey: "pricing.inc.3.title",
+    descKey: "pricing.inc.3.desc",
     icon: Smartphone,
     color: "text-orange-500",
     bg: "bg-orange-500/10"
   },
   {
-    title: "Performa Optimal",
-    description: "Halaman website dibuka dengan cepat dan ringan sehingga calon pelanggan tidak perlu menunggu lama.",
+    titleKey: "pricing.inc.4.title",
+    descKey: "pricing.inc.4.desc",
     icon: Zap,
     color: "text-yellow-500",
     bg: "bg-yellow-500/10"
   },
   {
-    title: "Integrasi WhatsApp",
-    description: "Tombol penghubung langsung ke WhatsApp agar calon pelanggan bisa segera bertanya atau memesan tanpa langkah yang rumit.",
+    titleKey: "pricing.inc.5.title",
+    descKey: "pricing.inc.5.desc",
     icon: MessageCircle,
     color: "text-green-500",
     bg: "bg-green-500/10"
@@ -43,33 +50,30 @@ const includedFeatures = [
 
 <section class="relative w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto pt-12">
   <div class="text-center mb-16 max-w-2xl mx-auto">
-    <h2 class="text-3xl md:text-4xl font-bold text-text-primary tracking-tight">
-      Semua Paket Sudah Termasuk
+    <h2 class="text-3xl md:text-4xl font-bold text-text-primary tracking-tight" data-i18n="pricing.inc.title">
+      {t(lang, "pricing.inc.title")}
     </h2>
-    <p class="mt-4 text-text-secondary text-lg leading-relaxed">
-      Standar kualitas yang selalu Anda dapatkan di setiap paket, agar website siap digunakan untuk menunjang aktivitas bisnis sehari-hari.
+    <p class="mt-4 text-text-secondary text-lg leading-relaxed" data-i18n="pricing.inc.subtitle">
+      {t(lang, "pricing.inc.subtitle")}
     </p>
   </div>
 
   <div id="pricing-included-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-    {includedFeatures.map((feature, i) => {
+    {includedFeatures.map((feature) => {
       const Icon = feature.icon;
       return (
         <div class="included-card group relative flex flex-col p-6 md:p-8 rounded-[2rem] bg-surface/90 shadow-sm border border-border/60 overflow-hidden cursor-default transition-all duration-500 hover:shadow-md hover:bg-surface/95">
           
-          <!-- Subtle glow effect on hover -->
           <div class="absolute -inset-px rounded-[2rem] bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
-          <!-- Icon Container -->
           <div class={`included-icon-wrapper w-12 h-12 md:w-14 md:h-14 rounded-2xl ${feature.bg} flex items-center justify-center mb-6 relative z-10 transition-transform duration-300`}>
             <Icon class={`included-icon w-6 h-6 md:w-7 md:h-7 ${feature.color}`} />
           </div>
           
-          <!-- Content -->
           <div class="relative z-10 space-y-3">
-            <h4 class="text-base md:text-xl font-bold text-text-primary">{feature.title}</h4>
-            <p class="text-xs md:text-sm text-text-secondary leading-relaxed font-medium">
-              {feature.description}
+            <h4 class="text-base md:text-xl font-bold text-text-primary" data-i18n={feature.titleKey}>{t(lang, feature.titleKey)}</h4>
+            <p class="text-xs md:text-sm text-text-secondary leading-relaxed font-medium" data-i18n={feature.descKey}>
+              {t(lang, feature.descKey)}
             </p>
           </div>
           
@@ -87,7 +91,6 @@ const includedFeatures = [
       
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       
-      // Entry Animation
       if (!prefersReducedMotion && section) {
         cards.forEach(c => { 
           (c as HTMLElement).style.opacity = '0'; 
@@ -104,7 +107,6 @@ const includedFeatures = [
          cards.forEach(c => { (c as HTMLElement).style.opacity = '1'; (c as HTMLElement).style.transform = 'none'; });
       }
 
-      // Hover Animation
       if (!prefersReducedMotion) {
         cards.forEach((card) => {
           const iconWrapper = card.querySelector(".included-icon-wrapper");

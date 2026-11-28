@@ -1,22 +1,28 @@
 ---
 // src/components/pricing/PricingCard.astro
 import { Zap, Rocket, TrendingUp, ShoppingCart, Building2, Briefcase, Paintbrush, Sparkles, Layers, RefreshCcw, Wrench, Check, ArrowRight } from 'lucide-astro';
+import { t, type Locale, type TranslationKey } from '../../i18n';
+
+export interface FeatureGroup {
+  groupKey: TranslationKey;
+  itemKeys: TranslationKey[];
+}
 
 export interface Props {
+  lang?: Locale;
   id: string;
-  name: string;
+  nameKey: TranslationKey;
   isBestSeller?: boolean;
-  price?: string;
-  tagline?: string;
-  description: string;
-  buttonText: string;
+  priceKey: TranslationKey;
+  taglineKey?: TranslationKey;
+  descriptionKey: TranslationKey;
+  buttonTextKey: TranslationKey;
   
-  features: Record<string, string[]>;
-  revision: string;
-  delivery: string;
-  whatsapp: string;
+  featureGroups: FeatureGroup[];
+  revisionKey: TranslationKey;
+  deliveryKey: TranslationKey;
+  whatsappKey: TranslationKey;
   
-  // Theme/Colors
   cardClasses: string;
   shadowClass: string;
   ringClass: string;
@@ -29,15 +35,16 @@ export interface Props {
 }
 
 const { 
+  lang = "id",
   id, 
-  name, 
+  nameKey, 
   isBestSeller = false,
-  price = "Rp X.XXX.XXX", 
-  tagline,
-  description, 
-  buttonText,
-  features,
-  whatsapp,
+  priceKey, 
+  taglineKey,
+  descriptionKey, 
+  buttonTextKey,
+  featureGroups,
+  whatsappKey,
   cardClasses,
   shadowClass,
   ringClass,
@@ -49,7 +56,6 @@ const {
   accentText = "text-text-secondary"
 } = Astro.props;
 
-// Determine icon dynamically
 const icons = {
   spark: Zap,
   starter: Rocket,
@@ -66,13 +72,11 @@ const icons = {
 
 const Icon = icons[id as keyof typeof icons] || Zap;
 
-// Calculate Summary Features
-const allFeatureGroups = Object.values(features);
-const firstGroupFeatures = allFeatureGroups[0] || [];
+const firstGroupFeatures = featureGroups[0]?.itemKeys || [];
 const summaryLimit = 5;
-const displayedFeatures = firstGroupFeatures.slice(0, summaryLimit);
-const totalFeatures = allFeatureGroups.reduce((acc, group) => acc + group.length, 0);
-const remainingFeatures = totalFeatures - displayedFeatures.length;
+const displayedFeatureKeys = firstGroupFeatures.slice(0, summaryLimit);
+const totalFeatures = featureGroups.reduce((acc, group) => acc + group.itemKeys.length, 0);
+const remainingFeatures = totalFeatures - displayedFeatureKeys.length;
 ---
 
 <div class={`pricing-card group relative flex flex-col rounded-[2rem] p-6 lg:p-7 text-left transition-colors duration-500 bg-surface shadow-sm h-full ${cardClasses}`}>
@@ -82,8 +86,8 @@ const remainingFeatures = totalFeatures - displayedFeatures.length;
     <>
       <div class="absolute inset-0 rounded-[2.5rem] bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-0"></div>
       <div class="absolute -inset-[2px] rounded-[2.5rem] bg-accent opacity-20 blur-md group-hover:opacity-40 transition-opacity duration-500 pointer-events-none z-0"></div>
-      <div class="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-accent px-5 py-1.5 text-xs font-bold text-accent-foreground uppercase tracking-widest shadow-lg shadow-accent/30 whitespace-nowrap z-20">
-        Best Seller
+      <div class="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-accent px-5 py-1.5 text-xs font-bold text-accent-foreground uppercase tracking-widest shadow-lg shadow-accent/30 whitespace-nowrap z-20" data-i18n="pricing.card.bestSeller">
+        {t(lang, "pricing.card.bestSeller")}
       </div>
     </>
   )}
@@ -104,11 +108,11 @@ const remainingFeatures = totalFeatures - displayedFeatures.length;
         <Icon class={`w-5 h-5 ${iconClass}`} aria-hidden="true" />
       </div>
       <div>
-        <h3 class={`text-xl lg:text-2xl font-bold ${nameClass}`}>{name}</h3>
-        {tagline && <p class={`text-xs font-semibold mt-1 leading-snug ${accentText}`}>{tagline}</p>}
+        <h3 class={`text-xl lg:text-2xl font-bold ${nameClass}`} data-i18n={nameKey}>{t(lang, nameKey)}</h3>
+        {taglineKey && <p class={`text-xs font-semibold mt-1 leading-snug ${accentText}`} data-i18n={taglineKey}>{t(lang, taglineKey)}</p>}
       </div>
-      <div class={`text-2xl lg:text-3xl font-extrabold tracking-tight mt-2 ${priceClass}`}>{price}</div>
-      <p class="text-sm text-text-secondary leading-relaxed min-h-[60px]">{description}</p>
+      <div class={`text-2xl lg:text-3xl font-extrabold tracking-tight mt-2 ${priceClass}`} data-i18n={priceKey}>{t(lang, priceKey)}</div>
+      <p class="text-sm text-text-secondary leading-relaxed min-h-[60px]" data-i18n={descriptionKey}>{t(lang, descriptionKey)}</p>
     </div>
 
     <hr class="border-glass-10 my-6" />
@@ -116,39 +120,39 @@ const remainingFeatures = totalFeatures - displayedFeatures.length;
     {/* Features Summary */}
     <div class="space-y-3 flex-grow mb-6">
       <ul class="space-y-2.5">
-        {displayedFeatures.map((feature) => (
+        {displayedFeatureKeys.map((featKey) => (
           <li class="flex items-start gap-2.5">
             <Check class={`w-4 h-4 flex-shrink-0 ${accentText} mt-0.5`} />
-            <span class="text-text-secondary text-[13px] lg:text-sm leading-relaxed">{feature}</span>
+            <span class="text-text-secondary text-[13px] lg:text-sm leading-relaxed" data-i18n={featKey}>{t(lang, featKey)}</span>
           </li>
         ))}
       </ul>
       {remainingFeatures > 0 && (
         <p class="text-[13px] font-medium text-text-muted pt-1.5 pl-7">
-          +{remainingFeatures} fitur lainnya
+          +{remainingFeatures} <span data-i18n="pricing.card.moreFeaturesSuffix">{t(lang, "pricing.card.moreFeaturesSuffix")}</span>
         </p>
       )}
     </div>
 
     {/* CTA Buttons */}
     <div class="pt-4 border-t border-glass-10 mt-auto flex flex-col gap-3">
-      {/* Primary CTA */}
       <a 
-        href={`https://wa.me/6281919564548?text=${encodeURIComponent(whatsapp)}`} 
+        href={`https://wa.me/6281919564548?text=${encodeURIComponent(t(lang, whatsappKey))}`}
+        data-i18n-wa={whatsappKey}
         target="_blank"
         rel="noopener noreferrer"
         class={`flex w-full items-center justify-center rounded-xl py-3 text-sm font-semibold transition-all hover:scale-[1.02] shadow-sm border-2 ${buttonClass}`}
+        data-i18n={buttonTextKey}
       >
-        {buttonText}
+        {t(lang, buttonTextKey)}
       </a>
       
-      {/* Secondary CTA (Open Modal) */}
       <button 
         type="button"
         data-modal-target={`modal-${id}`}
         class="open-modal-btn group/btn flex items-center justify-center gap-1.5 w-full py-1.5 text-xs font-medium text-text-muted transition-colors hover:text-text-primary focus:outline-none"
       >
-        <span class="border-b border-transparent group-hover/btn:border-primary/40 transition-colors">Lihat Detail Paket</span>
+        <span class="border-b border-transparent group-hover/btn:border-primary/40 transition-colors" data-i18n="pricing.card.viewDetail">{t(lang, "pricing.card.viewDetail")}</span>
         <ArrowRight class="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
       </button>
     </div>

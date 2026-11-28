@@ -1,26 +1,31 @@
 ---
 // src/components/portfolio/PortfolioHero.astro
+import { t, getLocalizedPath, type Locale } from "../../i18n";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = "id" } = Astro.props;
 ---
 
 <section id="portfolio-hero" class="relative w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-center text-center">
-  <div class="portfolio-hero-child inline-flex items-center gap-2 px-3 md:px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-primary font-semibold tracking-wider uppercase text-[10px] md:text-xs mb-6 shadow-[0_0_15px_rgba(37,99,235,0.1)]">
-    Portfolio
+  <div class="portfolio-hero-child inline-flex items-center gap-2 px-3 md:px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-primary font-semibold tracking-wider uppercase text-[10px] md:text-xs mb-6 shadow-[0_0_15px_rgba(37,99,235,0.1)]" data-i18n="portfolio.hero.badge">
+    {t(lang, "portfolio.hero.badge")}
   </div>
 
-  <h1 class="portfolio-hero-child text-4xl md:text-5xl lg:text-6xl font-black text-text-primary leading-[1.15] text-balance mb-6">
-    Website yang Kami Bangun untuk <span class="text-primary">Berbagai Jenis Bisnis</span>
-  </h1>
+  <h1 class="portfolio-hero-child text-4xl md:text-5xl lg:text-6xl font-black text-text-primary leading-[1.15] text-balance mb-6" data-i18n-html="portfolio.hero.headline" set:html={t(lang, "portfolio.hero.headline")} />
 
-  <p class="portfolio-hero-child max-w-2xl text-base sm:text-lg text-text-secondary leading-relaxed text-balance mb-10">
-    Setiap website dirancang sesuai kebutuhan bisnis, bukan sekadar template. Mulai dari landing page sederhana hingga sistem web yang lebih kompleks.
+  <p class="portfolio-hero-child max-w-2xl text-base sm:text-lg text-text-secondary leading-relaxed text-balance mb-10" data-i18n="portfolio.hero.desc">
+    {t(lang, "portfolio.hero.desc")}
   </p>
 
   <div class="portfolio-hero-child flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
-    <a href="/contact" class="inline-flex justify-center items-center gap-2 bg-primary text-primary-foreground font-bold py-3.5 px-8 rounded-xl shadow-md transition-all duration-300 md:hover:scale-105 active:scale-95 w-full sm:w-auto">
-      Diskusikan Website Anda
+    <a href={getLocalizedPath("/contact", lang)} data-base-href="/contact" class="inline-flex justify-center items-center gap-2 bg-primary text-primary-foreground font-bold py-3.5 px-8 rounded-xl shadow-md transition-all duration-300 md:hover:scale-105 active:scale-95 w-full sm:w-auto" data-i18n="portfolio.hero.cta1">
+      {t(lang, "portfolio.hero.cta1")}
     </a>
-    <a href="/pricing" class="inline-flex justify-center items-center gap-2 border border-border bg-surface text-text-primary font-bold py-3.5 px-8 rounded-xl transition-all duration-300 md:hover:bg-glass-5 md:hover:border-border/60 active:scale-95 w-full sm:w-auto">
-      Lihat Paket Harga
+    <a href={getLocalizedPath("/pricing", lang)} data-base-href="/pricing" class="inline-flex justify-center items-center gap-2 border border-border bg-surface text-text-primary font-bold py-3.5 px-8 rounded-xl transition-all duration-300 md:hover:bg-glass-5 md:hover:border-border/60 active:scale-95 w-full sm:w-auto" data-i18n="portfolio.hero.cta2">
+      {t(lang, "portfolio.hero.cta2")}
     </a>
   </div>
 </section>

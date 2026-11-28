@@ -1,6 +1,13 @@
 ---
 // src/components/PortfolioPreview.astro — Portofolio Pilihan di Beranda
 import { projects } from "../data/projects";
+import { t, getLocalizedPath, type Locale, type TranslationKey } from "../i18n";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = "id" } = Astro.props;
 
 // Proyek pilihan dari berbagai jenis usaha
 const featuredIds = [10, 6, 3, 8]; // Findbeauty, Findfix, Findwell, Catering Seleroo
@@ -15,22 +22,21 @@ const featuredProjects = featuredIds
     <!-- Section Header -->
     <div class="portfolio-preview-header flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 md:mb-18">
       <div class="space-y-4 max-w-2xl">
-        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-primary font-bold tracking-widest uppercase text-[10px] md:text-xs">
-          Hasil Kerja Kami
+        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-primary font-bold tracking-widest uppercase text-[10px] md:text-xs" data-i18n="pp.badge">
+          {t(lang, "pp.badge")}
         </span>
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight tracking-tight">
-          Contoh Solusi untuk <span class="text-primary">Berbagai Jenis Usaha</span>
-        </h2>
-        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
-          Setiap proyek dibuat sesuai kebutuhan bisnisnya — mulai dari merapikan info layanan sampai mempermudah pelanggan buat pesan.
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-text-primary leading-tight tracking-tight" data-i18n-html="pp.headline" set:html={t(lang, "pp.headline")} />
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed" data-i18n="pp.subtitle">
+          {t(lang, "pp.subtitle")}
         </p>
       </div>
 
       <a
-        href="/portfolio"
+        href={getLocalizedPath("/portfolio", lang)}
+        data-base-href="/portfolio"
         class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl border border-border text-sm font-bold text-text-primary bg-background hover:bg-surface-elevated hover:border-primary/40 transition-all duration-300 shadow-sm shrink-0 group self-start md:self-auto"
       >
-        <span>Lihat Semua Portofolio</span>
+        <span data-i18n="pp.allBtn">{t(lang, "pp.allBtn")}</span>
         <svg class="w-4 h-4 text-primary group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
       </a>
     </div>
@@ -49,21 +55,21 @@ const featuredProjects = featuredIds
           >
             <img
               src={project.image}
-              alt={`${project.name} — ${project.businessType}`}
+              alt={`${project.name} — ${t(lang, `project.${project.id}.businessType` as TranslationKey)}`}
               class="w-full h-full object-cover transition-transform duration-700 md:group-hover:scale-105"
               loading="lazy"
             />
             <div class="absolute top-3 left-3 flex flex-wrap gap-2">
-              <span class="px-2.5 py-1 rounded-full bg-black/65 backdrop-blur-md border border-white/15 text-[10px] font-bold text-white uppercase tracking-wider">
-                {project.businessType}
+              <span class="px-2.5 py-1 rounded-full bg-black/65 backdrop-blur-md border border-white/15 text-[10px] font-bold text-white uppercase tracking-wider" data-i18n={`project.${project.id}.businessType`}>
+                {t(lang, `project.${project.id}.businessType` as TranslationKey)}
               </span>
-              <span class="px-2.5 py-1 rounded-full bg-primary/90 backdrop-blur-md text-[10px] font-bold text-primary-foreground">
-                {project.solutionType}
+              <span class="px-2.5 py-1 rounded-full bg-primary/90 backdrop-blur-md text-[10px] font-bold text-primary-foreground" data-i18n={`project.${project.id}.solutionType`}>
+                {t(lang, `project.${project.id}.solutionType` as TranslationKey)}
               </span>
             </div>
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-end p-4">
-              <span class="text-xs font-bold text-white bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-lg border border-white/20">
-                Buka Live Demo ↗
+              <span class="text-xs font-bold text-white bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-lg border border-white/20" data-i18n="pp.openDemo">
+                {t(lang, "pp.openDemo")}
               </span>
             </div>
           </a>
@@ -80,7 +86,7 @@ const featuredProjects = featuredIds
                 rel="noopener noreferrer"
                 class="inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-accent transition-colors shrink-0"
               >
-                <span>Lihat Demo</span>
+                <span data-i18n="pp.viewDemo">{t(lang, "pp.viewDemo")}</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M7 7h10v10"/></svg>
               </a>
             </div>
@@ -88,21 +94,21 @@ const featuredProjects = featuredIds
             <!-- Challenge & Solution -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs leading-relaxed flex-1">
               <div class="p-3.5 rounded-xl bg-surface border border-border/50">
-                <span class="text-[10px] font-bold uppercase tracking-wider text-red-400 block mb-1">Kebutuhan / Masalah</span>
-                <p class="text-text-secondary">{project.challenge}</p>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-red-400 block mb-1" data-i18n="pp.challengeLabel">{t(lang, "pp.challengeLabel")}</span>
+                <p class="text-text-secondary" data-i18n={`project.${project.id}.challenge`}>{t(lang, `project.${project.id}.challenge` as TranslationKey)}</p>
               </div>
               <div class="p-3.5 rounded-xl bg-surface border border-border/50">
-                <span class="text-[10px] font-bold uppercase tracking-wider text-primary block mb-1">Solusi yang Dibangun</span>
-                <p class="text-text-secondary">{project.solution}</p>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-primary block mb-1" data-i18n="pp.solutionLabel">{t(lang, "pp.solutionLabel")}</span>
+                <p class="text-text-secondary" data-i18n={`project.${project.id}.solution`}>{t(lang, `project.${project.id}.solution` as TranslationKey)}</p>
               </div>
             </div>
 
             <!-- Key Features -->
             <div class="pt-2 border-t border-border/40 flex flex-wrap items-center gap-1.5">
-              <span class="text-[10px] font-bold uppercase tracking-wider text-text-muted mr-1">Fitur Utama:</span>
-              {project.features.map((feat) => (
-                <span class="px-2.5 py-1 rounded-full bg-primary/8 border border-primary/15 text-[11px] font-semibold text-primary">
-                  {feat}
+              <span class="text-[10px] font-bold uppercase tracking-wider text-text-muted mr-1" data-i18n="pp.featuresLabel">{t(lang, "pp.featuresLabel")}</span>
+              {project.features.map((_, idx) => (
+                <span class="px-2.5 py-1 rounded-full bg-primary/8 border border-primary/15 text-[11px] font-semibold text-primary" data-i18n={`project.${project.id}.f${idx}`}>
+                  {t(lang, `project.${project.id}.f${idx}` as TranslationKey)}
                 </span>
               ))}
             </div>

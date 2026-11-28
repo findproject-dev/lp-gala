@@ -1,22 +1,29 @@
 ---
 // src/components/pricing/PricingHero.astro
+import { t, type Locale } from "../../i18n";
+
+interface Props {
+  lang?: Locale;
+}
+
+const { lang = "id" } = Astro.props;
 ---
 
 <section id="pricing-hero" class="relative w-full px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-center text-center">
   <div class="max-w-3xl space-y-6">
     <!-- Badge -->
     <div class="hero-child inline-flex items-center rounded-full border border-border/60 bg-surface/90 px-3 py-1 text-sm font-medium text-text-primary shadow-sm">
-      <span>Pilihan Paket</span>
+      <span data-i18n="pricing.hero.badge">{t(lang, "pricing.hero.badge")}</span>
     </div>
     
     <!-- Heading -->
-    <h1 class="hero-child text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-text-primary text-balance">
-      Harga simpel dan transparan
+    <h1 class="hero-child text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-text-primary text-balance" data-i18n="pricing.hero.headline">
+      {t(lang, "pricing.hero.headline")}
     </h1>
     
     <!-- Subtitle -->
-    <p class="hero-child text-lg md:text-xl text-text-secondary leading-relaxed text-balance max-w-2xl mx-auto">
-      Pilih solusi digital yang sesuai dengan tahap dan kebutuhan bisnismu—mulai dari memperkenalkan usaha hingga mengelola operasional secara lebih terstruktur.
+    <p class="hero-child text-lg md:text-xl text-text-secondary leading-relaxed text-balance max-w-2xl mx-auto" data-i18n="pricing.hero.subtitle">
+      {t(lang, "pricing.hero.subtitle")}
     </p>
   </div>
 
@@ -30,13 +37,11 @@
       if (!prefersReducedMotion && heroSection) {
         const children = heroSection.querySelectorAll(".hero-child");
         
-        // Initial state
         children.forEach(child => {
           (child as HTMLElement).style.opacity = '0';
           (child as HTMLElement).style.transform = 'translateY(20px)';
         });
 
-        // Simple entry on load, assuming hero is always top of page
         animate(
           children,
           { opacity: [0, 1], y: [20, 0] },
